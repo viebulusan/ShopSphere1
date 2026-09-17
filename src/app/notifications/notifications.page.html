@@ -1,0 +1,99 @@
+<div class="space-y-5 pb-8 animate-fade-in max-w-2xl mx-auto">
+
+  <div class="flex items-baseline justify-between">
+    <div>
+      <h1 class="text-2xl sm:text-3xl font-black text-[#1D4533] tracking-tight" style="font-family: 'SF Pro Display', sans-serif;">
+        Notifications
+      </h1>
+      <p class="text-xs sm:text-sm font-medium text-[#5E3122] opacity-80 mt-0.5">
+        {{ shop.unreadNotificationsCount() }} unread alerts & tracking updates
+      </p>
+    </div>
+
+    @if (shop.unreadNotificationsCount() > 0) {
+      <button 
+        (click)="shop.markAllNotificationsRead()"
+        class="text-xs font-bold text-[#1D4533] hover:text-[#5E3122] transition-colors flex items-center gap-1.5">
+        <app-icon name="check" [size]="14" color="currentColor"></app-icon>
+        <span>Mark all read</span>
+      </button>
+    }
+  </div>
+
+  <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
+    @for (filter of ['All', 'Orders', 'Promos']; track filter) {
+      <button 
+        (click)="activeFilter.set(filter)"
+        class="px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all border"
+        [class.bg-[#1D4533]]="activeFilter() === filter"
+        [class.text-white]="activeFilter() === filter"
+        [class.border-[#1D4533]]="activeFilter() === filter"
+        [class.bg-white]="activeFilter() !== filter"
+        [class.text-[#58585D]]="activeFilter() !== filter"
+        [class.border-[rgba(29,69,51,0.08)]]="activeFilter() !== filter">
+        {{ filter }}
+      </button>
+    }
+  </div>
+
+  @if (filteredNotifications().length > 0) {
+    <div class="space-y-3">
+      @for (notif of filteredNotifications(); track notif.id) {
+        <div 
+          (click)="handleNotificationClick(notif)"
+          class="apple-card p-4 sm:p-5 flex items-start gap-3.5 cursor-pointer hover:shadow-md transition-all relative group"
+          [class.bg-white]="notif.read"
+          [class.bg-[#FAF4EE]/40]="!notif.read">
+
+          <div 
+            class="w-10 h-10 rounded-full flex items-center justify-center shrink-0 shadow-xs"
+            [class.bg-[#1D4533]]="notif.type === 'order'"
+            [class.text-white]="notif.type === 'order'"
+            [class.bg-[#F9D2BA]]="notif.type === 'promo'"
+            [class.text-[#5E3122]]="notif.type === 'promo'"
+            [class.bg-[#FAF4EE]]="notif.type === 'security'"
+            [class.text-[#1D4533]]="notif.type === 'security'">
+            @if (notif.type === 'order') {
+              <app-icon name="truck" [size]="18" color="currentColor"></app-icon>
+            } @else if (notif.type === 'promo') {
+              <app-icon name="sparkles" [size]="18" color="currentColor"></app-icon>
+            } @else {
+              <app-icon name="shield" [size]="18" color="currentColor"></app-icon>
+            }
+          </div>
+
+          <div class="flex-1 min-w-0 pr-6">
+            <div class="flex items-baseline justify-between gap-2">
+              <h3 class="text-xs sm:text-sm font-bold text-[#1C1C1E] truncate">
+                {{ notif.title }}
+              </h3>
+              <span class="text-[10px] text-[#8E8E93] shrink-0">{{ notif.time }}</span>
+            </div>
+            <p class="text-xs text-[#58585D] mt-1 leading-relaxed">
+              {{ notif.message }}
+            </p>
+          </div>
+
+          @if (!notif.read) {
+            <span class="absolute top-4 right-4 w-2 h-2 rounded-full bg-[#1D4533]"></span>
+          }
+
+        </div>
+      }
+    </div>
+  } @else {
+    
+    <div class="py-20 text-center space-y-4">
+      <div class="w-16 h-16 mx-auto rounded-full bg-white flex items-center justify-center text-[#5E3122] shadow-sm">
+        <app-icon name="bell" [size]="28" color="#5E3122"></app-icon>
+      </div>
+      <div>
+        <h3 class="text-base font-bold text-[#1D4533]">All caught up</h3>
+        <p class="text-xs text-[#58585D] mt-1 max-w-[220px] mx-auto">
+          No new alerts right now. We'll notify you when items ship or drop.
+        </p>
+      </div>
+    </div>
+  }
+
+</div>

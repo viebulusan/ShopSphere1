@@ -1,0 +1,216 @@
+<div class="space-y-5 pb-8 animate-fade-in">
+
+  <div class="flex items-baseline justify-between">
+    <div>
+      <h1 class="text-2xl sm:text-3xl font-black text-[#1D4533] tracking-tight" style="font-family: 'SF Pro Display', sans-serif;">
+        Shopping Bag
+      </h1>
+      <p class="text-xs sm:text-sm font-medium text-[#5E3122] opacity-80 mt-0.5">
+        {{ shop.cartCount() }} {{ shop.cartCount() === 1 ? 'item' : 'items' }} selected
+      </p>
+    </div>
+
+    @if (shop.cart().length > 0) {
+      <button (click)="shop.clearCart()" class="text-xs font-semibold text-[#8E8E93] hover:text-[#5E3122] transition-colors">
+        Clear All
+      </button>
+    }
+  </div>
+
+  @if (shop.cart().length > 0) {
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+      <div class="lg:col-span-7 xl:col-span-8 space-y-4">
+
+        <div class="p-4 rounded-[20px] bg-white border border-[rgba(29,69,51,0.08)] shadow-xs">
+          <div class="flex items-center justify-between text-xs font-bold mb-2">
+            <div class="flex items-center gap-1.5 text-[#1D4533]">
+              <app-icon name="truck" [size]="16" color="#1D4533"></app-icon>
+              <span>{{ shippingProgressText() }}</span>
+            </div>
+            <span class="text-[#5E3122]">{{ progressPercentage() }}%</span>
+          </div>
+          <div class="w-full h-2 rounded-full bg-[#FAF4EE] overflow-hidden">
+            <div 
+              class="h-full rounded-full transition-all duration-500 ease-out"
+              [style.width.%]="progressPercentage()"
+              style="background: linear-gradient(90deg, #5E3122 0%, #1D4533 100%);">
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          @for (item of shop.cart(); track item.cartItemId) {
+            <div class="apple-card p-4 flex items-center gap-4 relative group">
+              
+              <div 
+                (click)="shop.openProductDetail(item.product)"
+                class="w-20 h-20 sm:w-24 sm:h-24 rounded-[16px] overflow-hidden bg-[#FAF4EE] shrink-0 cursor-pointer border border-[rgba(29,69,51,0.06)]">
+                <img [src]="item.product.image" [alt]="item.product.title" class="w-full h-full object-cover" />
+              </div>
+
+              <div class="flex-1 min-w-0">
+                <div class="flex items-start justify-between gap-2">
+                  <h3 
+                    (click)="shop.openProductDetail(item.product)"
+                    class="text-sm sm:text-base font-bold text-[#1C1C1E] truncate cursor-pointer hover:text-[#1D4533]">
+                    {{ item.product.title }}
+                  </h3>
+                  <button 
+                    (click)="shop.removeFromCart(item.cartItemId)" 
+                    class="text-[#8E8E93] hover:text-[#5E3122] p-1 transition-colors"
+                    title="Remove item">
+                    <app-icon name="trash" [size]="15" color="currentColor"></app-icon>
+                  </button>
+                </div>
+
+                <div class="flex items-center gap-2 mt-1">
+                  <span class="inline-flex items-center gap-1 text-[11px] text-[#58585D] font-medium bg-[#FAF4EE] px-2.5 py-0.5 rounded-full">
+                    <span class="w-2 h-2 rounded-full border border-black/10" [style.background-color]="item.selectedColor.hex"></span>
+                    {{ item.selectedColor.name }}
+                  </span>
+                  <span class="text-[11px] text-[#58585D] font-medium bg-[#FAF4EE] px-2.5 py-0.5 rounded-full">
+                    {{ item.selectedSize }}
+                  </span>
+                </div>
+
+                <div class="flex items-center justify-between mt-3">
+                  <span class="text-base font-extrabold text-[#1D4533]">
+                    ${{ item.product.price * item.quantity }}
+                  </span>
+
+                  <div class="flex items-center gap-2.5 bg-[#FAF4EE] px-2.5 py-1 rounded-full border border-[rgba(29,69,51,0.08)]">
+                    <button 
+                      (click)="shop.updateQuantity(item.cartItemId, -1)" 
+                      class="w-5 h-5 rounded-full flex items-center justify-center text-[#1D4533] hover:bg-white transition-colors">
+                      <app-icon name="minus" [size]="11" color="currentColor"></app-icon>
+                    </button>
+                    <span class="text-xs font-bold text-[#1D4533] min-w-[16px] text-center">{{ item.quantity }}</span>
+                    <button 
+                      (click)="shop.updateQuantity(item.cartItemId, 1)" 
+                      class="w-5 h-5 rounded-full flex items-center justify-center text-[#1D4533] hover:bg-white transition-colors">
+                      <app-icon name="plus" [size]="11" color="currentColor"></app-icon>
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          }
+        </div>
+
+        <div class="p-4 rounded-[20px] bg-white border border-[rgba(29,69,51,0.08)] shadow-xs">
+          <div class="flex items-center gap-2">
+            <div class="relative flex-1">
+              <input 
+                type="text" 
+                [(ngModel)]="promoInput" 
+                placeholder="Promo Code (e.g. SPHERE20)"
+                class="w-full px-4 py-2.5 rounded-full bg-[#FAF4EE] text-xs font-semibold text-[#1C1C1E] uppercase placeholder:normal-case placeholder:text-[#8E8E93] focus:outline-none border border-transparent focus:border-[#1D4533]"
+              />
+            </div>
+            <button 
+              (click)="applyPromoCode()"
+              class="px-5 py-2.5 rounded-full bg-[#1D4533] text-white text-xs font-bold hover:bg-[#143224] transition-colors shrink-0">
+              Apply
+            </button>
+          </div>
+          @if (promoFeedback()) {
+            <p class="text-[11px] font-semibold mt-2" [class.text-[#1D4533]]="promoSuccess()" [class.text-[#5E3122]]="!promoSuccess()">
+              {{ promoFeedback() }}
+            </p>
+          }
+          @if (shop.appliedPromo(); as p) {
+            <div class="mt-2.5 flex items-center justify-between text-xs font-bold text-[#1D4533] bg-[#F9D2BA]/40 px-3.5 py-1.5 rounded-full">
+              <span>Code Applied: {{ p.code }} ({{ p.percent }}% OFF)</span>
+              <button (click)="shop.removePromo()" class="text-[#5E3122] hover:underline text-[11px]">Remove</button>
+            </div>
+          }
+        </div>
+
+      </div>
+
+      <div class="lg:col-span-5 xl:col-span-4 space-y-4 lg:sticky lg:top-24">
+        
+        <div class="apple-card p-5 space-y-3">
+          <h3 class="text-xs font-bold text-[#1D4533] uppercase tracking-wider mb-2">Order Summary</h3>
+          
+          <div class="flex items-center justify-between text-xs sm:text-sm text-[#58585D]">
+            <span>Subtotal</span>
+            <span class="font-semibold text-[#1C1C1E]">${{ shop.subtotal() }}</span>
+          </div>
+
+          @if (shop.discountAmount() > 0) {
+            <div class="flex items-center justify-between text-xs sm:text-sm text-[#1D4533] font-semibold">
+              <span>Promotional Discount</span>
+              <span>-${{ shop.discountAmount() }}</span>
+            </div>
+          }
+
+          <div class="flex items-center justify-between text-xs sm:text-sm text-[#58585D]">
+            <div class="flex items-center gap-1">
+              <span>Shipping</span>
+              @if (shop.shippingCost() === 0) {
+                <span class="badge-tag badge-peach text-[9px]">Free</span>
+              }
+            </div>
+            <span class="font-semibold text-[#1C1C1E]">
+              {{ shop.shippingCost() === 0 ? 'Free' : '$' + shop.shippingCost() }}
+            </span>
+          </div>
+
+          <div class="flex items-center justify-between text-xs sm:text-sm text-[#58585D]">
+            <span>Estimated Sales Tax (8.25%)</span>
+            <span class="font-semibold text-[#1C1C1E]">${{ shop.estimatedTax() }}</span>
+          </div>
+
+          <div class="pt-3 border-t border-[rgba(29,69,51,0.08)] flex items-center justify-between">
+            <div>
+              <span class="block text-sm sm:text-base font-extrabold text-[#1D4533]">Total</span>
+              <span class="text-[10px] text-[#8E8E93]">Taxes & carbon-neutral shipping</span>
+            </div>
+            <span class="text-xl sm:text-2xl font-black text-[#1D4533]">
+              ${{ shop.orderTotal() }}
+            </span>
+          </div>
+
+          <div class="pt-2">
+            <button 
+              (click)="proceedToCheckout()" 
+              class="w-full apple-button-primary py-4 text-sm font-bold flex items-center justify-center gap-2 shadow-lg">
+              <app-icon name="lock" [size]="16" color="#FFFFFF"></app-icon>
+              <span>Proceed to Checkout</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-center gap-2 text-[11px] text-[#8E8E93] text-center">
+          <app-icon name="shield" [size]="14" color="#8E8E93"></app-icon>
+          <span>Biometric & Secure Express Checkout</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  } @else {
+    
+    <div class="py-20 text-center space-y-4">
+      <div class="w-16 h-16 mx-auto rounded-full bg-white flex items-center justify-center text-[#5E3122] shadow-sm">
+        <app-icon name="bag" [size]="28" color="#5E3122"></app-icon>
+      </div>
+      <div>
+        <h3 class="text-base font-bold text-[#1D4533]">Your bag is empty</h3>
+        <p class="text-xs text-[#58585D] mt-1 max-w-[220px] mx-auto">
+          Explore our handcrafted collections and discover your next piece.
+        </p>
+      </div>
+      <button (click)="shop.navigateTo('home')" class="apple-button-primary text-xs py-3 px-6">
+        Start Shopping
+      </button>
+    </div>
+  }
+
+</div>

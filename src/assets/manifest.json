@@ -1,0 +1,27 @@
+{
+  "name": "ShopSphere — Pure Craft & Modern Essentials",
+  "short_name": "ShopSphere",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F7EAE0",
+  "theme_color": "#F7EAE0",
+  "icons": [
+    {
+      "src": "assets/icon/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icon/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icon/app-icon.png",
+      "sizes": "1254x1254",
+      "type": "image/png"
+    }
+  ]
+}

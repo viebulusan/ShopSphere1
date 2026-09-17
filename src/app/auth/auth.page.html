@@ -1,0 +1,318 @@
+<div class="space-y-5 pb-8 pt-4 sm:pt-8 animate-fade-in max-w-md mx-auto">
+
+  <div class="text-center space-y-2.5">
+    <img src="assets/icon/app-icon.png" 
+         alt="ShopSphere" 
+         class="w-16 h-16 mx-auto rounded-[22px] shadow-xl object-cover ring-2 ring-[rgba(29,69,51,0.08)] animate-scale-up" />
+    <h1 class="text-2xl sm:text-3xl font-black text-[#1D4533] tracking-tight" style="font-family: 'SF Pro Display', sans-serif;">
+      {{ titleText() }}
+    </h1>
+    <p class="text-xs sm:text-sm text-[#5E3122] opacity-80 max-w-xs mx-auto">
+      {{ subtitleText() }}
+    </p>
+  </div>
+
+  <div class="apple-card p-6 sm:p-8 space-y-5">
+
+    @if (errorMessage()) {
+      <div class="p-3 rounded-[14px] bg-[#5E3122]/10 border border-[#5E3122]/20 flex items-center gap-2 text-xs font-bold text-[#5E3122] animate-shake">
+        <app-icon name="alert-circle" [size]="15" color="#5E3122"></app-icon>
+        <span>{{ errorMessage() }}</span>
+      </div>
+    }
+
+    @if (shop.authPromptMessage()) {
+      <div class="p-3.5 rounded-[16px] bg-[#FAF4EE] border border-[#1D4533]/20 flex items-start gap-2.5 text-xs text-[#1D4533] animate-fade-in">
+        <app-icon name="lock" [size]="16" color="#1D4533" class="shrink-0 mt-0.5"></app-icon>
+        <div class="flex-1">
+          <span class="font-bold block">Account Required</span>
+          <p class="text-[11px] text-[#5E3122] mt-0.5 leading-snug">{{ shop.authPromptMessage() }}</p>
+        </div>
+      </div>
+    }
+
+    @if (mode() === 'login') {
+      <form (submit)="handleLogin($event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-[#1D4533] mb-1.5">Email Address</label>
+          <input 
+            type="email" 
+            [(ngModel)]="email" 
+            name="email"
+            placeholder="alex.rivera@icloud.com" 
+            required
+            class="apple-input text-xs sm:text-sm"
+          />
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-1.5">
+            <label class="text-xs font-bold text-[#1D4533]">Password</label>
+            <button 
+              type="button" 
+              (click)="switchMode('forgot')"
+              class="text-[11px] font-bold text-[#5E3122] hover:underline">
+              Forgot?
+            </button>
+          </div>
+          <div class="relative">
+            <input 
+              [type]="showPassword() ? 'text' : 'password'" 
+              [(ngModel)]="password" 
+              name="password"
+              placeholder="••••••••••••" 
+              required
+              class="apple-input text-xs sm:text-sm pr-10"
+            />
+            <button 
+              type="button" 
+              (click)="showPassword.set(!showPassword())"
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-[#8E8E93] hover:text-[#1C1C1E] p-1">
+              <app-icon [name]="showPassword() ? 'eye-off' : 'eye'" [size]="15" color="currentColor"></app-icon>
+            </button>
+          </div>
+        </div>
+
+        <button 
+          type="submit" 
+          class="w-full apple-button-primary py-3.5 text-xs sm:text-sm font-bold shadow-md">
+          Sign In to ShopSphere
+        </button>
+      </form>
+
+      <div class="text-center pt-2">
+        <p class="text-xs text-[#58585D]">
+          Don't have an account? 
+          <button (click)="switchMode('signup')" class="font-bold text-[#1D4533] hover:underline">
+            Create Account
+          </button>
+        </p>
+      </div>
+
+      <div class="pt-4 border-t border-[rgba(29,69,51,0.08)] text-center">
+        <button 
+          type="button" 
+          (click)="continueToApp()"
+          class="text-xs font-bold text-[#1D4533] hover:text-[#5E3122] inline-flex items-center gap-1.5 py-2 px-4 rounded-full hover:bg-[rgba(29,69,51,0.05)] transition-all">
+          <span>Continue to App</span>
+          <app-icon name="arrow-right" [size]="13" color="currentColor"></app-icon>
+        </button>
+        <p class="text-[10px] text-[#8E8E93] mt-0.5">Explore collections without an account</p>
+      </div>
+    }
+
+    @if (mode() === 'signup') {
+      <form (submit)="handleSignup($event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-[#1D4533] mb-1.5">Full Name</label>
+          <input 
+            type="text" 
+            [(ngModel)]="name" 
+            name="name"
+            placeholder="Alex Rivera" 
+            required
+            class="apple-input text-xs sm:text-sm"
+          />
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-[#1D4533] mb-1.5">Email Address</label>
+          <input 
+            type="email" 
+            [(ngModel)]="email" 
+            name="email"
+            placeholder="alex.rivera@icloud.com" 
+            required
+            class="apple-input text-xs sm:text-sm"
+          />
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-[#1D4533] mb-1.5">Choose Password</label>
+          <div class="relative">
+            <input 
+              [type]="showPassword() ? 'text' : 'password'" 
+              [(ngModel)]="password" 
+              name="password"
+              placeholder="At least 8 characters" 
+              required
+              class="apple-input text-xs sm:text-sm pr-10"
+            />
+            <button 
+              type="button" 
+              (click)="showPassword.set(!showPassword())"
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-[#8E8E93] hover:text-[#1C1C1E] p-1">
+              <app-icon [name]="showPassword() ? 'eye-off' : 'eye'" [size]="15" color="currentColor"></app-icon>
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-[#1D4533] mb-1.5">Retype Password</label>
+          <div class="relative">
+            <input 
+              [type]="showConfirmPassword() ? 'text' : 'password'" 
+              [(ngModel)]="confirmPassword" 
+              name="confirmPassword"
+              placeholder="Re-enter your password" 
+              required
+              class="apple-input text-xs sm:text-sm pr-10"
+            />
+            <button 
+              type="button" 
+              (click)="showConfirmPassword.set(!showConfirmPassword())"
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-[#8E8E93] hover:text-[#1C1C1E] p-1">
+              <app-icon [name]="showConfirmPassword() ? 'eye-off' : 'eye'" [size]="15" color="currentColor"></app-icon>
+            </button>
+          </div>
+        </div>
+
+        <button 
+          type="submit" 
+          class="w-full apple-button-primary py-3.5 text-xs sm:text-sm font-bold shadow-md">
+          Create Account
+        </button>
+      </form>
+
+      <div class="text-center pt-2">
+        <p class="text-xs text-[#58585D]">
+          Already have an account? 
+          <button (click)="switchMode('login')" class="font-bold text-[#1D4533] hover:underline">
+            Sign In
+          </button>
+        </p>
+      </div>
+
+      <div class="pt-4 border-t border-[rgba(29,69,51,0.08)] text-center">
+        <button 
+          type="button" 
+          (click)="continueToApp()"
+          class="text-xs font-bold text-[#1D4533] hover:text-[#5E3122] inline-flex items-center gap-1.5 py-2 px-4 rounded-full hover:bg-[rgba(29,69,51,0.05)] transition-all">
+          <span>Continue to App</span>
+          <app-icon name="arrow-right" [size]="13" color="currentColor"></app-icon>
+        </button>
+        <p class="text-[10px] text-[#8E8E93] mt-0.5">Explore collections without an account</p>
+      </div>
+    }
+
+    @if (mode() === 'forgot') {
+      <form (submit)="handleForgot($event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-[#1D4533] mb-1.5">Registered Email</label>
+          <input 
+            type="email" 
+            [(ngModel)]="email" 
+            name="email"
+            placeholder="alex.rivera@icloud.com" 
+            required
+            class="apple-input text-xs sm:text-sm"
+          />
+        </div>
+
+        <button 
+          type="submit" 
+          class="w-full apple-button-primary py-3.5 text-xs sm:text-sm font-bold shadow-md">
+          Send 4-Digit Verification Code
+        </button>
+      </form>
+
+      <div class="text-center pt-2">
+        <button (click)="switchMode('login')" class="text-xs font-bold text-[#5E3122] hover:underline">
+          Back to Sign In
+        </button>
+      </div>
+    }
+
+    @if (mode() === 'verify') {
+      <form (submit)="handleVerify($event)" class="space-y-5">
+        <div class="flex items-center justify-center gap-3">
+          @for (i of [0, 1, 2, 3]; track i) {
+            <input 
+              type="text" 
+              maxlength="1" 
+              [(ngModel)]="otpDigits[i]" 
+              [name]="'otp-' + i"
+              class="w-12 h-14 text-center text-xl font-bold rounded-[14px] bg-[#FAF4EE] border border-[rgba(29,69,51,0.12)] text-[#1D4533] focus:border-[#1D4533] focus:outline-none"
+            />
+          }
+        </div>
+
+        <button 
+          type="submit" 
+          class="w-full apple-button-primary py-3.5 text-xs sm:text-sm font-bold shadow-md">
+          Verify Code
+        </button>
+      </form>
+
+      <div class="text-center space-y-2 pt-2">
+        <p class="text-xs text-[#58585D]">
+          Didn't receive code? 
+          <button (click)="resendOtp()" class="font-bold text-[#1D4533] hover:underline">
+            Resend Code
+          </button>
+        </p>
+        <div>
+          <button (click)="switchMode('login')" class="text-xs font-bold text-[#5E3122] hover:underline">
+            Return to Login
+          </button>
+        </div>
+      </div>
+    }
+
+    @if (mode() === 'new-password') {
+      <form (submit)="handleResetPassword($event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-[#1D4533] mb-1.5">New Password</label>
+          <div class="relative">
+            <input 
+              [type]="showNewPassword() ? 'text' : 'password'" 
+              [(ngModel)]="newPassword" 
+              name="newPassword"
+              placeholder="At least 8 characters" 
+              required
+              class="apple-input text-xs sm:text-sm pr-10"
+            />
+            <button 
+              type="button" 
+              (click)="showNewPassword.set(!showNewPassword())"
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-[#8E8E93] hover:text-[#1C1C1E] p-1">
+              <app-icon [name]="showNewPassword() ? 'eye-off' : 'eye'" [size]="15" color="currentColor"></app-icon>
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-[#1D4533] mb-1.5">Retype New Password</label>
+          <div class="relative">
+            <input 
+              [type]="showConfirmNewPassword() ? 'text' : 'password'" 
+              [(ngModel)]="confirmNewPassword" 
+              name="confirmNewPassword"
+              placeholder="Confirm your new password" 
+              required
+              class="apple-input text-xs sm:text-sm pr-10"
+            />
+            <button 
+              type="button" 
+              (click)="showConfirmNewPassword.set(!showConfirmNewPassword())"
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-[#8E8E93] hover:text-[#1C1C1E] p-1">
+              <app-icon [name]="showConfirmNewPassword() ? 'eye-off' : 'eye'" [size]="15" color="currentColor"></app-icon>
+            </button>
+          </div>
+        </div>
+
+        <button 
+          type="submit" 
+          class="w-full apple-button-primary py-3.5 text-xs sm:text-sm font-bold shadow-md">
+          Save New Password & Sign In
+        </button>
+      </form>
+
+      <div class="text-center pt-2">
+        <button (click)="switchMode('login')" class="text-xs font-bold text-[#5E3122] hover:underline">
+          Cancel & Return to Login
+        </button>
+      </div>
+    }
+
+</div>

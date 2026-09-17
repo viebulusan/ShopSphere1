@@ -1,0 +1,106 @@
+<div class="space-y-5 pb-8 pt-2 sm:pt-6 animate-scale-up max-w-2xl mx-auto">
+
+  <div class="apple-card p-8 sm:p-10 text-center space-y-4">
+
+    <div class="w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full bg-[#1D4533] text-white flex items-center justify-center shadow-xl animate-scale-up">
+      <app-icon name="check" [size]="44" color="#F7EAE0" [strokeWidth]="3"></app-icon>
+    </div>
+
+    <div class="space-y-1.5">
+      <span class="inline-block px-3 py-1 rounded-full bg-[#FAF4EE] text-[#5E3122] text-xs font-black uppercase tracking-wider">
+        Order Confirmed
+      </span>
+      <h1 class="text-2xl sm:text-4xl font-black text-[#1D4533] tracking-tight" style="font-family: 'SF Pro Display', sans-serif;">
+        Thank you for your order!
+      </h1>
+      <p class="text-xs sm:text-sm text-[#58585D] max-w-md mx-auto">
+        We've sent an order confirmation and digital receipt to
+        <strong class="text-[#1C1C1E]">{{ shop.currentUser()?.email || 'your email' }}</strong>.
+      </p>
+    </div>
+
+    @if (order(); as ord) {
+      
+      <div class="inline-flex flex-wrap items-center justify-center gap-3 bg-[#FAF4EE] px-5 py-2.5 rounded-full border border-[rgba(29,69,51,0.08)] text-xs font-semibold text-[#1D4533]">
+        <span>Order <strong class="text-[#1C1C1E]">{{ ord.orderNumber }}</strong></span>
+        <span class="w-1 h-1 rounded-full bg-[#8E8E93]"></span>
+        <span>Est. Delivery: <strong class="text-[#1C1C1E]">{{ ord.estimatedDelivery }}</strong></span>
+      </div>
+    }
+
+    <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
+      <button 
+        (click)="trackOrder()" 
+        class="w-full sm:w-auto flex-1 apple-button-primary py-3.5 px-6 text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-md">
+        <app-icon name="truck" [size]="16" color="#FFFFFF"></app-icon>
+        <span>Track Delivery</span>
+      </button>
+      <button 
+        (click)="shop.navigateTo('home')" 
+        class="w-full sm:w-auto flex-1 apple-button-secondary py-3.5 px-6 text-xs sm:text-sm font-bold flex items-center justify-center gap-2">
+        <app-icon name="bag" [size]="16" color="#1D4533"></app-icon>
+        <span>Continue Shopping</span>
+      </button>
+    </div>
+
+  </div>
+
+  @if (order(); as ord) {
+    
+    <div class="apple-card p-6 space-y-5">
+      
+      <div class="flex items-center justify-between pb-3 border-b border-[rgba(29,69,51,0.08)]">
+        <div class="flex items-center gap-2">
+          <app-icon name="package" [size]="18" color="#1D4533"></app-icon>
+          <h3 class="text-xs font-bold text-[#1D4533] uppercase tracking-wider">Ordered Items ({{ ord.items.length }})</h3>
+        </div>
+        <span class="text-xs font-bold text-[#1D4533]">${{ ord.total }} Total</span>
+      </div>
+
+      <div class="space-y-3">
+        @for (item of ord.items; track item.cartItemId) {
+          <div class="flex items-center justify-between gap-4 p-2.5 rounded-[14px] hover:bg-[#FAF4EE] transition-colors">
+            <div class="flex items-center gap-3">
+              <div class="w-14 h-14 rounded-[12px] bg-[#FAF4EE] overflow-hidden shrink-0 border border-[rgba(29,69,51,0.08)]">
+                <img [src]="item.product.image" [alt]="item.product.title" class="w-full h-full object-cover" />
+              </div>
+              <div>
+                <h4 class="text-xs sm:text-sm font-bold text-[#1C1C1E] line-clamp-1">{{ item.product.title }}</h4>
+                <p class="text-[11px] text-[#8E8E93]">
+                  {{ item.selectedColor.name }} • {{ item.selectedSize }} • Qty: {{ item.quantity }}
+                </p>
+              </div>
+            </div>
+            <span class="text-xs sm:text-sm font-extrabold text-[#1D4533] shrink-0">
+              ${{ item.product.price * item.quantity }}
+            </span>
+          </div>
+        }
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-3 border-t border-[rgba(29,69,51,0.08)] text-xs">
+        <div class="p-3.5 rounded-[16px] bg-[#FAF4EE] space-y-1">
+          <div class="flex items-center gap-1.5 font-bold text-[#1D4533] mb-1">
+            <app-icon name="map-pin" [size]="13" color="#1D4533"></app-icon>
+            <span>Delivery Destination</span>
+          </div>
+          <p class="font-semibold text-[#1C1C1E]">{{ ord.address.recipientName }}</p>
+          <p class="text-[#58585D]">{{ ord.address.street }}</p>
+          <p class="text-[#58585D]">{{ ord.address.city }}, {{ ord.address.state }} {{ ord.address.zipCode }}</p>
+        </div>
+
+        <div class="p-3.5 rounded-[16px] bg-[#FAF4EE] space-y-1">
+          <div class="flex items-center gap-1.5 font-bold text-[#1D4533] mb-1">
+            <app-icon name="card" [size]="13" color="#1D4533"></app-icon>
+            <span>Payment Method</span>
+          </div>
+          <p class="font-semibold text-[#1C1C1E] capitalize">{{ (ord.paymentMethod.brand || 'Card') | uppercase }} •••• {{ ord.paymentMethod.last4 || '4242' }}</p>
+          <p class="text-[#58585D]">Billed Amount: ${{ ord.total }}</p>
+          <p class="text-[10px] text-[#8E8E93]">Status: Authorized & Paid</p>
+        </div>
+      </div>
+
+    </div>
+  }
+
+</div>

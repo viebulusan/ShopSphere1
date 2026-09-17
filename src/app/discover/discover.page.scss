@@ -1,0 +1,35 @@
+.category-pill {
+  height: 34px;
+  padding: 0 16px;
+  border-radius: 9999px;
+  background: #FFFFFF;
+  border: 1px solid rgba(29, 69, 51, 0.1);
+  font-size: 12px;
+  font-weight: 700;
+  color: #58585D;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 4px rgba(29, 69, 51, 0.04);
+}
+
+.category-pill:hover {
+  background: #F9D2BA;
+  color: #5E3122;
+  border-color: #F9D2BA;
+}
+
+.category-pill.active {
+  background: #1D4533;
+  color: #FFFFFF;
+  border-color: #1D4533;
+  box-shadow: 0 4px 12px rgba(29, 69, 51, 0.25);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+

@@ -1,0 +1,219 @@
+<div class="pb-36 animate-fade-in space-y-6">
+
+  <div>
+    <h1 class="text-2xl sm:text-3xl font-black text-[#1D4533] tracking-tight" style="font-family: 'SF Pro Display', sans-serif;">
+      Discover
+    </h1>
+    <p class="text-xs sm:text-sm font-medium text-[#5E3122] opacity-80 mt-0.5">
+      Browse by design discipline and architectural category
+    </p>
+  </div>
+
+  <div class="relative max-w-xl">
+    <div class="relative flex items-center">
+      <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+        <app-icon name="search" [size]="17" color="#5E3122" [strokeWidth]="2"></app-icon>
+      </div>
+      <input 
+        type="text" 
+        [(ngModel)]="searchQuery" 
+        (input)="onSearchChange()"
+        (focus)="isSearchFocused.set(true)"
+        placeholder="Search all items..."
+        class="w-full pl-9 pr-9 py-2 sm:py-2.5 rounded-full bg-white border border-[rgba(29,69,51,0.12)] text-xs sm:text-sm font-medium text-[#1C1C1E] placeholder:text-[#8E8E93] focus:outline-none focus:border-[#1D4533] shadow-xs"
+      />
+      @if (searchQuery) {
+        <button (click)="clearSearch()" class="absolute inset-y-0 right-0 pr-3.5 flex items-center">
+          <app-icon name="x" [size]="16" color="#8E8E93"></app-icon>
+        </button>
+      }
+    </div>
+
+    @if (isSearchFocused() && searchQuery.trim().length > 0) {
+      <div class="fixed inset-0 z-30" (click)="isSearchFocused.set(false)"></div>
+
+      <div class="absolute left-0 right-0 top-full mt-2 z-40 bg-white/95 backdrop-blur-xl rounded-[22px] shadow-2xl border border-[rgba(29,69,51,0.12)] p-3 space-y-2 max-h-80 overflow-y-auto no-scrollbar">
+        <div class="flex items-center justify-between text-[11px] font-bold text-[#1D4533] px-1">
+          <span>Live Suggestions ({{ liveSuggestions().length }})</span>
+          <button (click)="isSearchFocused.set(false)" class="text-[#8E8E93] hover:text-[#1C1C1E]">
+            Close
+          </button>
+        </div>
+
+        @if (liveSuggestions().length > 0) {
+          <div class="space-y-1">
+            @for (item of liveSuggestions().slice(0, 5); track item.id) {
+              <div 
+                (click)="selectItem(item)"
+                class="flex items-center gap-3 p-2 rounded-[14px] hover:bg-[#FAF4EE] cursor-pointer transition-all group">
+                <div class="w-11 h-11 rounded-[10px] bg-white overflow-hidden shrink-0 border border-[rgba(29,69,51,0.08)]">
+                  <img [src]="item.image" [alt]="item.title" class="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+                </div>
+                <div class="flex-1 min-w-0">
+                  <h4 class="text-xs font-bold text-[#1C1C1E] truncate group-hover:text-[#1D4533] transition-colors">
+                    {{ item.title }}
+                  </h4>
+                  <p class="text-[10px] text-[#8E8E93] truncate">{{ item.category }}</p>
+                  <span class="text-xs font-extrabold text-[#1D4533]">${{ item.price }}</span>
+                </div>
+                <div class="shrink-0 flex items-center gap-0.5 text-[#5E3122]">
+                  <app-icon name="star" [size]="10" color="#5E3122" [filled]="true"></app-icon>
+                  <span class="text-[10px] font-bold">{{ item.rating }}</span>
+                </div>
+              </div>
+            }
+          </div>
+        } @else {
+          <div class="py-4 text-center text-xs text-[#8E8E93]">
+            No pieces match "{{ searchQuery }}"
+          </div>
+        }
+      </div>
+    }
+  </div>
+
+  <div>
+    <div class="flex items-center justify-between mb-2.5">
+      <h2 class="text-xs font-bold text-[#1D4533] uppercase tracking-wider">Collections</h2>
+      <span class="text-[11px] text-[#8E8E93]">4 Studios</span>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+      @for (cat of categoryTiles; track cat.name) {
+        <div 
+          (click)="selectCategory(cat.name)"
+          class="relative aspect-[16/10] rounded-[20px] overflow-hidden p-3.5 flex flex-col justify-end cursor-pointer group shadow-sm"
+          [class.ring-2]="shop.selectedCategory() === cat.name"
+          [class.ring-[#1D4533]]="shop.selectedCategory() === cat.name">
+          
+          <img [src]="cat.image" [alt]="cat.name" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent"></div>
+
+          <div class="relative z-10 text-white">
+            <span class="block text-xs font-extrabold tracking-tight">{{ cat.name }}</span>
+            <span class="block text-[10px] text-[#F9D2BA] font-medium">{{ cat.count }} items</span>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <div class="overflow-x-auto no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 pt-1 border-t border-[rgba(29,69,51,0.06)]">
+    <div class="flex items-center gap-2 py-1 min-w-max">
+      @for (cat of shop.categories; track cat) {
+        <button 
+          (click)="selectCategory(cat)"
+          class="category-pill"
+          [class.active]="shop.selectedCategory() === cat">
+          {{ cat }}
+        </button>
+      }
+    </div>
+  </div>
+
+  <div class="flex items-center justify-between pt-1 relative">
+    <div>
+      <h3 class="text-base sm:text-lg font-extrabold text-[#1D4533] tracking-tight">
+        {{ shop.selectedCategory() === 'All' ? 'Curated Collection' : shop.selectedCategory() }}
+      </h3>
+      <p class="text-[11px] font-medium text-[#5E3122] opacity-75">
+        {{ displayedProducts().length }} artisanal pieces available
+      </p>
+    </div>
+
+    <div class="relative" [class.z-50]="isFilterMenuOpen()">
+      <button 
+        type="button"
+        (click)="isFilterMenuOpen.set(!isFilterMenuOpen())" 
+        class="text-xs font-bold text-[#5E3122] hover:text-[#1D4533] flex items-center gap-1 transition-colors cursor-pointer py-1 px-1.5 rounded-lg">
+        <span>Filter</span>
+        <app-icon name="filter" [size]="13" color="currentColor"></app-icon>
+        @if (hasActiveFilter()) {
+          <span class="w-1.5 h-1.5 rounded-full bg-[#1D4533]"></span>
+        }
+      </button>
+
+      @if (isFilterMenuOpen()) {
+        
+        <div class="fixed inset-0 z-40 bg-black/10" (click)="isFilterMenuOpen.set(false)"></div>
+
+        <div 
+          (click)="$event.stopPropagation()"
+          class="absolute right-0 top-full mt-2 z-50 w-56 bg-white/95 backdrop-blur-xl rounded-[20px] shadow-xl border border-[rgba(29,69,51,0.12)] p-3 space-y-3 animate-fade-in text-xs">
+          
+          <div>
+            <span class="text-[10px] font-extrabold uppercase tracking-wider text-[#8E8E93] px-1 block mb-1.5">Sort By</span>
+            <div class="space-y-1">
+              @for (opt of sortMenuOptions; track opt.id) {
+                <button 
+                  type="button"
+                  (click)="selectSort(opt.id); $event.stopPropagation()"
+                  class="w-full flex items-center justify-between px-2.5 py-2 rounded-[12px] text-xs font-bold transition-all text-left cursor-pointer"
+                  [class.bg-[#1D4533]]="sortBy() === opt.id"
+                  [class.text-white]="sortBy() === opt.id"
+                  [class.text-[#1C1C1E]]="sortBy() !== opt.id"
+                  [class.hover:bg-[#FAF4EE]]="sortBy() !== opt.id">
+                  <span>{{ opt.label }}</span>
+                  @if (sortBy() === opt.id) {
+                    <app-icon name="check" [size]="13" color="#FFFFFF"></app-icon>
+                  }
+                </button>
+              }
+            </div>
+          </div>
+
+          <div class="border-t border-[rgba(29,69,51,0.08)] pt-2.5">
+            <span class="text-[10px] font-extrabold uppercase tracking-wider text-[#8E8E93] px-1 block mb-1.5">Filter By</span>
+            <div class="space-y-1">
+              <button 
+                type="button"
+                (click)="toggleOnlyNew(); $event.stopPropagation()"
+                class="w-full flex items-center justify-between px-2.5 py-2 rounded-[12px] text-xs font-bold transition-all text-left cursor-pointer"
+                [class.bg-[#1D4533]]="onlyNew()"
+                [class.text-white]="onlyNew()"
+                [class.text-[#1C1C1E]]="!onlyNew()"
+                [class.hover:bg-[#FAF4EE]]="!onlyNew()">
+                <span>New Releases</span>
+                @if (onlyNew()) {
+                  <app-icon name="check" [size]="13" color="#FFFFFF"></app-icon>
+                }
+              </button>
+
+              <button 
+                type="button"
+                (click)="toggleOnlyTrending(); $event.stopPropagation()"
+                class="w-full flex items-center justify-between px-2.5 py-2 rounded-[12px] text-xs font-bold transition-all text-left cursor-pointer"
+                [class.bg-[#1D4533]]="onlyTrending()"
+                [class.text-white]="onlyTrending()"
+                [class.text-[#1C1C1E]]="!onlyTrending()"
+                [class.hover:bg-[#FAF4EE]]="!onlyTrending()">
+                <span>Trending Pieces</span>
+                @if (onlyTrending()) {
+                  <app-icon name="check" [size]="13" color="#FFFFFF"></app-icon>
+                }
+              </button>
+            </div>
+          </div>
+
+          @if (hasActiveFilter()) {
+            <div class="border-t border-[rgba(29,69,51,0.08)] pt-2">
+              <button 
+                type="button"
+                (click)="resetAllFilters(); isFilterMenuOpen.set(false); $event.stopPropagation()"
+                class="w-full text-center text-[11px] font-extrabold text-[#5E3122] hover:text-[#1D4533] py-1 cursor-pointer">
+                Reset All Filters
+              </button>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </div>
+
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-4 lg:gap-5">
+    @for (prod of displayedProducts(); track prod.id) {
+      <app-product-card [product]="prod"></app-product-card>
+    }
+  </div>
+
+</div>

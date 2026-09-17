@@ -1,0 +1,223 @@
+<div class="space-y-5 pb-8 animate-fade-in">
+
+  <div>
+    <h1 class="text-2xl sm:text-3xl font-black text-[#1D4533] tracking-tight" style="font-family: 'SF Pro Display', sans-serif;">
+      Checkout
+    </h1>
+    <p class="text-xs sm:text-sm font-medium text-[#5E3122] opacity-80 mt-0.5">
+      Review shipping address and preferred payment method
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+    <div class="lg:col-span-7 xl:col-span-8 space-y-4">
+
+      <div class="apple-card p-5 space-y-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <app-icon name="map-pin" [size]="16" color="#1D4533"></app-icon>
+            <h2 class="text-xs font-bold text-[#1D4533] uppercase tracking-wider">Shipping Address</h2>
+          </div>
+          <button (click)="shop.navigateTo('saved-addresses')" class="text-xs font-bold text-[#5E3122] hover:underline">
+            Manage
+          </button>
+        </div>
+
+        @if (selectedAddress(); as addr) {
+          <div class="p-3.5 rounded-[16px] bg-[#FAF4EE] border border-[rgba(29,69,51,0.06)] text-xs space-y-1">
+            <div class="flex items-center justify-between font-bold text-[#1C1C1E]">
+              <span>{{ addr.recipientName }}</span>
+              <span class="badge-tag badge-linen text-[9px]">{{ addr.title }}</span>
+            </div>
+            <p class="text-[#58585D]">{{ addr.street }}</p>
+            <p class="text-[#58585D]">{{ addr.city }}, {{ addr.state }} {{ addr.zipCode }}</p>
+            <p class="text-[#8E8E93] text-[11px]">{{ addr.phone }}</p>
+          </div>
+        }
+      </div>
+
+      <div class="apple-card p-5 space-y-3">
+        <div class="flex items-center gap-2">
+          <app-icon name="truck" [size]="16" color="#1D4533"></app-icon>
+          <h2 class="text-xs font-bold text-[#1D4533] uppercase tracking-wider">Delivery Option</h2>
+        </div>
+
+        <div class="space-y-2.5">
+          
+          <label 
+            (click)="shippingMethod.set('standard')"
+            class="flex items-center justify-between p-3.5 rounded-[16px] border cursor-pointer transition-all"
+            [class.bg-[#FAF4EE]]="shippingMethod() === 'standard'"
+            [class.border-[#1D4533]]="shippingMethod() === 'standard'"
+            [class.border-[rgba(29,69,51,0.1)]]="shippingMethod() !== 'standard'">
+            <div class="flex items-center gap-3">
+              <span class="w-4 h-4 rounded-full border-2 flex items-center justify-center"
+                    [class.border-[#1D4533]]="shippingMethod() === 'standard'"
+                    [class.border-[#8E8E93]]="shippingMethod() !== 'standard'">
+                @if (shippingMethod() === 'standard') {
+                  <span class="w-2 h-2 rounded-full bg-[#1D4533]"></span>
+                }
+              </span>
+              <div>
+                <span class="block text-xs font-bold text-[#1C1C1E]">Carbon-Neutral Standard</span>
+                <span class="text-[11px] text-[#58585D]">3-5 Business Days</span>
+              </div>
+            </div>
+            <span class="text-xs font-bold text-[#1D4533]">
+              {{ shop.shippingCost() === 0 ? 'Free' : '$' + shop.shippingCost() }}
+            </span>
+          </label>
+
+          <label 
+            (click)="shippingMethod.set('express')"
+            class="flex items-center justify-between p-3.5 rounded-[16px] border cursor-pointer transition-all"
+            [class.bg-[#FAF4EE]]="shippingMethod() === 'express'"
+            [class.border-[#1D4533]]="shippingMethod() === 'express'"
+            [class.border-[rgba(29,69,51,0.1)]]="shippingMethod() !== 'express'">
+            <div class="flex items-center gap-3">
+              <span class="w-4 h-4 rounded-full border-2 flex items-center justify-center"
+                    [class.border-[#1D4533]]="shippingMethod() === 'express'"
+                    [class.border-[#8E8E93]]="shippingMethod() !== 'express'">
+                @if (shippingMethod() === 'express') {
+                  <span class="w-2 h-2 rounded-full bg-[#1D4533]"></span>
+                }
+              </span>
+              <div>
+                <span class="block text-xs font-bold text-[#1C1C1E]">Priority Express (Air Delivery)</span>
+                <span class="text-[11px] text-[#58585D]">1-2 Business Days • Signature Required</span>
+              </div>
+            </div>
+            <span class="text-xs font-bold text-[#5E3122]">+$18.00</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="apple-card p-5 space-y-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <app-icon name="card" [size]="16" color="#1D4533"></app-icon>
+            <h2 class="text-xs font-bold text-[#1D4533] uppercase tracking-wider">Payment Method</h2>
+          </div>
+          <button (click)="shop.navigateTo('saved-payments')" class="text-xs font-bold text-[#5E3122] hover:underline">
+            Manage Cards
+          </button>
+        </div>
+
+        <div class="space-y-2.5">
+          @for (pm of shop.paymentMethods(); track pm.id) {
+            <div 
+              (click)="selectedPayment.set(pm)"
+              class="flex items-center justify-between p-3.5 rounded-[16px] border cursor-pointer transition-all"
+              [class.bg-[#FAF4EE]]="selectedPayment().id === pm.id"
+              [class.border-[#1D4533]]="selectedPayment().id === pm.id"
+              [class.border-[rgba(29,69,51,0.1)]]="selectedPayment().id !== pm.id">
+              
+              <div class="flex items-center gap-3">
+                <span class="w-4 h-4 rounded-full border-2 flex items-center justify-center"
+                      [class.border-[#1D4533]]="selectedPayment().id === pm.id"
+                      [class.border-[#8E8E93]]="selectedPayment().id !== pm.id">
+                  @if (selectedPayment().id === pm.id) {
+                    <span class="w-2 h-2 rounded-full bg-[#1D4533]"></span>
+                  }
+                </span>
+
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-[#1D4533] border border-[rgba(29,69,51,0.08)]">
+                    <app-icon name="card" [size]="15" color="#1D4533"></app-icon>
+                  </div>
+                  <div>
+                    <span class="block text-xs font-bold text-[#1C1C1E] uppercase">
+                      {{ pm.brand || 'Card' }} •••• {{ pm.last4 || '4242' }}
+                    </span>
+                    @if (pm.expiry) {
+                      <span class="text-[10px] text-[#8E8E93]">Expires {{ pm.expiry }}</span>
+                    }
+                  </div>
+                </div>
+              </div>
+
+              @if (pm.isDefault) {
+                <span class="badge-tag badge-linen text-[9px]">Default</span>
+              }
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="apple-card p-5 space-y-3">
+        <h2 class="text-xs font-bold text-[#1D4533] uppercase tracking-wider">Bag Review ({{ shop.cartCount() }} items)</h2>
+        <div class="flex items-center gap-3 overflow-x-auto no-scrollbar py-1">
+          @for (item of shop.cart(); track item.cartItemId) {
+            <div class="w-16 h-16 rounded-[14px] bg-[#FAF4EE] overflow-hidden shrink-0 border border-[rgba(29,69,51,0.08)] relative" [title]="item.product.title">
+              <img [src]="item.product.image" [alt]="item.product.title" class="w-full h-full object-cover" />
+              @if (item.quantity > 1) {
+                <span class="absolute bottom-0 right-0 bg-[#1D4533] text-white text-[9px] font-bold px-1.5 py-0.5 rounded-tl">
+                  {{ item.quantity }}
+                </span>
+              }
+            </div>
+          }
+        </div>
+      </div>
+
+    </div>
+
+    <div class="lg:col-span-5 xl:col-span-4 space-y-4 lg:sticky lg:top-24">
+      
+      <div class="apple-card p-5 space-y-3.5">
+        <h2 class="text-xs font-bold text-[#1D4533] uppercase tracking-wider mb-1">Order Breakdown</h2>
+
+        <div class="space-y-2 text-xs sm:text-sm text-[#58585D]">
+          <div class="flex justify-between">
+            <span>Items Subtotal</span>
+            <span class="font-semibold text-[#1C1C1E]">${{ shop.subtotal() }}</span>
+          </div>
+          @if (shop.discountAmount() > 0) {
+            <div class="flex justify-between text-[#1D4533] font-semibold">
+              <span>Savings Applied</span>
+              <span>-${{ shop.discountAmount() }}</span>
+            </div>
+          }
+          <div class="flex justify-between">
+            <span>Shipping</span>
+            <span class="font-semibold text-[#1C1C1E]">
+              {{ shippingMethod() === 'express' ? '$18.00' : (shop.shippingCost() === 0 ? 'Free' : '$' + shop.shippingCost()) }}
+            </span>
+          </div>
+          <div class="flex justify-between">
+            <span>Estimated Taxes</span>
+            <span class="font-semibold text-[#1C1C1E]">${{ shop.estimatedTax() }}</span>
+          </div>
+          <div class="flex justify-between pt-3 border-t border-[rgba(29,69,51,0.08)] text-base sm:text-lg font-black text-[#1D4533]">
+            <span>Final Total</span>
+            <span>${{ finalTotal() }}</span>
+          </div>
+        </div>
+
+        <div class="pt-2">
+          <button 
+            (click)="confirmOrder()"
+            [disabled]="isSubmitting()"
+            class="w-full apple-button-primary py-4 text-sm font-bold flex items-center justify-center gap-2 shadow-xl">
+            @if (isSubmitting()) {
+              <div class="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+              <span>Authorizing Payment...</span>
+            } @else {
+              <app-icon name="lock" [size]="17" color="#FFFFFF"></app-icon>
+              <span>Confirm Order (${{ finalTotal() }})</span>
+            }
+          </button>
+        </div>
+      </div>
+
+      <p class="text-center text-[11px] text-[#8E8E93] flex items-center justify-center gap-1.5">
+        <app-icon name="shield" [size]="13" color="#8E8E93"></app-icon>
+        <span>End-to-end 256-bit encrypted checkout</span>
+      </p>
+
+    </div>
+
+  </div>
+
+</div>

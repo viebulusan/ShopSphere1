@@ -1,0 +1,48 @@
+<div class="space-y-5 pb-8 pt-8 sm:pt-14 animate-fade-in max-w-md mx-auto text-center">
+
+  <div class="apple-card p-8 sm:p-10 space-y-5">
+
+    <div class="w-20 h-20 mx-auto rounded-full bg-[#5E3122]/10 text-[#5E3122] flex items-center justify-center">
+      <app-icon name="wifi-off" [size]="40" color="#5E3122"></app-icon>
+    </div>
+
+    <div class="space-y-2">
+      <span class="inline-block px-3 py-1 rounded-full bg-[#FAF4EE] text-[#5E3122] text-xs font-bold uppercase tracking-wider">
+        Connection Lost
+      </span>
+      <h1 class="text-2xl sm:text-3xl font-black text-[#1D4533] tracking-tight" style="font-family: 'SF Pro Display', sans-serif;">
+        Unable to Connect
+      </h1>
+      <p class="text-xs sm:text-sm text-[#58585D] leading-relaxed">
+        Please verify your Wi-Fi or cellular network connection and try again. Your bag and curated wishlist remain safely cached.
+      </p>
+    </div>
+
+    <div class="pt-2 space-y-2.5">
+      <button 
+        (click)="retryConnection()"
+        [disabled]="isRetrying()"
+        class="w-full apple-button-primary py-3.5 text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-md">
+        @if (isRetrying()) {
+          <div class="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+          <span>Reconnecting to ShopSphere...</span>
+        } @else {
+          <app-icon name="refresh" [size]="15" color="#FFFFFF"></app-icon>
+          <span>Try Again</span>
+        }
+      </button>
+
+      <button 
+        (click)="shop.navigateTo('home')"
+        class="w-full apple-button-secondary py-3.5 text-xs sm:text-sm font-bold">
+        Browse Cached Catalog
+      </button>
+    </div>
+
+  </div>
+
+  <p class="text-[11px] text-[#8E8E93]">
+    ShopSphere Engine 2.0 • Offline Resilient
+  </p>
+
+</div>

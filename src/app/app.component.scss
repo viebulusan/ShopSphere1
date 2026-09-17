@@ -1,0 +1,44 @@
+:host {
+  display: block;
+  width: 100%;
+  min-height: 100%;
+}
+
+.app-container {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 100vh !important;
+  min-height: 100dvh !important;
+  width: 100% !important;
+  background-color: #F7EAE0 !important;
+  overflow: visible !important;
+}
+
+.main-stage {
+  flex: 1 0 auto;
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 16px;
+  padding-bottom: 96px; 
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .main-stage {
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 24px;
+    padding-bottom: 56px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main-stage {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}

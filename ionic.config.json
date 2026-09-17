@@ -1,0 +1,7 @@
+{
+  "name": "ShopSphere",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

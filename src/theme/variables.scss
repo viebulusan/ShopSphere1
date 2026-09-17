@@ -1,0 +1,58 @@
+
+
+:root {
+  
+  --c-forest: #1D4533;
+  --c-forest-dark: #143224;
+  --c-forest-light: #2B5E47;
+  --c-forest-subtle: rgba(29, 69, 51, 0.08);
+
+  --c-linen: #F7EAE0;
+  --c-linen-dark: #ECE0D5;
+  --c-linen-light: #FAF4EE;
+
+  --c-peach: #F9D2BA;
+  --c-peach-dark: #E8B99B;
+  --c-peach-subtle: rgba(249, 210, 186, 0.35);
+
+  --c-terracotta: #5E3122;
+  --c-terracotta-dark: #472418;
+  --c-terracotta-light: #834733;
+  --c-terracotta-subtle: rgba(94, 49, 34, 0.1);
+
+  --c-charcoal: var(--c-forest);
+  --c-blush-white: var(--c-linen);
+  --c-subtle-rose: var(--c-peach);
+  --c-dusty-mauve: var(--c-terracotta);
+  --c-midnight: var(--c-forest);
+  --c-teal: var(--c-forest);
+  --c-jade: var(--c-terracotta);
+  --c-sage: var(--c-peach);
+  --c-canvas: var(--c-linen);
+
+  --ion-background-color: var(--c-linen);
+  --ion-text-color: #1C1C1E;
+  --ion-color-primary: #1D4533;
+  --ion-color-primary-rgb: 29, 69, 51;
+  --ion-color-primary-contrast: #FFFFFF;
+  --ion-color-primary-shade: #143224;
+  --ion-color-primary-tint: #2B5E47;
+
+  --ion-color-secondary: #F9D2BA;
+  --ion-color-secondary-contrast: #5E3122;
+
+  --ion-color-tertiary: #5E3122;
+  --ion-color-tertiary-contrast: #FFFFFF;
+
+  --r-sm: 12px;
+  --r-md: 18px;
+  --r-lg: 24px;
+  --r-pill: 9999px;
+
+  --shadow-card: 0 4px 16px -2px rgba(29, 69, 51, 0.06), 0 2px 6px -1px rgba(29, 69, 51, 0.03);
+  --shadow-float: 0 12px 32px -4px rgba(29, 69, 51, 0.12);
+
+  --theme-bg: #F7EAE0;
+  --theme-surface: #FFFFFF;
+  --theme-text: #1D4533;
+}

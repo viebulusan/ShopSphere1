@@ -1,0 +1,686 @@
+@if (product(); as p) {
+  <div class="animate-fade-in space-y-6 pb-32">
+
+    <div class="flex items-center justify-between py-1 border-b border-[rgba(29,69,51,0.06)] pb-2 text-xs">
+      <nav class="flex items-center gap-1.5 text-[#58585D] min-w-0 pr-2">
+        <button (click)="shop.navigateTo('home')" class="hover:text-[#1D4533] font-semibold transition-colors shrink-0">Home</button>
+        <span class="text-[#8E8E93] shrink-0">/</span>
+        <button (click)="shop.selectedCategory.set(p.category); shop.navigateTo('discover')" class="hover:text-[#1D4533] font-semibold transition-colors shrink-0">{{ p.category }}</button>
+        <span class="text-[#8E8E93] shrink-0">/</span>
+        <span class="font-bold text-[#1D4533] truncate">{{ p.title }}</span>
+      </nav>
+
+      <div class="flex items-center gap-2 shrink-0">
+        <button (click)="shareProduct()" class="icon-round-btn" aria-label="Share" title="Share Piece">
+          <app-icon name="share" [size]="15" color="#1D4533" [strokeWidth]="2"></app-icon>
+        </button>
+        <button 
+          (click)="shop.toggleWishlist(p)" 
+          class="icon-round-btn" 
+          [class.active]="shop.isWishlisted(p.id)"
+          aria-label="Wishlist"
+          title="Save to Wishlist">
+          <app-icon 
+            [name]="shop.isWishlisted(p.id) ? 'heart-filled' : 'heart'" 
+            [size]="15" 
+            [color]="shop.isWishlisted(p.id) ? '#5E3122' : '#1D4533'" 
+            [strokeWidth]="2" 
+            [filled]="shop.isWishlisted(p.id)">
+          </app-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+      <div 
+        (mouseenter)="pauseGalleryAutoPlay()"
+        (mouseleave)="resumeGalleryAutoPlay()"
+        (touchstart)="pauseGalleryAutoPlay()"
+        (touchend)="resumeGalleryAutoPlay()"
+        class="lg:col-span-6 xl:col-span-5 space-y-3">
+        
+        <div class="relative w-full aspect-square rounded-[24px] overflow-hidden bg-white p-3 sm:p-4 flex items-center justify-center shadow-xs border border-[rgba(29,69,51,0.08)]">
+          <img 
+            [src]="activeImage()" 
+            [alt]="p.title"
+            class="w-full h-full object-cover object-center rounded-[18px] transition-all duration-500 ease-out"
+          />
+
+          @if (p.badge) {
+            <div class="absolute top-3 left-3">
+              <span class="badge-tag badge-terracotta text-[9px] shadow-xs">
+                {{ p.badge }}
+              </span>
+            </div>
+          }
+
+          @if (p.gallery.length > 1) {
+            <div class="absolute bottom-3 inset-x-0 flex justify-center items-center gap-1.5 z-10">
+              @for (img of p.gallery; track $index) {
+                <button 
+                  (click)="setActiveImage(img, $index)"
+                  class="h-1.5 rounded-full transition-all duration-300"
+                  [class.w-5]="activeImageIndex() === $index"
+                  [class.w-1.5]="activeImageIndex() !== $index"
+                  [style.background-color]="activeImageIndex() === $index ? '#1D4533' : 'rgba(29,69,51,0.25)'"
+                  aria-label="Gallery slide">
+                </button>
+              }
+            </div>
+          }
+        </div>
+
+        @if (p.gallery.length > 1) {
+          <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
+            @for (img of p.gallery; track $index) {
+              <button 
+                (click)="setActiveImage(img, $index)"
+                class="w-16 h-16 rounded-[14px] overflow-hidden border-2 transition-all p-0.5 bg-white shrink-0"
+                [class.border-[#1D4533]]="activeImageIndex() === $index"
+                [class.border-transparent]="activeImageIndex() !== $index">
+                <img [src]="img" [alt]="p.title" class="w-full h-full object-cover rounded-[10px]" />
+              </button>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="lg:col-span-6 xl:col-span-7 space-y-4">
+        
+        <div class="space-y-1">
+          <div class="flex flex-wrap items-center justify-between gap-2 text-xs">
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center gap-1 text-[11px] font-bold text-[#1D4533] bg-[#1D4533]/10 px-2.5 py-0.5 rounded-full">
+                <span>ShopSphere Official</span>
+              </span>
+              <span class="text-[#8E8E93]">•</span>
+              <span class="text-[11px] text-[#58585D]">100% Genuine</span>
+            </div>
+
+            <span class="text-[11px] font-bold text-[#1D4533] flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#1D4533] animate-pulse"></span>
+              <span>In Stock (Ready to Dispatch)</span>
+            </span>
+          </div>
+
+          <h1 class="text-xl sm:text-2xl lg:text-3xl font-black text-[#1D4533] tracking-tight leading-tight" style="font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;">
+            {{ p.title }}
+          </h1>
+          
+          <p class="text-xs sm:text-sm text-[#58585D] leading-relaxed">
+            {{ p.subtitle }}
+          </p>
+
+          <div class="flex items-center gap-3 pt-1 text-xs">
+            <div class="flex items-center gap-1 text-[#5E3122] font-bold">
+              <app-icon name="star" [size]="13" color="#5E3122" [filled]="true"></app-icon>
+              <span>{{ p.rating }}</span>
+              <span class="text-[#8E8E93] font-normal">({{ p.reviewsCount }} ratings)</span>
+            </div>
+            <span class="text-[#8E8E93]">|</span>
+            <span class="text-[#58585D] font-medium">350+ Sold</span>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-[20px] bg-white border border-[rgba(29,69,51,0.08)] flex items-center justify-between shadow-xs">
+          <div class="flex items-baseline gap-2.5">
+            <span class="text-2xl sm:text-3xl font-black text-[#1D4533]">
+              ${{ p.price }}
+            </span>
+            @if (p.originalPrice) {
+              <span class="text-sm font-medium text-[#8E8E93] line-through">
+                ${{ p.originalPrice }}
+              </span>
+              <span class="badge-tag badge-peach text-[10px] font-bold">
+                Save ${{ p.originalPrice - p.price }}
+              </span>
+            }
+          </div>
+
+          <span class="text-[11px] text-[#58585D] font-semibold">Taxes included</span>
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-bold text-[#1C1C1E] uppercase tracking-wider mb-2">
+            Selected Finish: <span class="text-[#5E3122] font-semibold">{{ selectedColor().name }}</span>
+          </label>
+          <div class="flex items-center gap-2.5">
+            @for (color of p.colors; track color.name) {
+              <button 
+                (click)="selectedColor.set(color)"
+                class="color-chip"
+                [class.active]="selectedColor().name === color.name"
+                [style.background-color]="color.hex"
+                [title]="color.name">
+                @if (selectedColor().name === color.name) {
+                  <span class="w-1.5 h-1.5 rounded-full" [style.background-color]="color.hex === '#F7EAE0' ? '#1D4533' : '#FFFFFF'"></span>
+                }
+              </button>
+            }
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-bold text-[#1C1C1E] uppercase tracking-wider mb-2">
+            Select Option / Size
+          </label>
+          <div class="flex flex-wrap gap-2">
+            @for (size of p.sizes; track size) {
+              <button 
+                (click)="selectedSize.set(size)"
+                class="size-pill"
+                [class.active]="selectedSize() === size">
+                {{ size }}
+              </button>
+            }
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between pt-1">
+          <span class="text-[11px] font-bold text-[#1C1C1E] uppercase tracking-wider">Quantity</span>
+          <div class="flex items-center gap-3 bg-white px-3 py-1 rounded-full border border-[rgba(29,69,51,0.12)] shadow-xs">
+            <button 
+              (click)="decrementQty()" 
+              [disabled]="quantity() <= 1"
+              class="w-6 h-6 rounded-full flex items-center justify-center text-[#1D4533] hover:bg-[#FAF4EE] disabled:opacity-30">
+              <app-icon name="minus" [size]="12" color="currentColor"></app-icon>
+            </button>
+            <span class="text-xs font-bold text-[#1D4533] min-w-[20px] text-center">{{ quantity() }}</span>
+            <button 
+              (click)="incrementQty()" 
+              class="w-6 h-6 rounded-full flex items-center justify-center text-[#1D4533] hover:bg-[#FAF4EE]">
+              <app-icon name="plus" [size]="12" color="currentColor"></app-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="hidden md:flex items-center gap-3 pt-2">
+          <button 
+            (click)="addToBag()" 
+            class="apple-button-secondary text-xs sm:text-sm font-bold py-3.5 px-6 flex-1 flex items-center justify-center gap-2">
+            <app-icon name="bag" [size]="16" color="#1D4533"></app-icon>
+            <span>Add to Bag</span>
+          </button>
+          <button 
+            (click)="buyNow()" 
+            class="apple-button-primary text-xs sm:text-sm font-bold py-3.5 px-6 flex-1 flex items-center justify-center gap-2 shadow-md">
+            <app-icon name="card" [size]="16" color="#FFFFFF"></app-icon>
+            <span>Buy Now</span>
+          </button>
+        </div>
+
+        <div class="grid grid-cols-3 gap-2 pt-2 text-center text-[10px] text-[#58585D]">
+          <div class="p-2.5 rounded-[14px] bg-white border border-[rgba(29,69,51,0.06)]">
+            <div class="font-bold text-[#1D4533] mb-0.5">Free Shipping</div>
+            <div>Orders over $150</div>
+          </div>
+          <div class="p-2.5 rounded-[14px] bg-white border border-[rgba(29,69,51,0.06)]">
+            <div class="font-bold text-[#1D4533] mb-0.5">30-Day Returns</div>
+            <div>Prepaid return label</div>
+          </div>
+          <div class="p-2.5 rounded-[14px] bg-white border border-[rgba(29,69,51,0.06)]">
+            <div class="font-bold text-[#1D4533] mb-0.5">2-Year Warranty</div>
+            <div>Certified artisan craft</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="space-y-6 pt-4 border-t border-[rgba(29,69,51,0.08)]">
+
+      <div class="apple-card p-6 sm:p-8 space-y-3">
+        <div class="flex items-center gap-2 text-[#1D4533] font-bold text-sm sm:text-base">
+          <app-icon name="sparkles" [size]="18" color="#1D4533"></app-icon>
+          <h2 class="uppercase tracking-wider">Product Description & Craftsmanship</h2>
+        </div>
+        <p class="text-xs sm:text-sm text-[#58585D] leading-relaxed">
+          {{ p.description }}
+        </p>
+        <p class="text-xs sm:text-sm text-[#58585D] leading-relaxed">
+          Crafted in limited small-batch editions using sustainably harvested materials. Every edge is meticulously hand-inspected, precision balanced, and engineered for tactile longevity.
+        </p>
+      </div>
+
+      <div class="apple-card p-6 sm:p-8 space-y-4">
+        <div class="flex items-center gap-2 text-[#1D4533] font-bold text-sm sm:text-base">
+          <app-icon name="check" [size]="18" color="#1D4533"></app-icon>
+          <h2 class="uppercase tracking-wider">Product Specifications & Key Highlights</h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+          <div class="flex justify-between p-3 rounded-[12px] bg-[#FAF4EE]/70">
+            <span class="text-[#8E8E93]">Brand</span>
+            <span class="font-bold text-[#1C1C1E]">ShopSphere Artisan Studio</span>
+          </div>
+          <div class="flex justify-between p-3 rounded-[12px] bg-[#FAF4EE]/70">
+            <span class="text-[#8E8E93]">Category</span>
+            <span class="font-bold text-[#1C1C1E]">{{ p.category }}</span>
+          </div>
+          <div class="flex justify-between p-3 rounded-[12px] bg-[#FAF4EE]/70">
+            <span class="text-[#8E8E93]">Available Finish</span>
+            <span class="font-bold text-[#1C1C1E]">{{ selectedColor().name }}</span>
+          </div>
+          <div class="flex justify-between p-3 rounded-[12px] bg-[#FAF4EE]/70">
+            <span class="text-[#8E8E93]">Selected Spec</span>
+            <span class="font-bold text-[#1C1C1E]">{{ selectedSize() }}</span>
+          </div>
+          <div class="flex justify-between p-3 rounded-[12px] bg-[#FAF4EE]/70">
+            <span class="text-[#8E8E93]">Warranty</span>
+            <span class="font-bold text-[#1C1C1E]">2-Year Manufacturer Warranty</span>
+          </div>
+          <div class="flex justify-between p-3 rounded-[12px] bg-[#FAF4EE]/70">
+            <span class="text-[#8E8E93]">Dispatched From</span>
+            <span class="font-bold text-[#1C1C1E]">San Francisco Fulfillment Studio</span>
+          </div>
+        </div>
+
+        <div class="pt-2">
+          <h3 class="text-xs font-bold text-[#1D4533] uppercase tracking-wider mb-2.5">Key Highlights</h3>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            @for (feat of p.features; track feat) {
+              <li class="flex items-start gap-2.5 text-xs text-[#58585D] p-2 rounded-[10px] bg-white border border-[rgba(29,69,51,0.06)]">
+                <app-icon name="check" [size]="14" color="#1D4533" [strokeWidth]="2.4" class="shrink-0 mt-0.5"></app-icon>
+                <span>{{ feat }}</span>
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
+
+      <div class="apple-card overflow-hidden transition-all duration-300">
+        <button 
+          type="button"
+          (click)="toggleDeliveryDropdown()"
+          class="w-full p-4 sm:p-5 flex items-center justify-between gap-3 text-left hover:bg-[#FAF4EE]/50 transition-colors cursor-pointer select-none">
+          <div class="flex items-center gap-2.5 text-[#1D4533] font-bold text-xs sm:text-sm">
+            <div class="w-7 h-7 rounded-full bg-[#1D4533]/10 flex items-center justify-center shrink-0">
+              <app-icon name="shield" [size]="15" color="#1D4533"></app-icon>
+            </div>
+            <div>
+              <span class="uppercase tracking-wider font-extrabold block">Delivery & Buyer Assurance</span>
+              <span class="text-[10px] font-normal text-[#8E8E93]">Fast dispatch, 30-day returns & genuine guarantee</span>
+            </div>
+          </div>
+          
+          <div 
+            class="w-6 h-6 rounded-full bg-[#FAF4EE] flex items-center justify-center text-[#1D4533] transition-transform duration-300 shrink-0"
+            [class.rotate-180]="isDeliveryDropdownOpen()">
+            <app-icon name="chevron-down" [size]="13" color="currentColor"></app-icon>
+          </div>
+        </button>
+
+        @if (isDeliveryDropdownOpen()) {
+          <div class="px-4 sm:px-6 pb-5 pt-1 border-t border-[rgba(29,69,51,0.06)] animate-fade-in">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs pt-2">
+              <div class="space-y-1.5 p-3.5 rounded-[16px] bg-[#FAF4EE]">
+                <div class="flex items-center gap-1.5 font-bold text-[#1D4533]">
+                  <app-icon name="truck" [size]="14" color="#1D4533"></app-icon>
+                  <span>Fast Delivery</span>
+                </div>
+                <p class="text-[#58585D] text-[11px] leading-relaxed">
+                  Orders placed before 2 PM dispatch same business day. Live package tracking with milestone notifications.
+                </p>
+              </div>
+
+              <div class="space-y-1.5 p-3.5 rounded-[16px] bg-[#FAF4EE]">
+                <div class="flex items-center gap-1.5 font-bold text-[#1D4533]">
+                  <app-icon name="refresh" [size]="14" color="#1D4533"></app-icon>
+                  <span>30-Day Hassle-Free Returns</span>
+                </div>
+                <p class="text-[#58585D] text-[11px] leading-relaxed">
+                  Try it in your space for 30 days. Full refund provided in original packaging with prepaid return postage.
+                </p>
+              </div>
+
+              <div class="space-y-1.5 p-3.5 rounded-[16px] bg-[#FAF4EE]">
+                <div class="flex items-center gap-1.5 font-bold text-[#1D4533]">
+                  <app-icon name="lock" [size]="14" color="#1D4533"></app-icon>
+                  <span>100% Genuine Guarantee</span>
+                </div>
+                <p class="text-[#58585D] text-[11px] leading-relaxed">
+                  Every product is sourced directly from master craft studios. Backed by full 256-bit purchase protection.
+                </p>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+
+      <div class="apple-card p-6 sm:p-8 space-y-5">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[rgba(29,69,51,0.08)] pb-4">
+          <div>
+            <div class="flex items-center gap-2 text-[#1D4533] font-bold text-sm sm:text-base">
+              <app-icon name="star" [size]="18" color="#5E3122" [filled]="true"></app-icon>
+              <h2 class="uppercase tracking-wider">Customer Ratings & Reviews</h2>
+            </div>
+            <div class="flex items-center gap-2 mt-1">
+              <div class="flex items-center gap-0.5 text-[#5E3122]">
+                @for (s of [1,2,3,4,5]; track s) {
+                  <app-icon 
+                    name="star" 
+                    [size]="13" 
+                    [color]="p.rating >= s ? '#5E3122' : '#E5E5EA'" 
+                    [filled]="true">
+                  </app-icon>
+                }
+              </div>
+              <span class="text-xs font-bold text-[#1D4533]">{{ p.rating }} out of 5.0</span>
+              <span class="text-xs text-[#8E8E93]">({{ p.reviewsCount || (p.reviews?.length || 0) }} verified reviews)</span>
+            </div>
+          </div>
+
+          <div class="self-start sm:self-auto">
+            @if (isDeliveredBuyer()) {
+              @if (isAlreadyReviewed()) {
+                <span class="inline-flex items-center gap-1.5 text-xs font-bold text-[#1D4533] bg-[#1D4533]/10 px-3 py-1.5 rounded-full border border-[rgba(29,69,51,0.12)]">
+                  <app-icon name="check" [size]="12" color="#1D4533"></app-icon>
+                  <span>Review Submitted</span>
+                </span>
+              } @else {
+                <button 
+                  (click)="openWriteReviewModal(p, deliveredOrder())"
+                  class="apple-button-primary text-xs py-2 px-3.5 font-bold flex items-center gap-1.5 shadow-sm">
+                  <app-icon name="star" [size]="12" color="#F9D2BA" [filled]="true"></app-icon>
+                  <span>Submit Review</span>
+                </button>
+              }
+            } @else {
+              <div class="inline-flex items-center gap-1.5 text-[11px] font-medium text-[#8E8E93] bg-[#FAF4EE] px-3 py-1.5 rounded-full border border-[rgba(29,69,51,0.06)]">
+                <app-icon name="shield" [size]="11" color="#1D4533"></app-icon>
+                <span>Verified Buyer Reviews Only</span>
+              </div>
+            }
+          </div>
+        </div>
+
+        @if (p.reviews && p.reviews.length > 0) {
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            @for (rev of p.reviews; track rev.id) {
+              <div class="p-4 rounded-[18px] bg-[#FAF4EE]/70 border border-[rgba(29,69,51,0.06)] space-y-2.5 text-xs flex flex-col justify-between">
+                <div class="space-y-2">
+                  <div class="flex items-start justify-between gap-2">
+                    <div class="flex items-center gap-2.5">
+                      @if (rev.avatar) {
+                        <img [src]="rev.avatar" [alt]="rev.author" class="w-7 h-7 rounded-full object-cover border border-[rgba(29,69,51,0.1)] shrink-0" />
+                      } @else {
+                        <div class="w-7 h-7 rounded-full bg-[#1D4533] text-white flex items-center justify-center font-bold text-[10px] shrink-0">
+                          {{ rev.author.charAt(0) }}
+                        </div>
+                      }
+                      <div class="min-w-0">
+                        <div class="flex items-center gap-1.5 flex-wrap">
+                          <span class="font-bold text-[#1C1C1E]">{{ rev.author }}</span>
+                          @if (rev.verifiedBuyer) {
+                            <span class="inline-flex items-center gap-0.5 text-[9px] font-bold text-[#1D4533] bg-[#1D4533]/10 px-1.5 py-0.5 rounded-full">
+                              <app-icon name="check" [size]="9" color="#1D4533"></app-icon> Verified
+                            </span>
+                          }
+                        </div>
+                        <span class="text-[10px] text-[#8E8E93]">{{ rev.date }}</span>
+                      </div>
+                    </div>
+
+                    <div class="flex items-center gap-0.5 text-[#5E3122] shrink-0">
+                      @for (s of [1,2,3,4,5]; track s) {
+                        <app-icon 
+                          name="star" 
+                          [size]="11" 
+                          [color]="rev.rating >= s ? '#5E3122' : '#E5E5EA'" 
+                          [filled]="true">
+                        </app-icon>
+                      }
+                    </div>
+                  </div>
+
+                  @if (rev.title) {
+                    <h4 class="font-bold text-[#1D4533] text-xs pt-0.5">{{ rev.title }}</h4>
+                  }
+                  @if (rev.comment) {
+                    <p class="text-[#58585D] leading-relaxed">
+                      "{{ rev.comment }}"
+                    </p>
+                  }
+                </div>
+
+                @if (rev.tags && rev.tags.length > 0) {
+                  <div class="flex flex-wrap gap-1 pt-1.5 border-t border-[rgba(29,69,51,0.06)]">
+                    @for (t of rev.tags; track t) {
+                      <span class="text-[9px] font-semibold text-[#1D4533] bg-white px-2 py-0.5 rounded-full border border-[rgba(29,69,51,0.08)]">
+                        {{ t }}
+                      </span>
+                    }
+                  </div>
+                }
+              </div>
+            }
+          </div>
+        } @else {
+          <div class="py-8 text-center space-y-2">
+            <p class="text-xs text-[#8E8E93]">No customer reviews yet.</p>
+            @if (isDeliveredBuyer() && !isAlreadyReviewed()) {
+              <button 
+                (click)="openWriteReviewModal(p, deliveredOrder())"
+                class="apple-button-primary text-xs py-2 px-4 font-bold inline-flex items-center gap-1.5 shadow-sm">
+                <app-icon name="star" [size]="12" color="#F9D2BA" [filled]="true"></app-icon>
+                <span>Submit Review</span>
+              </button>
+            } @else {
+              <p class="text-[11px] text-[#8E8E93]">Reviews are verified and can only be submitted once your package is delivered.</p>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="space-y-3 pt-2">
+        <div class="flex items-center justify-between">
+          <h3 class="text-base sm:text-lg font-black text-[#1D4533] tracking-tight">More from this Collection</h3>
+          <button (click)="shop.navigateTo('discover')" class="text-xs font-bold text-[#5E3122] hover:underline">
+            View All
+          </button>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+          @for (item of relatedProducts(); track item.id) {
+            <app-product-card [product]="item"></app-product-card>
+          }
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="fixed bottom-0 left-0 right-0 z-[9999] px-4 pt-2 pointer-events-none flex justify-center w-full"
+       style="position: fixed !important; bottom: 0 !important; left: 0 !important; right: 0 !important; z-index: 9999 !important; padding-bottom: max(1.5rem, calc(0.5rem + env(safe-area-inset-bottom)));">
+    <div class="pointer-events-auto backdrop-blur-xl border border-white/60 rounded-full px-4 py-2.5 flex items-center justify-between gap-3 max-w-[420px] w-full mx-auto"
+         style="background: rgba(247, 234, 224, 0.94); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.75); box-shadow: 0 10px 30px -5px rgba(29, 69, 51, 0.18);">
+      
+      <div class="pl-1">
+        <span class="block text-[9px] font-extrabold text-[#5E3122] uppercase tracking-wider leading-none mb-0.5">Total</span>
+        <span class="text-base font-black text-[#1D4533] leading-none">
+          ${{ p.price * quantity() }}
+        </span>
+      </div>
+
+      <div class="flex items-center gap-2 flex-1 justify-end">
+        <button 
+          (click)="addToBag()" 
+          class="apple-button-secondary text-xs font-bold py-2.5 px-3.5 flex-1 flex items-center justify-center gap-1.5 whitespace-nowrap">
+          <app-icon name="bag" [size]="14" color="#1D4533"></app-icon>
+          <span>Add to Bag</span>
+        </button>
+        <button 
+          (click)="buyNow()" 
+          class="apple-button-primary text-xs font-bold py-2.5 px-3.5 flex-1 flex items-center justify-center gap-1.5 whitespace-nowrap">
+          <app-icon name="card" [size]="14" color="#FFFFFF"></app-icon>
+          <span>Buy Now</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  @if (isReviewModalOpen()) {
+    <div class="fixed inset-0 z-[100000] flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-sm animate-fade-in modal-overlay"
+         style="z-index: 100000 !important;"
+         data-modal-overlay
+         (click)="closeWriteReviewModal()">
+      <div 
+        class="relative w-full max-w-[460px] bg-white rounded-[28px] shadow-2xl border border-[rgba(29,69,51,0.12)] p-6 pb-8 space-y-5 max-h-[85vh] overflow-y-auto no-scrollbar my-auto"
+        (click)="$event.stopPropagation()">
+          
+          @if (reviewSubmitted()) {
+            <div class="py-8 text-center space-y-4 animate-fade-in">
+              <div class="w-16 h-16 mx-auto rounded-full bg-[#1D4533] flex items-center justify-center text-white shadow-lg">
+                <app-icon name="check" [size]="30" color="#FFFFFF" [strokeWidth]="3"></app-icon>
+              </div>
+              <div>
+                <h3 class="text-xl font-black text-[#1D4533] tracking-tight" style="font-family: 'SF Pro Display', sans-serif;">
+                  Review Published!
+                </h3>
+                <p class="text-xs text-[#58585D] mt-1.5 max-w-[280px] mx-auto leading-relaxed">
+                  Thank you for reviewing {{ p.title }}. Your verified review has been published.
+                </p>
+              </div>
+              <div class="pt-2">
+                <button 
+                  (click)="closeWriteReviewModal()" 
+                  class="apple-button-primary text-xs py-2.5 px-6">
+                  Done
+                </button>
+              </div>
+            </div>
+          } @else {
+            <div class="flex items-center justify-between border-b border-[rgba(29,69,51,0.08)] pb-3">
+              <div>
+                <h2 class="text-lg font-black text-[#1D4533] tracking-tight" style="font-family: 'SF Pro Display', sans-serif;">
+                  Submit Review
+                </h2>
+                <p class="text-[11px] text-[#8E8E93]">
+                  {{ p.title }} • Order {{ deliveredOrder()?.orderNumber }} (Verified Buyer)
+                </p>
+              </div>
+              <button 
+                (click)="closeWriteReviewModal()"
+                class="w-8 h-8 rounded-full bg-[#FAF4EE] flex items-center justify-center text-[#58585D] hover:text-[#1D4533] transition-colors"
+                aria-label="Close">
+                <app-icon name="x" [size]="16" color="currentColor"></app-icon>
+              </button>
+            </div>
+
+            <div class="flex items-center gap-3.5 p-3 rounded-[18px] bg-[#FAF4EE]/70 border border-[rgba(29,69,51,0.06)]">
+              <div class="w-14 h-14 rounded-[12px] bg-white overflow-hidden shrink-0 border border-[rgba(29,69,51,0.08)]">
+                <img [src]="p.image" [alt]="p.title" class="w-full h-full object-cover" />
+              </div>
+              <div class="min-w-0">
+                <h4 class="text-xs font-bold text-[#1C1C1E] truncate">{{ p.title }}</h4>
+                <p class="text-[11px] text-[#8E8E93] truncate">{{ p.category }}</p>
+                <span class="text-[11px] font-bold text-[#1D4533]">${{ p.price }}</span>
+              </div>
+            </div>
+
+            <div class="text-center space-y-2 py-1">
+              <span class="text-xs font-bold text-[#1D4533] uppercase tracking-wider block">Your Rating</span>
+              <div class="flex items-center justify-center gap-2">
+                @for (star of [1, 2, 3, 4, 5]; track star) {
+                  <button 
+                    type="button"
+                    (click)="setReviewRating(star)"
+                    (mouseenter)="onStarHover(star)"
+                    (mouseleave)="onStarLeave()"
+                    class="p-1.5 transition-all active:scale-90 hover:scale-110 focus:outline-none cursor-pointer"
+                    [attr.aria-label]="star + ' stars'">
+                    <app-icon 
+                      name="star" 
+                      [size]="30" 
+                      [color]="(hoverRating() || reviewRating()) >= star ? '#D97706' : '#D1D1D6'" 
+                      [filled]="(hoverRating() || reviewRating()) >= star">
+                    </app-icon>
+                  </button>
+                }
+              </div>
+              <p class="text-xs font-semibold text-[#5E3122] transition-all">
+                {{ getRatingLabel(hoverRating() || reviewRating()) }}
+              </p>
+            </div>
+
+            <div class="space-y-1.5">
+              <label class="text-xs font-bold text-[#1D4533] block">What stood out most?</label>
+              <div class="flex flex-wrap gap-1.5">
+                @for (tag of availableTags; track tag) {
+                  <button 
+                    type="button"
+                    (click)="toggleReviewTag(tag)"
+                    class="text-[11px] font-medium px-3 py-1.5 rounded-full transition-all border"
+                    [class.bg-[#1D4533]]="selectedTags().includes(tag)"
+                    [class.text-white]="selectedTags().includes(tag)"
+                    [class.border-[#1D4533]]="selectedTags().includes(tag)"
+                    [class.bg-[#FAF4EE]]="!selectedTags().includes(tag)"
+                    [class.text-[#58585D]]="!selectedTags().includes(tag)"
+                    [class.border-[rgba(29,69,51,0.08)]]="!selectedTags().includes(tag)">
+                    {{ selectedTags().includes(tag) ? '✓ ' : '+ ' }}{{ tag }}
+                  </button>
+                }
+              </div>
+            </div>
+
+            <div class="space-y-1">
+              <label class="text-xs font-bold text-[#1D4533] block">Headline <span class="text-[#8E8E93] font-normal">(Optional)</span></label>
+              <input 
+                type="text" 
+                [(ngModel)]="reviewTitle"
+                placeholder="e.g. Pure acoustic bliss & craft"
+                class="apple-input text-xs w-full" />
+            </div>
+
+            <div class="space-y-1">
+              <label class="text-xs font-bold text-[#1D4533] block">Detailed Review <span class="text-[#8E8E93] font-normal">(Optional)</span></label>
+              <textarea 
+                [(ngModel)]="reviewComment"
+                rows="3"
+                placeholder="Share your personal experience with design, build, and everyday use..."
+                class="apple-input text-xs w-full resize-none"></textarea>
+            </div>
+
+            <div class="flex items-center justify-between gap-2.5 pt-2 border-t border-[rgba(29,69,51,0.08)]">
+              <div>
+                @if (reviewRating() === 0) {
+                  <span class="text-[11px] text-[#5E3122] font-semibold">
+                    * Tap a star to submit
+                  </span>
+                }
+              </div>
+              <div class="flex items-center gap-2">
+                <button 
+                  type="button"
+                  (click)="closeWriteReviewModal()" 
+                  class="apple-button-secondary text-xs py-2.5 px-4 font-bold">
+                  Cancel
+                </button>
+                <button 
+                  type="button"
+                  (click)="submitProductReview()" 
+                  [disabled]="!canSubmitReview()"
+                  [class.opacity-40]="!canSubmitReview()"
+                  [class.cursor-not-allowed]="!canSubmitReview()"
+                  class="apple-button-primary text-xs py-2.5 px-6 font-bold flex items-center gap-1.5 shadow-md transition-all">
+                  @if (isSubmittingReview()) {
+                    <span class="inline-block w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                    <span>Publishing...</span>
+                  } @else {
+                    <app-icon name="check" [size]="14" color="#FFFFFF"></app-icon>
+                    <span>Publish Review</span>
+                  }
+                </button>
+              </div>
+            </div>
+          }
+
+        </div>
+      </div>
+    }
+
+}
