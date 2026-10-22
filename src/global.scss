@@ -125,133 +125,147 @@ body::-webkit-scrollbar {
   scrollbar-width: none !important;
 }
 
-.apple-card {
-  background: #FFFFFF;
-  border-radius: 24px;
-  border: 1px solid rgba(22, 100, 176, 0.16);
-  box-shadow: 0 4px 18px -2px rgba(22, 100, 176, 0.08);
-  color: #1A1D20;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
-}
+@layer components {
+  .apple-card {
+    background: #FFFFFF;
+    border-radius: 24px;
+    border: 1px solid rgba(22, 100, 176, 0.16);
+    box-shadow: 0 4px 18px -2px rgba(22, 100, 176, 0.08);
+    color: #1A1D20;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+  }
 
-.apple-card:hover {
-  box-shadow: 0 8px 24px -4px rgba(22, 100, 176, 0.16);
-  border-color: rgba(22, 100, 176, 0.35);
-}
+  .apple-card:hover {
+    box-shadow: 0 8px 24px -4px rgba(22, 100, 176, 0.16);
+    border-color: rgba(22, 100, 176, 0.35);
+  }
 
-.apple-button-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background-color: #1664b0;
-  color: #FFFFFF !important;
-  font-weight: 800;
-  border-radius: 9999px;
-  padding: 13px 24px;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 4px 14px rgba(22, 100, 176, 0.28);
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-  text-decoration: none;
-  text-align: center;
-}
+  .apple-button-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #1664b0;
+    color: #FFFFFF !important;
+    font-weight: 800;
+    border-radius: 9999px;
+    padding: 13px 24px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(22, 100, 176, 0.28);
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    text-decoration: none;
+    text-align: center;
+  }
 
-.apple-button-primary:hover {
-  background-color: #0f4880;
-  color: #FFFFFF !important;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(15, 72, 128, 0.38);
-}
+  .apple-button-primary:hover {
+    background-color: #0f4880;
+    color: #FFFFFF !important;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(15, 72, 128, 0.38);
+  }
 
-.apple-button-primary:active {
-  transform: scale(0.97);
-}
+  .apple-button-primary:active {
+    transform: scale(0.97);
+  }
 
-.apple-button-primary:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none;
-}
+  .apple-button-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
 
-.apple-button-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background-color: #FFFFFF;
-  color: #1664b0 !important;
-  font-weight: 700;
-  border-radius: 9999px;
-  padding: 12px 20px;
-  border: 1.5px solid rgba(22, 100, 176, 0.28);
-  cursor: pointer;
-  transition: all 0.22s ease;
-  text-decoration: none;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(22, 100, 176, 0.06);
-}
+  .apple-button-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #FFFFFF;
+    color: #1664b0 !important;
+    font-weight: 700;
+    border-radius: 9999px;
+    padding: 12px 20px;
+    border: 1.5px solid rgba(22, 100, 176, 0.28);
+    cursor: pointer;
+    transition: all 0.22s ease;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(22, 100, 176, 0.06);
+  }
 
-.apple-button-secondary:hover {
-  background-color: #efe8de;
-  border-color: #1664b0;
-  color: #1664b0 !important;
-}
+  .apple-button-secondary:hover {
+    background-color: #efe8de;
+    border-color: #1664b0;
+    color: #1664b0 !important;
+  }
 
-.apple-button-secondary:active {
-  transform: scale(0.97);
-}
+  .apple-button-secondary:active {
+    transform: scale(0.97);
+  }
 
-.apple-input {
-  width: 100%;
-  padding: 12px 18px;
-  background: #FFFFFF;
-  border: 1.5px solid rgba(22, 100, 176, 0.25);
-  border-radius: 16px;
-  font-family: inherit;
-  font-size: 14px;
-  color: #1A1D20;
-  outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
+  .apple-input {
+    width: 100%;
+    padding: 12px 18px;
+    background: #FFFFFF;
+    border: 1.5px solid rgba(22, 100, 176, 0.25);
+    border-radius: 16px;
+    font-family: inherit;
+    font-size: 14px;
+    color: #1A1D20;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
 
-.apple-input:focus {
-  border-color: #1664b0;
-  box-shadow: 0 0 0 3px rgba(22, 100, 176, 0.15);
-}
+  .apple-input:focus {
+    border-color: #1664b0;
+    box-shadow: 0 0 0 3px rgba(22, 100, 176, 0.15);
+  }
 
-.apple-input::placeholder {
-  color: rgba(26, 29, 32, 0.5);
-}
+  .apple-input::placeholder {
+    color: rgba(26, 29, 32, 0.5);
+  }
 
-.badge-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 4px 10px;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  border-radius: 9999px;
-  line-height: 1;
-}
+  .badge-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border-radius: 9999px;
+    line-height: 1;
+  }
 
-.badge-primary,
-.badge-forest,
-.badge-peach,
-.badge-secondary,
-.badge-terracotta {
-  background: #d21624 !important;
-  color: #FFFFFF !important;
-  font-weight: 800;
-  border: 1px solid rgba(210, 22, 36, 0.3);
-}
+  .badge-primary,
+  .badge-secondary,
+  .badge-terracotta {
+    background: #d21624 !important;
+    color: #FFFFFF !important;
+    font-weight: 800;
+    border: 1px solid rgba(210, 22, 36, 0.3);
+  }
 
-.badge-linen {
-  background: #FFFFFF;
-  color: #1664b0;
-  border: 1px solid rgba(22, 100, 176, 0.25);
+  .badge-forest {
+    background: #1664b0 !important;
+    color: #FFFFFF !important;
+    font-weight: 800;
+    border: 1px solid rgba(22, 100, 176, 0.3);
+  }
+
+  .badge-peach {
+    background: #efe8de !important;
+    color: #1664b0 !important;
+    font-weight: 800;
+    border: 1px solid rgba(22, 100, 176, 0.22);
+  }
+
+  .badge-linen {
+    background: #FFFFFF;
+    color: #1664b0;
+    border: 1px solid rgba(22, 100, 176, 0.25);
+  }
 }
 
 /* Palette utility mapping for light luxury consistency */

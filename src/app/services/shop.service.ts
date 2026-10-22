@@ -1012,7 +1012,7 @@ export class ShopService {
       {
         id: 'notif-' + Date.now(),
         title: 'Support Inquiry Sent',
-        message: `Thank you, ${data.name}. Our concierge team will reach out to ${data.email} shortly.`,
+        message: `Thank you, ${data.name}. Our customer service team will reach out to ${data.email} shortly.`,
         time: 'Just now',
         read: false,
         type: 'order'

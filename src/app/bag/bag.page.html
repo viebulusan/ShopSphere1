@@ -113,19 +113,22 @@
             </div>
             <button 
               (click)="applyPromoCode()"
-              class="px-5 py-2.5 rounded-full bg-[#1664b0] text-white text-xs font-bold hover:bg-[#143224] transition-colors shrink-0">
+              class="px-5 py-2.5 rounded-full bg-[#1664b0] text-white text-xs font-bold hover:bg-[#0f4880] transition-colors shrink-0">
               Apply
             </button>
           </div>
           @if (promoFeedback()) {
-            <p class="text-[11px] font-semibold mt-2" [class.text-[#1A1D20]]="promoSuccess()" [class.text-[#555B62]]="!promoSuccess()">
+            <p class="text-[11px] font-semibold mt-2" [class.text-[#1664b0]]="promoSuccess()" [class.text-[#d21624]]="!promoSuccess()">
               {{ promoFeedback() }}
             </p>
           }
           @if (shop.appliedPromo(); as p) {
-            <div class="mt-2.5 flex items-center justify-between text-xs font-bold text-[#1A1D20] bg-[#d21624] text-white/40 px-3.5 py-1.5 rounded-full">
-              <span>Code Applied: {{ p.code }} ({{ p.percent }}% OFF)</span>
-              <button (click)="shop.removePromo()" class="text-[#555B62] hover:underline text-[11px]">Remove</button>
+            <div class="mt-2.5 flex items-center justify-between text-xs font-bold text-[#1664b0] bg-[#efe8de] border border-[rgba(22,100,176,0.22)] px-4 py-2 rounded-full">
+              <div class="flex items-center gap-1.5">
+                <app-icon name="check" [size]="12" color="#1664b0"></app-icon>
+                <span>Code Applied: {{ p.code }} ({{ p.percent }}% OFF)</span>
+              </div>
+              <button (click)="shop.removePromo()" class="text-[#d21624] hover:underline text-[11px] font-bold">Remove</button>
             </div>
           }
         </div>
@@ -184,11 +187,6 @@
               <span>Proceed to Checkout</span>
             </button>
           </div>
-        </div>
-
-        <div class="flex items-center justify-center gap-2 text-[11px] text-[#8E8E93] text-center">
-          <app-icon name="shield" [size]="14" color="#8E8E93"></app-icon>
-          <span>Biometric & Secure Express Checkout</span>
         </div>
 
       </div>

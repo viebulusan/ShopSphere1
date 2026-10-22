@@ -6,7 +6,7 @@
         My Account
       </h1>
       <p class="text-xs text-[#555B62] opacity-80 mt-0.5">
-        Personal details, orders, payment methods & concierge
+        Personal details, orders, payment methods & customer service
       </p>
     </div>
 
@@ -40,7 +40,7 @@
           <button 
             type="button" 
             (click)="$event.stopPropagation(); avatarFileInput.click()"
-            class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-[#1664b0] text-white flex items-center justify-center shadow-md border border-white hover:bg-[#143224] transition-colors"
+            class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-[#1664b0] text-white flex items-center justify-center shadow-md border border-white hover:bg-[#0f4880] transition-colors"
             title="Upload avatar photo">
             <app-icon name="camera" [size]="10" color="#FFFFFF"></app-icon>
           </button>
@@ -58,8 +58,8 @@
           </div>
 
           <div class="flex flex-wrap items-center gap-2 mt-1">
-            <span class="inline-flex items-center gap-1 text-[10px] font-bold text-[#1A1D20] bg-[#d21624] text-white px-2.5 py-0.5 rounded-full border border-[#d21624]">
-              <app-icon name="sparkles" [size]="9" color="#1664b0"></app-icon>
+            <span class="inline-flex items-center gap-1 text-[10px] font-bold bg-[#d21624] text-white px-2.5 py-0.5 rounded-full border border-[#d21624]">
+              <app-icon name="sparkles" [size]="9" color="#FFFFFF"></app-icon>
               <span>{{ user.tier || 'ShopSphere Member' }}</span>
             </span>
             <span class="text-xs text-[#555B62] truncate">{{ user.email }}</span>
@@ -203,7 +203,7 @@
           <app-icon name="message-square" [size]="20" color="currentColor"></app-icon>
         </div>
         <div>
-          <span class="text-xs font-bold text-[#1C1C1E] block">Concierge Help</span>
+          <span class="text-xs font-bold text-[#1C1C1E] block">Customer Service</span>
           <span class="text-[10px] text-[#555B62]">Assistance & FAQ</span>
         </div>
       </div>
@@ -252,12 +252,12 @@
           <div class="flex items-center gap-2">
             <button 
               (click)="showAddAddressForm.set(!showAddAddressForm())"
-              class="apple-button-primary text-xs py-1.5 px-3 flex items-center gap-1">
+              class="apple-button-primary text-xs py-1.5 px-3.5 font-bold flex items-center gap-1.5 shadow-xs">
               <app-icon [name]="showAddAddressForm() ? 'x' : 'plus'" [size]="12" color="#FFFFFF"></app-icon>
               <span>{{ showAddAddressForm() ? 'Cancel' : 'Add New' }}</span>
             </button>
-            <button (click)="showAddressesModal.set(false)" class="text-[#8E8E93] hover:text-[#1A1D20] p-1">
-              <app-icon name="x" [size]="18" color="currentColor"></app-icon>
+            <button (click)="showAddressesModal.set(false)" class="w-8 h-8 rounded-full bg-[#efe8de] flex items-center justify-center text-[#555B62] hover:text-[#1A1D20] transition-colors">
+              <app-icon name="x" [size]="16" color="currentColor"></app-icon>
             </button>
           </div>
         </div>
@@ -303,7 +303,7 @@
             </div>
 
             <div class="pt-2 flex justify-end gap-2">
-              <button (click)="showAddAddressForm.set(false)" class="apple-button-secondary text-xs py-2 px-4">Cancel</button>
+              <button (click)="showAddAddressForm.set(false)" class="apple-button-secondary text-xs py-2 px-4 font-bold">Cancel</button>
               <button (click)="saveAddress()" class="apple-button-primary text-xs py-2 px-5 font-bold">Save Address</button>
             </div>
           </div>
@@ -326,17 +326,17 @@
                   <p class="text-[11px] text-[#8E8E93] mt-0.5">{{ addr.phone }}</p>
                 </div>
 
-                <div class="flex items-center gap-2">
+                <div class="flex items-center gap-2 shrink-0">
                   @if (!addr.isDefault) {
                     <button 
                       (click)="shop.setDefaultAddress(addr.id)" 
-                      class="text-xs font-semibold text-[#1A1D20] hover:underline">
+                      class="apple-button-secondary text-[11px] py-1 px-3 font-bold">
                       Set Default
                     </button>
                   }
                   <button 
                     (click)="shop.deleteAddress(addr.id)"
-                    class="text-[#8E8E93] hover:text-[#1A1D20] p-1 transition-colors"
+                    class="w-7 h-7 rounded-full bg-[#efe8de] hover:bg-[#d21624]/10 text-[#555B62] hover:text-[#d21624] flex items-center justify-center transition-colors"
                     title="Delete address">
                     <app-icon name="trash" [size]="14" color="currentColor"></app-icon>
                   </button>
@@ -367,12 +367,12 @@
           <div class="flex items-center gap-2">
             <button 
               (click)="showAddCardForm.set(!showAddCardForm())"
-              class="apple-button-primary text-xs py-1.5 px-3 flex items-center gap-1">
+              class="apple-button-primary text-xs py-1.5 px-3.5 font-bold flex items-center gap-1.5 shadow-xs">
               <app-icon [name]="showAddCardForm() ? 'x' : 'plus'" [size]="12" color="#FFFFFF"></app-icon>
               <span>{{ showAddCardForm() ? 'Cancel' : 'Add Card' }}</span>
             </button>
-            <button (click)="showPaymentsModal.set(false)" class="text-[#8E8E93] hover:text-[#1A1D20] p-1">
-              <app-icon name="x" [size]="18" color="currentColor"></app-icon>
+            <button (click)="showPaymentsModal.set(false)" class="w-8 h-8 rounded-full bg-[#efe8de] flex items-center justify-center text-[#555B62] hover:text-[#1A1D20] transition-colors">
+              <app-icon name="x" [size]="16" color="currentColor"></app-icon>
             </button>
           </div>
         </div>
@@ -401,7 +401,7 @@
             </div>
 
             <div class="pt-2 flex justify-end gap-2">
-              <button (click)="showAddCardForm.set(false)" class="apple-button-secondary text-xs py-2 px-4">Cancel</button>
+              <button (click)="showAddCardForm.set(false)" class="apple-button-secondary text-xs py-2 px-4 font-bold">Cancel</button>
               <button (click)="saveCard()" class="apple-button-primary text-xs py-2 px-5 font-bold">Save Card</button>
             </div>
           </div>
@@ -409,9 +409,9 @@
 
         <div class="space-y-3">
           @for (pm of shop.paymentMethods(); track pm.id) {
-            <div class="p-4 rounded-2xl bg-white border border-[rgba(22,100,176,0.16)] shadow-2xs flex items-center justify-between">
+            <div class="p-4 rounded-2xl bg-white border border-[rgba(22,100,176,0.16)] shadow-2xs flex items-center justify-between gap-2">
               <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-[#efe8de] flex items-center justify-center text-[#1A1D20]">
+                <div class="w-10 h-10 rounded-full bg-[#efe8de] flex items-center justify-center text-[#1664b0]">
                   <app-icon name="card" [size]="18" color="currentColor"></app-icon>
                 </div>
 
@@ -430,17 +430,17 @@
                 </div>
               </div>
 
-              <div class="flex items-center gap-2">
+              <div class="flex items-center gap-2 shrink-0">
                 @if (!pm.isDefault) {
                   <button 
                     (click)="shop.setDefaultPayment(pm.id)" 
-                    class="text-xs font-semibold text-[#1A1D20] hover:underline">
+                    class="apple-button-secondary text-[11px] py-1 px-3 font-bold">
                     Set Default
                   </button>
                 }
                 <button 
                   (click)="shop.deletePaymentMethod(pm.id)"
-                  class="text-[#8E8E93] hover:text-[#1A1D20] p-1 transition-colors"
+                  class="w-7 h-7 rounded-full bg-[#efe8de] hover:bg-[#d21624]/10 text-[#555B62] hover:text-[#d21624] flex items-center justify-center transition-colors"
                   title="Delete card">
                   <app-icon name="trash" [size]="14" color="currentColor"></app-icon>
                 </button>
@@ -598,10 +598,10 @@
         <div class="flex items-center justify-between border-b border-[rgba(22,100,176,0.16)] pb-3">
           <div class="flex items-center gap-2">
             <app-icon name="message-square" [size]="18" color="#1664b0"></app-icon>
-            <h3 class="text-sm font-bold text-[#1A1D20]">Customer Service & Concierge</h3>
+            <h3 class="text-sm font-bold text-[#1A1D20]">Customer Service</h3>
           </div>
-          <button (click)="showSupportModal.set(false)" class="text-[#8E8E93] hover:text-[#1A1D20] p-1">
-            <app-icon name="x" [size]="18" color="currentColor"></app-icon>
+          <button (click)="showSupportModal.set(false)" class="w-8 h-8 rounded-full bg-[#efe8de] flex items-center justify-center text-[#555B62] hover:text-[#1A1D20] transition-colors">
+            <app-icon name="x" [size]="16" color="currentColor"></app-icon>
           </button>
         </div>
 
@@ -614,7 +614,7 @@
               <app-icon name="message-square" [size]="16" color="currentColor"></app-icon>
             </div>
             <span class="font-bold text-[#1C1C1E] block">Live Chat</span>
-            <span class="text-[10px] text-[#555B62] font-bold block bg-[#d21624] text-white/60 rounded-full py-0.5 px-1.5 inline-block">Coming Soon</span>
+            <span class="text-[10px] font-bold bg-[#d21624] text-white rounded-full py-0.5 px-2 inline-block">Coming Soon</span>
           </div>
 
           <a 

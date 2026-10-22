@@ -172,7 +172,7 @@ export class ProfilePage implements OnInit {
   }
 
   onLiveChatClick() {
-    this.liveChatNotice.set('Live Concierge Chat is currently being upgraded. Please use our concierge message form below or call us directly at +1 (800) 843-7743.');
+    this.liveChatNotice.set('Live Customer Service Chat is currently being upgraded. Please use our message form below or call us directly at +1 (800) 843-7743.');
     this.scrollToContactForm();
     setTimeout(() => {
       this.liveChatNotice.set('');
@@ -192,7 +192,7 @@ export class ProfilePage implements OnInit {
       message: this.contactMessage
     });
 
-    this.contactStatus.set('Thank you! Your message has been routed to our concierge.');
+    this.contactStatus.set('Thank you! Your message has been routed to our customer service team.');
     this.contactMessage = '';
     setTimeout(() => {
       this.contactStatus.set('');
