@@ -77,32 +77,32 @@
         </div>
       </div>
 
-      <div class="pt-4 border-t border-white/10 space-y-3">
+      <div class="pt-4 border-t border-[#e5e7eb] space-y-3">
         <div class="flex items-center justify-between">
-          <h3 class="text-xs font-bold text-white uppercase tracking-wider">Package Contents</h3>
-          <span class="text-[11px] font-semibold text-[#94a3b8]">{{ ord.items.length }} {{ ord.items.length === 1 ? 'item' : 'items' }}</span>
+          <h3 class="text-xs font-bold text-[#111318] uppercase tracking-wider">Package Contents</h3>
+          <span class="text-[11px] font-semibold text-[#6b7280]">{{ ord.items.length }} {{ ord.items.length === 1 ? 'item' : 'items' }}</span>
         </div>
 
         @for (item of ord.items; track item.cartItemId) {
-          <div class="p-3.5 sm:p-4 rounded-[18px] bg-[#14161f] border border-white/10 shadow-lg space-y-3 transition-all hover:border-white/20">
+          <div class="p-3.5 sm:p-4 rounded-[18px] bg-white border border-[#e5e7eb] shadow-sm space-y-3 transition-all hover:border-[#d1d5db]">
             
             <!-- Top Row: Thumbnail + Item Details + Responsive Price -->
             <div class="flex items-start sm:items-center justify-between gap-3 sm:gap-4">
               <div class="flex items-center gap-3 sm:gap-3.5 min-w-0 flex-1">
-                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-[12px] bg-[#1a1d27] overflow-hidden shrink-0 border border-white/10 shadow-xs">
+                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-[12px] bg-[#f0f2f6] overflow-hidden shrink-0 border border-[#e5e7eb] shadow-2xs">
                   <img [src]="item.product.image" [alt]="item.product.title" class="w-full h-full object-cover" />
                 </div>
                 <div class="min-w-0 flex-1">
-                  <h4 class="text-xs sm:text-sm font-bold text-white truncate">{{ item.product.title }}</h4>
-                  <p class="text-[11px] text-[#94a3b8] mt-0.5">
+                  <h4 class="text-xs sm:text-sm font-bold text-[#111318] truncate">{{ item.product.title }}</h4>
+                  <p class="text-[11px] text-[#6b7280] mt-0.5">
                     {{ item.selectedColor.name }} • {{ item.selectedSize }} • Qty: {{ item.quantity }}
                   </p>
                   
                   <!-- Responsive Price for Mobile -->
                   <div class="sm:hidden mt-1.5 flex items-baseline gap-1.5">
-                    <span class="text-xs sm:text-sm font-black text-white">₱{{ item.product.price * item.quantity }}</span>
+                    <span class="text-xs sm:text-sm font-black text-[#111318]">₱{{ item.product.price * item.quantity }}</span>
                     @if (item.quantity > 1) {
-                      <span class="text-[10px] text-[#94a3b8] font-medium">(₱{{ item.product.price }} ea)</span>
+                      <span class="text-[10px] text-[#9ca3af] font-medium">(₱{{ item.product.price }} ea)</span>
                     }
                   </div>
                 </div>
@@ -110,35 +110,35 @@
 
               <!-- Responsive Price for Tablet/Desktop -->
               <div class="hidden sm:block text-right shrink-0">
-                <span class="text-sm sm:text-base font-black text-white block">
+                <span class="text-sm sm:text-base font-black text-[#111318] block">
                   ₱{{ item.product.price * item.quantity }}
                 </span>
                 @if (item.quantity > 1) {
-                  <span class="text-[10px] text-[#94a3b8] font-medium block">₱{{ item.product.price }} each</span>
+                  <span class="text-[10px] text-[#9ca3af] font-medium block">₱{{ item.product.price }} each</span>
                 }
               </div>
             </div>
 
             <!-- Bottom Actions Bar: Dedicated Row for Submit Review & Buy Again -->
-            <div class="pt-2.5 border-t border-white/10 flex flex-wrap items-center justify-between gap-2">
+            <div class="pt-2.5 border-t border-[#e5e7eb] flex flex-wrap items-center justify-between gap-2">
               <div>
                 @if (ord.status === 'delivered') {
                   @if (shop.isItemReviewed(ord.id, item.product.id)) {
-                    <span class="inline-flex items-center gap-1.5 text-[11px] font-bold text-[#10b981] bg-[#10b981]/15 border border-[#10b981]/30 px-3 py-1 rounded-full">
+                    <span class="inline-flex items-center gap-1.5 text-[11px] font-bold text-[#10b981] bg-[#10b981]/10 border border-[#10b981]/30 px-3 py-1 rounded-full">
                       <app-icon name="check" [size]="11" color="#10b981" [strokeWidth]="2.5"></app-icon>
                       <span>Review Submitted</span>
                     </span>
                   } @else {
                     <button 
                       (click)="openReviewModal(ord, item)"
-                      class="inline-flex items-center gap-1.5 text-xs font-bold text-white hover:text-[#0c0d12] bg-white/10 hover:bg-white active:scale-95 px-3.5 py-1.5 rounded-full transition-all border border-white/15 shadow-sm cursor-pointer">
+                      class="inline-flex items-center gap-1.5 text-xs font-bold text-[#111318] hover:bg-[#111318] hover:text-white active:scale-95 px-3.5 py-1.5 rounded-full transition-all border border-[#e5e7eb] shadow-2xs cursor-pointer">
                       <app-icon name="star" [size]="12" color="currentColor" [filled]="false"></app-icon>
                       <span>Submit Review</span>
                     </button>
                   }
                 } @else {
-                  <span class="text-[11px] font-medium text-[#94a3b8] flex items-center gap-1">
-                    <app-icon name="clock" [size]="11" color="#94a3b8"></app-icon>
+                  <span class="text-[11px] font-medium text-[#6b7280] flex items-center gap-1">
+                    <app-icon name="clock" [size]="11" color="#6b7280"></app-icon>
                     <span>Review unlocked upon delivery</span>
                   </span>
                 }
@@ -146,8 +146,8 @@
 
               <button 
                 (click)="shop.addToCart(item.product, item.selectedColor, item.selectedSize, 1); shop.navigateTo('bag')"
-                class="inline-flex items-center gap-1.5 text-xs font-bold text-[#0c0d12] hover:bg-[#f59e0b] bg-white active:scale-95 px-3.5 py-1.5 rounded-full transition-all border border-white shadow-sm ml-auto cursor-pointer">
-                <app-icon name="bag" [size]="13" color="currentColor"></app-icon>
+                class="inline-flex items-center gap-1.5 text-xs font-bold text-white hover:bg-[#242933] bg-[#111318] active:scale-95 px-3.5 py-1.5 rounded-full transition-all border border-[#111318] shadow-xs ml-auto cursor-pointer">
+                <app-icon name="bag" [size]="13" color="#ffffff"></app-icon>
                 <span>Buy Again</span>
               </button>
             </div>

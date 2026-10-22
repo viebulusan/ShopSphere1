@@ -48,11 +48,11 @@ export class HomePage implements OnInit, OnDestroy {
       description: 'Lossless dynamic drivers housed in anodized forest green aluminum.',
       productId: 'sp-1',
       image: 'assets/images/products/headphones-1.jpg',
-      gradient: '#14161f',
-      orb1: 'rgba(245, 158, 11, 0.24)',
-      orb2: 'rgba(16, 185, 129, 0.16)',
-      badgeBg: '#f59e0b',
-      badgeColor: '#0c0d12'
+      gradient: '#ffffff',
+      orb1: 'rgba(217, 119, 6, 0.10)',
+      orb2: 'rgba(16, 185, 129, 0.08)',
+      badgeBg: 'rgba(217, 119, 6, 0.12)',
+      badgeColor: '#b45309'
     },
     {
       id: 'banner-kettle',
@@ -61,11 +61,11 @@ export class HomePage implements OnInit, OnDestroy {
       description: 'To-the-degree thermal extraction with balanced counterweight walnut handle.',
       productId: 'sp-2',
       image: 'assets/images/products/kettle-1.jpg',
-      gradient: '#14161f',
-      orb1: 'rgba(16, 185, 129, 0.22)',
-      orb2: 'rgba(245, 158, 11, 0.16)',
-      badgeBg: '#f59e0b',
-      badgeColor: '#0c0d12'
+      gradient: '#ffffff',
+      orb1: 'rgba(16, 185, 129, 0.10)',
+      orb2: 'rgba(217, 119, 6, 0.08)',
+      badgeBg: 'rgba(217, 119, 6, 0.12)',
+      badgeColor: '#b45309'
     },
     {
       id: 'banner-folio',
@@ -74,11 +74,11 @@ export class HomePage implements OnInit, OnDestroy {
       description: 'Full-grain Tuscan leather sleeve with concealed magnetic MagSafe dock.',
       productId: 'sp-3',
       image: 'assets/images/products/folio-1.jpg',
-      gradient: '#14161f',
-      orb1: 'rgba(245, 158, 11, 0.22)',
-      orb2: 'rgba(244, 63, 94, 0.18)',
-      badgeBg: '#f59e0b',
-      badgeColor: '#0c0d12'
+      gradient: '#ffffff',
+      orb1: 'rgba(217, 119, 6, 0.09)',
+      orb2: 'rgba(244, 63, 94, 0.07)',
+      badgeBg: 'rgba(217, 119, 6, 0.12)',
+      badgeColor: '#b45309'
     }
   ];
 

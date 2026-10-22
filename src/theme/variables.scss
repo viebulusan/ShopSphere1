@@ -1,81 +1,81 @@
 :root {
-  /* Unique Neo-Industrial Dark Luxe (Bento Obsidian & Frosted Titanium):
-     100% Anti-Shein (Zero cheap fast-fashion cues, zero sterile white marketplace grids):
-     - Canvas Background: #0C0D12 (Deep Onyx Void — immersive, sleek, eye-comfort)
-     - Card Surface: #14161F (Frosted Titanium Glass with ambient depth)
-     - Wells / Pedestals: #1A1D27 (Studio Deep Pedestal)
-     - Primary Ink: #FFFFFF (Luminous Pure White — razor sharp contrast)
-     - Secondary Ink: #94A3B8 (Cool Slate Silver)
-     - Muted Ink: #64748B (Muted Steel)
-     - Signature Luxury Accent: #F59E0B (Luminous Amber Topaz / Gold)
-     - Accent Subtle: rgba(245, 158, 11, 0.14)
-     - Success / Verified: #10B981 (Cyber Emerald)
-     - Heart / Wishlist: #F43F5E (Electric Crimson)
-     - Specular Hairline Borders: rgba(255, 255, 255, 0.09)
+  /* Unique Light-Mode Architectural Luxury (Mineral Pearl & Solar Amber):
+     Light, airy, and modern — 100% Anti-Shein:
+     - Canvas Background: #F7F8FA (Luminous Mineral Pearl — crisp, daylight gallery canvas)
+     - Card Surface: #FFFFFF (Pure Pristine Gallery White)
+     - Wells / Pedestals: #F0F2F6 (Cool Studio Light Pedestal)
+     - Primary Ink / CTAs: #111318 (Deep Obsidian Ink — razor sharp contrast)
+     - Secondary Ink: #6B7280 (Cool Slate Graphite)
+     - Muted Ink: #9CA3AF (Refined Modern Silver)
+     - Signature Luxury Accent: #D97706 (Solar Amber Topaz — warm, radiant, refined)
+     - Accent Subtle: rgba(217, 119, 6, 0.1)
+     - Success / Verified: #10B981 (Clean Emerald)
+     - Heart / Wishlist: #F43F5E (Vibrant Rose)
+     - Hairline Architectural Borders: #E5E7EB (Clean, crisp, razor-thin)
   */
 
-  --c-p50: #0c0d12;
-  --c-p100: #14161f;
-  --c-p200: #1a1d27;
-  --c-p300: #262a38;
-  --c-p400: #64748b;
-  --c-p500: #f59e0b;
-  --c-p600: #d97706;
-  --c-p700: #b45309;
-  --c-p800: #ffffff;
-  --c-p900: #ffffff;
+  --c-p50: #f7f8fa;
+  --c-p100: #f0f2f6;
+  --c-p200: #e5e7eb;
+  --c-p300: #d1d5db;
+  --c-p400: #9ca3af;
+  --c-p500: #d97706;
+  --c-p600: #b45309;
+  --c-p700: #111318;
+  --c-p800: #0a0b0e;
+  --c-p900: #111318;
 
-  --c-forest: #ffffff;
-  --c-forest-dark: #f8fafc;
-  --c-forest-light: #f59e0b;
-  --c-forest-subtle: rgba(245, 158, 11, 0.1);
+  --c-forest: #111318;
+  --c-forest-dark: #0a0b0e;
+  --c-forest-light: #d97706;
+  --c-forest-subtle: rgba(217, 119, 6, 0.08);
 
-  --c-linen: #0c0d12;
-  --c-linen-dark: #14161f;
-  --c-linen-light: #1a1d27;
+  --c-linen: #f7f8fa;
+  --c-linen-dark: #f0f2f6;
+  --c-linen-light: #ffffff;
 
   --c-peach: #f43f5e;
   --c-peach-dark: #e11d48;
-  --c-peach-subtle: rgba(244, 63, 94, 0.15);
+  --c-peach-subtle: rgba(244, 63, 94, 0.1);
 
-  --c-terracotta: #f59e0b;
-  --c-terracotta-dark: #d97706;
-  --c-terracotta-light: #fbbf24;
-  --c-terracotta-subtle: rgba(245, 158, 11, 0.14);
+  --c-terracotta: #d97706;
+  --c-terracotta-dark: #b45309;
+  --c-terracotta-light: #f59e0b;
+  --c-terracotta-subtle: rgba(217, 119, 6, 0.1);
 
-  --c-charcoal: #ffffff;
-  --c-blush-white: #0c0d12;
-  --c-subtle-rose: #14161f;
-  --c-dusty-mauve: #f59e0b;
-  --c-midnight: #0c0d12;
+  --c-charcoal: #111318;
+  --c-blush-white: #f7f8fa;
+  --c-subtle-rose: #f0f2f6;
+  --c-dusty-mauve: #d97706;
+  --c-midnight: #111318;
   --c-teal: #10b981;
   --c-jade: #10b981;
-  --c-sage: #1a1d27;
-  --c-canvas: #0c0d12;
+  --c-sage: #f0f2f6;
+  --c-canvas: #f7f8fa;
 
-  --ion-background-color: #0c0d12;
-  --ion-text-color: #ffffff;
-  --ion-color-primary: #ffffff;
-  --ion-color-primary-rgb: 255, 255, 255;
-  --ion-color-primary-contrast: #0c0d12;
-  --ion-color-primary-shade: #e2e8f0;
-  --ion-color-primary-tint: #ffffff;
+  --ion-background-color: #f7f8fa;
+  --ion-text-color: #111318;
+  --ion-color-primary: #111318;
+  --ion-color-primary-rgb: 17, 19, 24;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-shade: #0a0b0e;
+  --ion-color-primary-tint: #1e293b;
 
-  --ion-color-secondary: #f59e0b;
-  --ion-color-secondary-contrast: #0c0d12;
+  --ion-color-secondary: #d97706;
+  --ion-color-secondary-contrast: #ffffff;
 
-  --ion-color-tertiary: #14161f;
-  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary: #f0f2f6;
+  --ion-color-tertiary-contrast: #111318;
 
   --r-sm: 10px;
   --r-md: 16px;
   --r-lg: 22px;
   --r-pill: 9999px;
 
-  --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.5), 0 1px 3px 0 rgba(0, 0, 0, 0.3);
-  --shadow-float: 0 20px 48px -8px rgba(0, 0, 0, 0.7);
+  --shadow-card: 0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 4px 18px -2px rgba(15, 23, 42, 0.05);
+  --shadow-float: 0 16px 36px -6px rgba(15, 23, 42, 0.12);
 
-  --theme-bg: #0c0d12;
-  --theme-surface: #14161f;
-  --theme-text: #ffffff;
+  --theme-bg: #f7f8fa;
+  --theme-surface: #ffffff;
+  --theme-text: #111318;
 }
