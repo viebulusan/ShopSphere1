@@ -26,7 +26,7 @@ export class BagPage {
   shippingProgressText = () => {
     const sub = this.shop.subtotal();
     if (sub >= 150) return 'Qualified for Free Carbon-Neutral Delivery!';
-    return `Add $${150 - sub} more for Free Delivery`;
+    return `Add ₱${150 - sub} more for Free Delivery`;
   };
 
   applyPromoCode() {

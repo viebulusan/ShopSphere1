@@ -12,25 +12,25 @@ import { ScreenType, Product } from '../../models/shop.models';
   template: `
     @if (!isAuthScreen()) {
       <header class="sticky top-0 z-40 px-4 sm:px-6 lg:px-8 py-3 transition-all duration-200"
-              style="background: rgba(247, 234, 224, 0.94); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(29, 69, 51, 0.08);">
+              style="background: rgba(12, 13, 18, 0.88); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
         
         <div class="w-full max-w-7xl mx-auto flex items-center justify-between gap-4">
 
           <div class="flex items-center gap-3">
             @if (isSubScreen() && !isAuthScreen()) {
               <button (click)="shop.goBack()" class="action-circle-btn" aria-label="Go Back">
-                <app-icon name="chevron-left" [size]="20" color="#1D4533" [strokeWidth]="2.4"></app-icon>
+                <app-icon name="chevron-left" [size]="20" color="#ffffff" [strokeWidth]="2.4"></app-icon>
               </button>
-              <span class="text-xs uppercase tracking-wider font-bold text-[#1D4533] opacity-80">{{ getScreenTitle() }}</span>
+              <span class="text-xs uppercase tracking-wider font-bold text-white">{{ getScreenTitle() }}</span>
             } @else {
               <div (click)="shop.navigateTo('home')" class="flex items-center gap-2.5 cursor-pointer group">
-                
+                <!-- Keep original logo asset untouched -->
                 <img src="assets/icon/app-icon.png" 
                      alt="ShopSphere Icon" 
-                     class="w-8 h-8 rounded-[10px] object-cover shadow-xs border border-[rgba(29,69,51,0.08)] group-hover:scale-105 transition-transform" />
+                     class="w-8 h-8 rounded-[10px] object-cover shadow-xs border border-white/10 group-hover:scale-105 transition-transform" />
                 <div>
-                  <span class="text-base font-extrabold tracking-tight" style="color: #1D4533; font-family: 'SF Pro Display', sans-serif;">
-                    Shop<span style="color: #5E3122;">Sphere</span>
+                  <span class="text-base font-black tracking-tight" style="color: #ffffff; font-family: 'SF Pro Display', sans-serif;">
+                    Shop<span style="color: #f59e0b;">Sphere</span>
                   </span>
                 </div>
               </div>
@@ -56,7 +56,7 @@ import { ScreenType, Product } from '../../models/shop.models';
 
               <div class="relative hidden sm:block w-48 md:w-60 lg:w-72">
                 <div class="relative flex items-center">
-                  <div class="absolute left-3 text-[#5E3122]/60 pointer-events-none">
+                  <div class="absolute left-3 text-[#64748b] pointer-events-none">
                     <app-icon name="search" [size]="14" color="currentColor"></app-icon>
                   </div>
                   <input 
@@ -65,31 +65,31 @@ import { ScreenType, Product } from '../../models/shop.models';
                     (focus)="isNavSearchFocused.set(true)"
                     (blur)="onBlur()"
                     (input)="onNavSearchInput()"
-                    placeholder="Search minimalist pieces..."
-                    class="w-full pl-9 pr-8 py-1.5 text-xs rounded-full bg-white/90 border border-[rgba(29,69,51,0.15)] text-[#1C1C1E] placeholder-[#8E8E93] focus:outline-none focus:border-[#1D4533] focus:bg-white transition-all shadow-xs"
+                    placeholder="Search curated pieces..."
+                    class="w-full pl-9 pr-8 py-1.5 text-xs rounded-full bg-white/5 border border-white/10 text-white placeholder:text-[#64748b] focus:outline-none focus:border-[#f59e0b] focus:ring-2 focus:ring-[#f59e0b]/20 transition-all shadow-xs"
                   />
                   @if (navSearchQuery) {
-                    <button (click)="clearNavSearch()" class="absolute right-2.5 text-[#8E8E93] hover:text-[#1D4533] p-0.5">
+                    <button (click)="clearNavSearch()" class="absolute right-2.5 text-[#64748b] hover:text-white p-0.5">
                       <app-icon name="x" [size]="12" color="currentColor"></app-icon>
                     </button>
                   }
                 </div>
 
                 @if (isNavSearchFocused() && liveMatchingProducts().length > 0) {
-                  <div class="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-xl border border-[rgba(29,69,51,0.08)] py-2 z-50 overflow-hidden animate-fade-in max-h-80 overflow-y-auto no-scrollbar">
-                    <div class="px-3 py-1 text-[10px] font-black uppercase tracking-wider text-[#5E3122]">
+                  <div class="absolute top-full left-0 right-0 mt-2 bg-[#14161f] rounded-2xl shadow-2xl border border-white/10 py-2 z-50 overflow-hidden animate-fade-in max-h-80 overflow-y-auto no-scrollbar">
+                    <div class="px-3 py-1 text-[10px] font-black uppercase tracking-wider text-[#f59e0b]">
                       Live Matches ({{ liveMatchingProducts().length }})
                     </div>
                     @for (prod of liveMatchingProducts().slice(0, 5); track prod.id) {
                       <div 
                         (mousedown)="selectLiveProduct(prod)" 
-                        class="px-3 py-2 flex items-center gap-3 hover:bg-[#F7EAE0] cursor-pointer transition-colors border-b border-stone-100 last:border-0">
-                        <img [src]="prod.image" class="w-9 h-9 rounded-lg object-cover shrink-0 bg-[#F7EAE0]" [alt]="prod.title" />
+                        class="px-3 py-2 flex items-center gap-3 hover:bg-white/5 cursor-pointer transition-colors border-b border-white/5 last:border-0">
+                        <img [src]="prod.image" class="w-9 h-9 rounded-lg object-cover shrink-0 bg-[#1a1d27] border border-white/10" [alt]="prod.title" />
                         <div class="min-w-0 flex-1">
-                          <p class="text-xs font-bold text-[#1C1C1E] truncate">{{ prod.title }}</p>
-                          <p class="text-[10px] text-[#58585D] truncate">{{ prod.subtitle }}</p>
+                          <p class="text-xs font-bold text-white truncate">{{ prod.title }}</p>
+                          <p class="text-[10px] text-[#94a3b8] truncate">{{ prod.subtitle }}</p>
                         </div>
-                        <span class="text-xs font-extrabold text-[#1D4533] shrink-0">&#36;{{ prod.price }}</span>
+                        <span class="text-xs font-extrabold text-[#f59e0b] shrink-0">₱{{ prod.price }}</span>
                       </div>
                     }
                   </div>
@@ -100,25 +100,15 @@ import { ScreenType, Product } from '../../models/shop.models';
 
           <div class="flex items-center gap-2 sm:gap-3">
             @if (!isAuthScreen()) {
-              
               <button (click)="shop.navigateTo('notifications')" class="action-circle-btn relative" aria-label="Notifications" title="Notifications">
-                <app-icon name="bell" [size]="18" color="#1D4533" [strokeWidth]="2"></app-icon>
+                <app-icon name="bell" [size]="18" color="#ffffff" [strokeWidth]="2"></app-icon>
                 @if (shop.unreadNotificationsCount() > 0) {
                   <span class="notif-dot"></span>
                 }
               </button>
-
-              <button (click)="shop.navigateTo('profile')" class="action-circle-btn overflow-hidden" aria-label="Account" title="Account">
-                @if (shop.currentUser()?.avatar) {
-                  <img [src]="shop.currentUser()!.avatar" alt="User Avatar" class="w-full h-full object-cover rounded-full" />
-                } @else {
-                  <app-icon name="user" [size]="18" color="#1D4533" [strokeWidth]="2"></app-icon>
-                }
-              </button>
             } @else {
-              
               <button (click)="shop.navigateTo('home')" class="action-circle-btn" aria-label="Browse Catalog" title="Close">
-                <app-icon name="x" [size]="18" color="#1D4533" [strokeWidth]="2.2"></app-icon>
+                <app-icon name="x" [size]="18" color="#ffffff" [strokeWidth]="2.2"></app-icon>
               </button>
             }
           </div>
@@ -134,17 +124,17 @@ import { ScreenType, Product } from '../../models/shop.models';
       border: none;
       font-size: 13px;
       font-weight: 600;
-      color: #58585D;
+      color: #94a3b8;
       cursor: pointer;
       padding: 6px 0;
       position: relative;
       transition: color 0.2s ease;
     }
     .nav-link:hover {
-      color: #1D4533;
+      color: #ffffff;
     }
     .nav-link.active {
-      color: #1D4533;
+      color: #ffffff;
       font-weight: 700;
     }
     .nav-link.active::after {
@@ -154,7 +144,7 @@ import { ScreenType, Product } from '../../models/shop.models';
       left: 0;
       right: 0;
       height: 2px;
-      background: #1D4533;
+      background: #f59e0b;
       border-radius: 9999px;
     }
     .action-circle-btn {
@@ -164,14 +154,16 @@ import { ScreenType, Product } from '../../models/shop.models';
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #FFFFFF;
-      border: 1px solid rgba(29, 69, 51, 0.1);
-      box-shadow: 0 2px 6px rgba(29, 69, 51, 0.04);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      color: #ffffff;
       cursor: pointer;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .action-circle-btn:hover {
-      background: #F9D2BA;
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.22);
       transform: scale(1.05);
     }
     .action-circle-btn:active {
@@ -179,13 +171,13 @@ import { ScreenType, Product } from '../../models/shop.models';
     }
     .notif-dot {
       position: absolute;
-      top: 7px;
-      right: 8px;
+      top: 6px;
+      right: 6px;
       width: 8px;
       height: 8px;
+      background: #f59e0b;
       border-radius: 9999px;
-      background: #5E3122;
-      border: 1.5px solid #FFFFFF;
+      border: 1.5px solid #0c0d12;
     }
   `]
 })
@@ -252,7 +244,8 @@ export class NavBarComponent {
       'add-payment',
       'reset-password',
       'code-verification',
-      'network-error'
+      'network-error',
+      'wishlist'
     ];
     return subs.includes(this.shop.activeScreen());
   }
@@ -271,6 +264,7 @@ export class NavBarComponent {
       case 'add-payment': return 'New Card';
       case 'notifications': return 'Inbox';
       case 'network-error': return 'System Status';
+      case 'wishlist': return 'Saved Items';
       default: return '';
     }
   }

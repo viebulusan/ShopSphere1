@@ -2,34 +2,34 @@
   height: 34px;
   padding: 0 16px;
   border-radius: 9999px;
-  background: #FFFFFF;
-  border: 1px solid rgba(29, 69, 51, 0.1);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   font-size: 12px;
-  font-weight: 700;
-  color: #58585D;
+  font-weight: 600;
+  color: #64748b;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   white-space: nowrap;
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 1px 4px rgba(29, 69, 51, 0.04);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 .category-pill:hover {
-  background: #F9D2BA;
-  color: #5E3122;
-  border-color: #F9D2BA;
+  background: #f8fafc;
+  color: #09090b;
+  border-color: #cbd5e1;
 }
 
 .category-pill.active {
-  background: #1D4533;
-  color: #FFFFFF;
-  border-color: #1D4533;
-  box-shadow: 0 4px 12px rgba(29, 69, 51, 0.25);
+  background: #09090b;
+  color: #ffffff !important;
+  border-color: #09090b;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(9, 9, 11, 0.18);
 }
 
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
-

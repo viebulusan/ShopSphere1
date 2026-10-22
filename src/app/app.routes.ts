@@ -70,11 +70,27 @@ export const routes: Routes = [
     loadComponent: () => import('./auth/auth.page').then(m => m.AuthPage),
   },
   {
+    path: 'forgot',
+    loadComponent: () => import('./auth/auth.page').then(m => m.AuthPage),
+  },
+  {
     path: 'forgot-password',
     loadComponent: () => import('./auth/auth.page').then(m => m.AuthPage),
   },
   {
+    path: 'verify',
+    loadComponent: () => import('./auth/auth.page').then(m => m.AuthPage),
+  },
+  {
+    path: 'code-verification',
+    loadComponent: () => import('./auth/auth.page').then(m => m.AuthPage),
+  },
+  {
     path: 'reset-password',
+    loadComponent: () => import('./auth/auth.page').then(m => m.AuthPage),
+  },
+  {
+    path: 'new-password',
     loadComponent: () => import('./auth/auth.page').then(m => m.AuthPage),
   },
   {
@@ -83,6 +99,14 @@ export const routes: Routes = [
   },
   {
     path: 'network-error',
+    loadComponent: () => import('./network-error/network-error.page').then(m => m.NetworkErrorPage),
+  },
+  {
+    path: 'offline',
+    loadComponent: () => import('./network-error/network-error.page').then(m => m.NetworkErrorPage),
+  },
+  {
+    path: 'feline',
     loadComponent: () => import('./network-error/network-error.page').then(m => m.NetworkErrorPage),
   },
   {

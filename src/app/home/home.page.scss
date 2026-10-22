@@ -2,31 +2,33 @@
   height: 34px;
   padding: 0 16px;
   border-radius: 9999px;
-  background: #FFFFFF;
-  border: 1px solid rgba(29, 69, 51, 0.1);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 12px;
-  font-weight: 700;
-  color: #58585D;
+  font-weight: 600;
+  color: #94a3b8;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   white-space: nowrap;
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 1px 4px rgba(29, 69, 51, 0.04);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px);
 }
 
 .category-pill:hover {
-  background: #F9D2BA;
-  color: #5E3122;
-  border-color: #F9D2BA;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .category-pill.active {
-  background: #1D4533;
-  color: #FFFFFF;
-  border-color: #1D4533;
-  box-shadow: 0 4px 12px rgba(29, 69, 51, 0.25);
+  background: #f59e0b;
+  color: #0c0d12 !important;
+  border-color: #f59e0b;
+  font-weight: 700;
+  box-shadow: 0 2px 14px rgba(245, 158, 11, 0.35);
 }
 
 .hero-carousel-container {
@@ -34,10 +36,13 @@
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
-  transition: box-shadow 0.25s ease;
+  transition: box-shadow 0.24s ease, border-color 0.24s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #14161f;
+  box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-carousel-container:hover {
-  box-shadow: 0 14px 30px -4px rgba(29, 69, 51, 0.18);
+  box-shadow: 0 16px 40px -4px rgba(0, 0, 0, 0.7);
+  border-color: rgba(255, 255, 255, 0.16);
 }
-

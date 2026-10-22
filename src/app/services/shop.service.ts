@@ -80,9 +80,13 @@ export class ShopService {
       this.activeScreen.set('login');
     } else if (cleanUrl.startsWith('/signup')) {
       this.activeScreen.set('signup');
-    } else if (cleanUrl.startsWith('/forgot') || cleanUrl.startsWith('/reset-password')) {
+    } else if (cleanUrl.startsWith('/forgot')) {
       this.activeScreen.set('reset-password');
-    } else if (cleanUrl.startsWith('/error') || cleanUrl.startsWith('/network-error')) {
+    } else if (cleanUrl.startsWith('/verify') || cleanUrl.startsWith('/code-verification')) {
+      this.activeScreen.set('code-verification');
+    } else if (cleanUrl.startsWith('/reset-password') || cleanUrl.startsWith('/new-password')) {
+      this.activeScreen.set('reset-password');
+    } else if (cleanUrl.startsWith('/error') || cleanUrl.startsWith('/network-error') || cleanUrl.startsWith('/offline') || cleanUrl.startsWith('/feline')) {
       this.activeScreen.set('network-error');
     } else {
       this.activeScreen.set('home');
@@ -104,11 +108,11 @@ export class ShopService {
       rating: 4.9,
       reviewsCount: 142,
       category: 'Audio',
-      image: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80',
+      image: 'assets/images/products/headphones-1.jpg',
       gallery: [
-        'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=800&q=80'
+        'assets/images/products/headphones-1.jpg',
+        'assets/images/products/headphones-2.jpg',
+        'assets/images/products/headphones-3.jpg'
       ],
       colors: [
         { name: 'Forest Green', hex: '#1D4533' },
@@ -132,7 +136,7 @@ export class ShopService {
           id: 'rev-1',
           productId: 'sp-1',
           author: 'Marcus K.',
-          avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
+          avatar: 'assets/images/avatars/reviewer-marcus.jpg',
           verifiedBuyer: true,
           rating: 5,
           date: 'Sep 02, 2026',
@@ -144,7 +148,7 @@ export class ShopService {
           id: 'rev-2',
           productId: 'sp-1',
           author: 'Elena P.',
-          avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80',
+          avatar: 'assets/images/avatars/reviewer-elena.jpg',
           verifiedBuyer: true,
           rating: 5,
           date: 'Aug 28, 2026',
@@ -163,10 +167,10 @@ export class ShopService {
       rating: 4.8,
       reviewsCount: 89,
       category: 'Home & Living',
-      image: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=800&q=80',
+      image: 'assets/images/products/kettle-1.jpg',
       gallery: [
-        'https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80'
+        'assets/images/products/kettle-1.jpg',
+        'assets/images/products/kettle-2.jpg'
       ],
       colors: [
         { name: 'Terracotta Red', hex: '#5E3122' },
@@ -189,7 +193,7 @@ export class ShopService {
           id: 'rev-3',
           productId: 'sp-2',
           author: 'David L.',
-          avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200&q=80',
+          avatar: 'assets/images/avatars/reviewer-david.jpg',
           verifiedBuyer: true,
           rating: 5,
           date: 'Sep 06, 2026',
@@ -207,10 +211,10 @@ export class ShopService {
       rating: 4.9,
       reviewsCount: 64,
       category: 'Workspace',
-      image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80',
+      image: 'assets/images/products/folio-1.jpg',
       gallery: [
-        'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80'
+        'assets/images/products/folio-1.jpg',
+        'assets/images/products/folio-2.jpg'
       ],
       colors: [
         { name: 'Forest Green', hex: '#1D4533' },
@@ -232,7 +236,7 @@ export class ShopService {
           id: 'rev-4',
           productId: 'sp-3',
           author: 'Sophia R.',
-          avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80',
+          avatar: 'assets/images/avatars/reviewer-sophia.jpg',
           verifiedBuyer: true,
           rating: 5,
           date: 'Aug 19, 2026',
@@ -251,10 +255,10 @@ export class ShopService {
       rating: 4.7,
       reviewsCount: 52,
       category: 'Home & Living',
-      image: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=800&q=80',
+      image: 'assets/images/products/lamp-1.jpg',
       gallery: [
-        'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=800&q=80'
+        'assets/images/products/lamp-1.jpg',
+        'assets/images/products/lamp-2.jpg'
       ],
       colors: [
         { name: 'Warm Cream', hex: '#F7EAE0' },
@@ -280,10 +284,10 @@ export class ShopService {
       rating: 5.0,
       reviewsCount: 38,
       category: 'Timepieces',
-      image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80',
+      image: 'assets/images/products/watch-1.jpg',
       gallery: [
-        'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=80'
+        'assets/images/products/watch-1.jpg',
+        'assets/images/products/watch-2.jpg'
       ],
       colors: [
         { name: 'Forest Anodized', hex: '#1D4533' },
@@ -309,10 +313,10 @@ export class ShopService {
       rating: 4.8,
       reviewsCount: 110,
       category: 'Apparel',
-      image: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=800&q=80',
+      image: 'assets/images/products/crew-1.jpg',
       gallery: [
-        'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=800&q=80'
+        'assets/images/products/crew-1.jpg',
+        'assets/images/products/crew-2.jpg'
       ],
       colors: [
         { name: 'Warm Cream', hex: '#F7EAE0' },
@@ -339,9 +343,9 @@ export class ShopService {
       rating: 4.9,
       reviewsCount: 95,
       category: 'Workspace',
-      image: 'https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&w=800&q=80',
+      image: 'assets/images/products/keyboard-1.jpg',
       gallery: [
-        'https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&w=800&q=80'
+        'assets/images/products/keyboard-1.jpg'
       ],
       colors: [
         { name: 'Forest Anodized', hex: '#1D4533' },
@@ -367,9 +371,9 @@ export class ShopService {
       rating: 4.6,
       reviewsCount: 42,
       category: 'Home & Living',
-      image: 'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=800&q=80',
+      image: 'assets/images/products/tasting-1.jpg',
       gallery: [
-        'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=800&q=80'
+        'assets/images/products/tasting-1.jpg'
       ],
       colors: [
         { name: 'Terracotta Clay', hex: '#5E3122' },
@@ -724,13 +728,19 @@ export class ShopService {
         this.router.navigate(['/payments']);
         break;
       case 'login':
-      case 'signup':
-      case 'reset-password':
-      case 'code-verification':
         this.router.navigate(['/login']);
         break;
+      case 'signup':
+        this.router.navigate(['/signup']);
+        break;
+      case 'reset-password':
+        this.router.navigate(['/reset-password']);
+        break;
+      case 'code-verification':
+        this.router.navigate(['/verify']);
+        break;
       case 'network-error':
-        this.router.navigate(['/error']);
+        this.router.navigate(['/offline']);
         break;
       default:
         this.router.navigate(['/home']);
@@ -740,6 +750,14 @@ export class ShopService {
   goBack() {
     if (this.activeScreen() === 'order-details') {
       this.navigateTo('orders');
+      return;
+    }
+    if (this.activeScreen() === 'wishlist') {
+      if (typeof window !== 'undefined' && window.history.length > 1) {
+        window.history.back();
+      } else {
+        this.navigateTo('profile');
+      }
       return;
     }
     if (typeof window !== 'undefined' && window.history.length > 1) {
@@ -921,7 +939,7 @@ export class ShopService {
       id: 'user-' + Date.now(),
       name: name || email.split('@')[0].replace('.', ' ').replace(/\b\w/g, l => l.toUpperCase()),
       email,
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
+      avatar: 'assets/images/avatars/user-alex.jpg',
       tier: 'ShopSphere Member',
       memberSince: 'September 2026',
       phone: '+1 (555) 389-1029'
@@ -972,7 +990,7 @@ export class ShopService {
     orderAlerts: true,
     exclusiveDrops: false,
     faceId: true,
-    currency: 'USD ($)',
+    currency: 'PHP (₱)',
     language: 'English',
     theme: 'Ivory Linen'
   });
@@ -1025,7 +1043,7 @@ export class ShopService {
       id: 'rev-' + Date.now(),
       productId: data.productId,
       author: user?.name || 'Alex Rivera',
-      avatar: user?.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
+      avatar: user?.avatar || 'assets/images/avatars/user-alex.jpg',
       verifiedBuyer: true,
       rating: data.rating,
       date: 'Just now',
