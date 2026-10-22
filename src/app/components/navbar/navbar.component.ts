@@ -24,12 +24,11 @@ import { ScreenType, Product } from '../../models/shop.models';
               <span class="text-xs uppercase tracking-wider font-bold text-[#111318]">{{ getScreenTitle() }}</span>
             } @else {
               <div (click)="shop.navigateTo('home')" class="flex items-center gap-2.5 cursor-pointer group">
-                <!-- Keep original logo asset untouched -->
                 <img src="assets/icon/app-icon.png" 
                      alt="ShopSphere Icon" 
-                     class="w-8 h-8 rounded-[10px] object-cover shadow-xs border border-black/10 group-hover:scale-105 transition-transform" />
+                     class="w-8 h-8 rounded-[10px] object-cover shadow-2xs border border-[#e5e7eb] group-hover:scale-105 transition-transform" />
                 <div>
-                  <span class="text-base font-black tracking-tight" style="color: #111318; font-family: 'SF Pro Display', sans-serif;">
+                  <span class="text-base font-black tracking-tight" style="color: #111318; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;">
                     Shop<span style="color: #d97706;">Sphere</span>
                   </span>
                 </div>

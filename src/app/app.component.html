@@ -19,19 +19,19 @@
        data-modal-overlay
        (click)="shop.closeAuthPrompt()">
     <div 
-      class="relative w-full max-w-sm bg-white rounded-[28px] shadow-2xl border border-[rgba(22,100,176,0.18)] p-6 text-center space-y-4 my-auto animate-scale-up"
+      class="relative w-full max-w-sm bg-white rounded-[28px] shadow-2xl border border-[#e5e7eb] p-6 text-center space-y-4 my-auto animate-scale-up"
       (click)="$event.stopPropagation()">
       
       <div class="relative w-16 h-16 mx-auto">
-        <img src="assets/icon/app-icon.png" alt="ShopSphere" class="w-16 h-16 rounded-[20px] shadow-md object-cover border border-[rgba(22,100,176,0.18)]" />
-        <div class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-[#1664b0] text-[#FFFFFF] flex items-center justify-center shadow-xs border-2 border-white">
+        <img src="assets/icon/app-icon.png" alt="ShopSphere" class="w-16 h-16 rounded-[20px] shadow-sm object-cover border border-[#e5e7eb]" />
+        <div class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-[#111318] text-[#FFFFFF] flex items-center justify-center shadow-xs border-2 border-white">
           <app-icon name="lock" [size]="12" color="#FFFFFF"></app-icon>
         </div>
       </div>
 
       <div class="space-y-1.5">
-        <h3 class="text-base font-black text-[#1664b0]">Account Required</h3>
-        <p class="text-xs text-[#555B62] leading-relaxed">
+        <h3 class="text-base font-black text-[#111318]">Account Required</h3>
+        <p class="text-xs text-[#6b7280] leading-relaxed">
           {{ shop.authPromptMessage() || 'Please sign in or create an account to save pieces, add items to your bag, or proceed to checkout.' }}
         </p>
       </div>
@@ -44,7 +44,7 @@
         </button>
         <button 
           (click)="shop.closeAuthPrompt()"
-          class="w-full text-xs font-bold text-[#555B62] hover:text-[#1664b0] py-2 transition-colors">
+          class="w-full text-xs font-bold text-[#6b7280] hover:text-[#111318] py-2 transition-colors">
           Continue Browsing
         </button>
       </div>
