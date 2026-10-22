@@ -32,6 +32,22 @@ export class OrdersPage implements OnInit {
   isSubmittingReview = signal(false);
   reviewSubmitted = signal(false);
 
+  isReturnModalOpen = signal(false);
+  returningOrder = signal<Order | null>(null);
+  returningItem = signal<CartItem | null>(null);
+  returnReason = signal<string>('Size / Fit issue');
+  returnNotes = signal<string>('');
+  isSubmittingReturn = signal(false);
+  returnSubmitted = signal(false);
+
+  readonly returnReasons = [
+    'Size / Fit issue',
+    'Changed my mind',
+    'Item defective or damaged',
+    'Color differs from photos',
+    'Ordered wrong model'
+  ];
+
   canSubmitReview = computed(() => {
     return this.reviewRating() > 0 && !this.isSubmittingReview();
   });
@@ -52,7 +68,7 @@ export class OrdersPage implements OnInit {
 
     this.route.queryParamMap.subscribe(params => {
       const tab = params.get('tab');
-      if (tab && ['All', 'Active', 'Delivered'].includes(tab)) {
+      if (tab && ['All', 'Active', 'Delivered', 'Returns'].includes(tab)) {
         this.filterTab.set(tab);
         this.shop.ordersFilterTab.set(tab);
       }
@@ -95,8 +111,34 @@ export class OrdersPage implements OnInit {
     if (tab === 'Delivered') {
       return all.filter(o => o.status === 'delivered');
     }
+    if (tab === 'Returns') {
+      return all.filter(o => o.status === 'delivered');
+    }
     return all;
   };
+
+  openReturnModal(ord: Order, item?: CartItem) {
+    this.returningOrder.set(ord);
+    this.returningItem.set(item || ord.items[0]);
+    this.returnSubmitted.set(false);
+    this.returnNotes.set('');
+    this.isReturnModalOpen.set(true);
+  }
+
+  closeReturnModal() {
+    this.isReturnModalOpen.set(false);
+    this.returningOrder.set(null);
+    this.returningItem.set(null);
+  }
+
+  submitReturn() {
+    if (!this.returningOrder()) return;
+    this.isSubmittingReturn.set(true);
+    setTimeout(() => {
+      this.isSubmittingReturn.set(false);
+      this.returnSubmitted.set(true);
+    }, 500);
+  }
 
   viewOrder(ord: Order) {
     this.currentOrder.set(ord);

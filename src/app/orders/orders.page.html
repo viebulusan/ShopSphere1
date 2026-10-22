@@ -179,7 +179,7 @@
       </div>
 
       <div class="flex items-center gap-1.5 p-1 rounded-full bg-[#FFFFFF] border border-[rgba(22,100,176,0.18)] self-start sm:self-auto">
-        @for (tab of ['All', 'Active', 'Delivered']; track tab) {
+        @for (tab of ['All', 'Active', 'Delivered', 'Returns']; track tab) {
           <button 
             (click)="setTab(tab)"
             class="px-4 py-1.5 rounded-full text-xs font-bold transition-all"
@@ -192,6 +192,18 @@
         }
       </div>
     </div>
+
+    @if (filterTab() === 'Returns') {
+      <div class="p-4 rounded-[20px] bg-[#FFFFFF] border border-[rgba(22,100,176,0.18)] shadow-xs flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-[#1664b0] text-white flex items-center justify-center shrink-0 shadow-xs">
+          <app-icon name="refresh" [size]="18" color="#FFFFFF"></app-icon>
+        </div>
+        <div class="text-xs">
+          <h4 class="font-bold text-[#1A1D20]">30-Day Hassle-Free Returns</h4>
+          <p class="text-[#555B62] mt-0.5">Select any delivered order below to generate an instant prepaid return shipping label.</p>
+        </div>
+      </div>
+    }
 
     @if (filteredOrders().length > 0) {
       <div class="space-y-4">
@@ -237,6 +249,13 @@
 
                   <div class="flex items-center justify-end gap-2 pt-1 sm:pt-0 border-t border-[rgba(22,100,176,0.1)] sm:border-t-0 shrink-0">
                     @if (ord.status === 'delivered') {
+                      <button 
+                        (click)="openReturnModal(ord, item); $event.stopPropagation()"
+                        class="text-[11px] font-bold text-[#1664b0] hover:underline px-1.5 py-1 flex items-center gap-1">
+                        <app-icon name="refresh" [size]="11" color="#1664b0"></app-icon>
+                        <span>Return Item</span>
+                      </button>
+
                       @if (shop.isItemReviewed(ord.id, item.product.id)) {
                         <span class="inline-flex items-center gap-1 text-[11px] font-bold text-[#1664b0] bg-[#1664b0]/10 px-3 py-1.5 rounded-full">
                           <app-icon name="check" [size]="11" color="#1664b0"></app-icon>
@@ -477,6 +496,100 @@
           </div>
         }
 
+      </div>
+    </div>
+  }
+
+  @if (isReturnModalOpen() && returningOrder(); as ord) {
+    <div class="fixed inset-0 z-[100000] flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-sm animate-fade-in modal-overlay"
+         style="z-index: 100000 !important;"
+         (click)="closeReturnModal()">
+      <div 
+        class="relative w-full max-w-[460px] bg-[#FFFFFF] rounded-[28px] shadow-2xl border border-[rgba(22,100,176,0.22)] p-6 space-y-5 my-auto"
+        (click)="$event.stopPropagation()">
+        
+        @if (returnSubmitted()) {
+          <div class="py-8 text-center space-y-4 animate-fade-in">
+            <div class="w-16 h-16 mx-auto rounded-full bg-[#1664b0] flex items-center justify-center text-white shadow-lg">
+              <app-icon name="check" [size]="30" color="#FFFFFF" [strokeWidth]="3"></app-icon>
+            </div>
+            <div>
+              <h3 class="text-xl font-black text-[#1A1D20]">Return Label Generated</h3>
+              <p class="text-xs text-[#555B62] mt-1.5 max-w-[280px] mx-auto leading-relaxed">
+                Your prepaid return shipping label for Order {{ ord.orderNumber }} has been sent to your email. Drop off your package at any authorized depot.
+              </p>
+            </div>
+            <div class="pt-2">
+              <button (click)="closeReturnModal()" class="apple-button-primary text-xs py-2.5 px-6 font-bold">
+                Done
+              </button>
+            </div>
+          </div>
+        } @else {
+          <div class="flex items-center justify-between border-b border-[rgba(22,100,176,0.15)] pb-3">
+            <div>
+              <h2 class="text-lg font-black text-[#1A1D20]">Request 30-Day Return</h2>
+              <p class="text-[11px] text-[#555B62]">Order {{ ord.orderNumber }} • Prepaid Postage Included</p>
+            </div>
+            <button 
+              (click)="closeReturnModal()" 
+              class="w-8 h-8 rounded-full bg-[#efe8de] flex items-center justify-center text-[#555B62] hover:text-[#1A1D20]"
+              aria-label="Close">
+              <app-icon name="x" [size]="16" color="currentColor"></app-icon>
+            </button>
+          </div>
+
+          @if (returningItem(); as itm) {
+            <div class="flex items-center gap-3 p-3 rounded-[16px] bg-[#efe8de]/70 border border-[rgba(22,100,176,0.15)]">
+              <img [src]="itm.product.image" class="w-12 h-12 rounded-[10px] object-cover bg-white shrink-0 border border-[rgba(22,100,176,0.15)]" [alt]="itm.product.title" />
+              <div class="min-w-0 flex-1">
+                <h4 class="text-xs font-bold text-[#1A1D20] truncate">{{ itm.product.title }}</h4>
+                <p class="text-[10px] text-[#555B62]">{{ itm.selectedColor.name }} • {{ itm.selectedSize }} • Qty: {{ itm.quantity }}</p>
+                <span class="text-xs font-black text-[#1664b0]">₱{{ itm.product.price * itm.quantity }}</span>
+              </div>
+            </div>
+          }
+
+          <div class="space-y-1.5">
+            <label class="text-xs font-bold text-[#1A1D20] block">Reason for Return</label>
+            <div class="space-y-1.5">
+              @for (r of returnReasons; track r) {
+                <label class="flex items-center gap-2.5 p-2 rounded-xl border border-[rgba(22,100,176,0.15)] cursor-pointer hover:bg-[#efe8de]/50 transition-colors text-xs"
+                       [class.bg-[#efe8de]]="returnReason() === r">
+                  <input type="radio" [value]="r" [name]="'reason'" (change)="returnReason.set(r)" [checked]="returnReason() === r" class="accent-[#1664b0]" />
+                  <span class="font-medium text-[#1A1D20]">{{ r }}</span>
+                </label>
+              }
+            </div>
+          </div>
+
+          <div class="space-y-1">
+            <label class="text-xs font-bold text-[#1A1D20] block">Additional Details <span class="text-[#555B62] font-normal">(Optional)</span></label>
+            <textarea 
+              [(ngModel)]="returnNotes"
+              rows="2"
+              placeholder="Tell us more about the return or exchange requirements..."
+              class="apple-input text-xs w-full resize-none"></textarea>
+          </div>
+
+          <div class="flex items-center justify-end gap-2 pt-2 border-t border-[rgba(22,100,176,0.15)]">
+            <button (click)="closeReturnModal()" class="apple-button-secondary text-xs py-2 px-4 font-bold">
+              Cancel
+            </button>
+            <button 
+              (click)="submitReturn()" 
+              [disabled]="isSubmittingReturn()"
+              class="apple-button-primary text-xs py-2.5 px-5 font-bold flex items-center gap-1.5">
+              @if (isSubmittingReturn()) {
+                <span class="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                <span>Generating Label...</span>
+              } @else {
+                <app-icon name="refresh" [size]="14" color="#FFFFFF"></app-icon>
+                <span>Generate Return Label</span>
+              }
+            </button>
+          </div>
+        }
       </div>
     </div>
   }

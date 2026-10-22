@@ -13,19 +13,22 @@
 html {
   min-height: 100%;
   width: 100%;
+  max-width: 100vw;
   margin: 0;
   padding: 0;
   background-color: #efe8de !important;
   color: #1A1D20;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  overflow-x: hidden;
+  overflow-x: clip !important;
+  overscroll-behavior-x: none;
 }
 
 body {
   min-height: 100vh;
   min-height: 100dvh;
   width: 100%;
+  max-width: 100vw;
   margin: 0;
   padding: 0;
   background-color: #efe8de !important;
@@ -35,13 +38,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
   position: static !important;
   transform: none !important;
+  overflow-x: clip !important;
+  overscroll-behavior-x: none;
 }
 
 app-root {
   display: block;
   width: 100%;
+  max-width: 100vw;
   min-height: 100vh;
   min-height: 100dvh;
+  overflow-x: clip !important;
 }
 
 app-navbar,
