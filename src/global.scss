@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -14,8 +15,7 @@ html {
   width: 100%;
   margin: 0;
   padding: 0;
-  background-color: #f7f8fa !important;
-  color: #111318;
+  background-color: #F7EAE0 !important;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   overflow-x: hidden;
@@ -27,8 +27,8 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-  background-color: #f7f8fa !important;
-  color: #111318;
+  background-color: #F7EAE0 !important;
+  color: #1C1C1E;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Plus Jakarta Sans", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -117,47 +117,40 @@ body::-webkit-scrollbar {
   scrollbar-width: none !important;
 }
 
-/* Unique Architectural Gallery Card */
 .apple-card {
-  background: #ffffff;
-  border-radius: 20px;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 4px 18px -2px rgba(15, 23, 42, 0.05);
-  color: #111318;
-  transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.24s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.24s ease;
+  background: #FFFFFF;
+  border-radius: 24px;
+  border: 1px solid rgba(29, 69, 51, 0.08);
+  box-shadow: 0 4px 18px -2px rgba(29, 69, 51, 0.06);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .apple-card:hover {
-  box-shadow: 0 10px 28px -4px rgba(15, 23, 42, 0.09);
-  border-color: #d1d5db;
+  box-shadow: 0 10px 26px -4px rgba(29, 69, 51, 0.11);
 }
 
-/* Obsidian Noir Primary Button */
 .apple-button-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background-color: #111318;
-  color: #ffffff !important;
+  background-color: #1D4533;
+  color: #FFFFFF !important;
   font-weight: 700;
   border-radius: 9999px;
-  padding: 12px 24px;
-  border: 1px solid #111318;
+  padding: 13px 24px;
+  border: none;
   cursor: pointer;
-  box-shadow: 0 2px 10px rgba(17, 19, 24, 0.18);
+  box-shadow: 0 4px 14px rgba(29, 69, 51, 0.25);
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
   text-align: center;
-  letter-spacing: -0.15px;
 }
 
 .apple-button-primary:hover {
-  background-color: #242933;
-  border-color: #242933;
-  color: #ffffff !important;
+  background-color: #143224;
   transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(17, 19, 24, 0.25);
+  box-shadow: 0 6px 18px rgba(20, 50, 36, 0.32);
 }
 
 .apple-button-primary:active {
@@ -165,72 +158,67 @@ body::-webkit-scrollbar {
 }
 
 .apple-button-primary:disabled {
-  opacity: 0.4;
+  opacity: 0.6;
   cursor: not-allowed;
   transform: none;
 }
 
-/* Mineral Outline Secondary Button */
 .apple-button-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background-color: #ffffff;
-  color: #111318 !important;
-  font-weight: 600;
+  background-color: #F7EAE0;
+  color: #1D4533 !important;
+  font-weight: 700;
   border-radius: 9999px;
-  padding: 11px 20px;
-  border: 1px solid #e5e7eb;
+  padding: 12px 20px;
+  border: 1px solid rgba(29, 69, 51, 0.15);
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.22s ease;
   text-decoration: none;
   text-align: center;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
 }
 
 .apple-button-secondary:hover {
-  background-color: #f7f8fa;
-  border-color: #d1d5db;
-  color: #111318 !important;
-  transform: translateY(-1px);
+  background-color: #F9D2BA;
+  border-color: #F9D2BA;
+  color: #5E3122 !important;
 }
 
 .apple-button-secondary:active {
   transform: scale(0.97);
 }
 
-/* Precision Input */
 .apple-input {
   width: 100%;
-  padding: 11px 16px;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 14px;
+  padding: 12px 18px;
+  background: #FFFFFF;
+  border: 1px solid rgba(29, 69, 51, 0.16);
+  border-radius: 16px;
   font-family: inherit;
   font-size: 14px;
-  color: #111318;
+  color: #1C1C1E;
   outline: none;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .apple-input:focus {
-  border-color: #111318;
-  box-shadow: 0 0 0 3px rgba(17, 19, 24, 0.08);
+  border-color: #1D4533;
+  box-shadow: 0 0 0 3px rgba(29, 69, 51, 0.12);
 }
 
 .apple-input::placeholder {
-  color: #9ca3af;
+  color: #8E8E93;
 }
 
-/* Unique Badges */
 .badge-tag {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 3px 8px;
-  font-size: 9.5px;
-  font-weight: 700;
+  padding: 4px 10px;
+  font-size: 10px;
+  font-weight: 800;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   border-radius: 9999px;
@@ -238,167 +226,26 @@ body::-webkit-scrollbar {
 }
 
 .badge-primary,
-.badge-forest,
+.badge-forest {
+  background: #1D4533;
+  color: #FFFFFF;
+}
+
+.badge-peach,
 .badge-secondary {
-  background: #111318 !important;
-  color: #ffffff !important;
-  font-weight: 700;
-  border: none;
+  background: #F9D2BA;
+  color: #5E3122;
 }
 
 .badge-terracotta {
-  background: rgba(217, 119, 6, 0.12) !important;
-  color: #b45309 !important;
-  font-weight: 700;
-  border: 1px solid rgba(217, 119, 6, 0.25);
-}
-
-.badge-peach {
-  background: #f43f5e !important;
-  color: #ffffff !important;
-  font-weight: 700;
-  border: none;
+  background: #5E3122;
+  color: #FFFFFF;
 }
 
 .badge-linen {
-  background: #f0f2f6;
-  color: #6b7280;
-  border: 1px solid #e5e7eb;
-}
-
-/* Light Mode Luxury Mappings */
-.bg-white {
-  background-color: #ffffff !important;
-}
-
-.bg-\[\#FAF4EE\], 
-.bg-\[\#F7EAE0\],
-.bg-\[\#F5F5F7\],
-.bg-\[\#EAF2EC\],
-.bg-\[\#efe8de\],
-.bg-\[\#EFE8DE\],
-.bg-\[\#f8fafc\],
-.bg-\[\#F8FAFC\],
-.bg-\[\#f5f3ef\],
-.bg-\[\#F5F3EF\],
-.bg-\[\#f8f9fc\],
-.bg-\[\#F8F9FC\],
-.bg-\[\#f6f6f8\],
-.bg-\[\#0c0d12\],
-.bg-\[\#14161f\] {
-  background-color: #f7f8fa !important;
-}
-
-.bg-\[\#1D4533\],
-.bg-\[\#070606\],
-.bg-\[\#12544F\],
-.bg-\[\#09090b\],
-.bg-\[\#092328\],
-.bg-\[\#212121\],
-.bg-\[\#323232\],
-.bg-\[\#191817\],
-.bg-\[\#0b0f19\],
-.bg-\[\#0a0a0a\],
-.bg-black {
-  background-color: #111318 !important;
-  color: #ffffff !important;
-}
-
-.bg-\[\#1664b0\],
-.bg-\[\#8c5d38\],
-.bg-\[\#6366f1\],
-.bg-\[\#2563eb\] {
-  background-color: #111318 !important;
-  color: #ffffff !important;
-}
-
-.bg-\[\#d21624\],
-.bg-\[\#9e382b\],
-.bg-\[\#f43f5e\] {
-  background-color: #f43f5e !important;
-  color: #ffffff !important;
-}
-
-.bg-\[\#8BBB92\],
-.bg-\[\#F9D2BA\],
-.bg-\[\#C7C6C6\],
-.bg-\[\#f1f5f9\],
-.bg-\[\#ebe8e1\],
-.bg-\[\#f1f4f9\],
-.bg-\[\#efeff2\],
-.bg-\[\#1a1d27\] {
-  background-color: #f0f2f6 !important;
-  color: #111318 !important;
-}
-
-.text-\[\#1D4533\], 
-.text-\[\#1C1C1E\],
-.text-\[\#070606\],
-.text-\[\#092328\],
-.text-\[\#1A1D20\],
-.text-\[\#212121\],
-.text-\[\#323232\],
-.text-\[\#09090b\],
-.text-\[\#191817\],
-.text-\[\#0b0f19\],
-.text-\[\#0a0a0a\] {
-  color: #111318 !important;
-}
-
-.text-\[\#5E3122\],
-.text-\[\#363434\],
-.text-\[\#12544F\],
-.text-\[\#1664b0\],
-.text-\[\#8c5d38\],
-.text-\[\#6366f1\],
-.text-\[\#2563eb\],
-.text-\[\#0D7377\] {
-  color: #111318 !important;
-}
-
-.text-\[\#d21624\],
-.text-\[\#9e382b\],
-.text-\[\#f43f5e\] {
-  color: #f43f5e !important;
-}
-
-.text-\[\#58585D\], 
-.text-\[\#8E8E93\],
-.text-\[\#575555\],
-.text-\[\#7C7B7B\],
-.text-\[\#555B62\],
-.text-\[\#605c57\],
-.text-\[\#64748b\],
-.text-\[\#475569\],
-.text-\[\#6e6e73\] {
-  color: #6b7280 !important;
-}
-
-.text-\[\#8e8982\],
-.text-\[\#94a3b8\],
-.text-\[\#9e9ea7\] {
-  color: #9ca3af !important;
-}
-
-.border-\[\#1D4533\], 
-.border-\[\#C7C6C6\],
-.border-\[\#A1A1A1\],
-.border-\[\#e2e8f0\],
-.border-\[\#e4e0d6\],
-.border-\[\#e5e5ea\],
-.border-\[rgba\(22\,100\,176\,0\.14\)\],
-.border-\[rgba\(22\,100\,176\,0\.16\)\],
-.border-\[rgba\(22\,100\,176\,0\.18\)\],
-.border-\[rgba\(22\,100\,176\,0\.2\)\],
-.border-\[rgba\(22\,100\,176\,0\.22\)\],
-.border-\[rgba\(22\,100\,176\,0\.25\)\],
-.border-\[rgba\(29\,69\,51\,0\.08\)\], 
-.border-\[rgba\(29\,69\,51\,0\.15\)\], 
-.border-\[rgba\(29\,69\,51\,0\.12\)\], 
-.border-\[rgba\(29\,69\,51\,0\.16\)\], 
-.border-\[rgba\(29\,69\,51\,0\.1\)\], 
-.border-\[rgba\(29\,69\,51\,0\.2\)\] {
-  border-color: #e5e7eb !important;
+  background: #F7EAE0;
+  color: #1D4533;
+  border: 1px solid rgba(29, 69, 51, 0.15);
 }
 
 @keyframes fadeIn {
@@ -407,16 +254,16 @@ body::-webkit-scrollbar {
 }
 
 @keyframes scaleUp {
-  from { opacity: 0; transform: scale(0.97); }
+  from { opacity: 0; transform: scale(0.96); }
   to { opacity: 1; transform: scale(1); }
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .animate-scale-up {
-  animation: scaleUp 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: scaleUp 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .modal-overlay,

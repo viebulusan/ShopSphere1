@@ -5,32 +5,29 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  color: #09090b;
+  background: #FFFFFF;
+  border: 1px solid rgba(29, 69, 51, 0.1);
   cursor: pointer;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .icon-round-btn:hover {
-  background: #f8fafc;
-  border-color: #cbd5e1;
+  background: #F9D2BA;
   transform: scale(1.05);
 }
 
 .icon-round-btn.active {
-  background: #e11d48;
-  border-color: #e11d48;
-  color: #ffffff;
+  background: #F9D2BA;
+  border-color: #5E3122;
 }
 
 .color-chip {
   width: 30px;
   height: 30px;
   border-radius: 9999px;
-  border: 2px solid #ffffff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -39,33 +36,31 @@
 }
 
 .color-chip.active {
-  box-shadow: 0 0 0 2.5px #09090b;
+  box-shadow: 0 0 0 2.5px #1D4533;
   transform: scale(1.1);
 }
 
 .size-pill {
   padding: 6px 14px;
   border-radius: 9999px;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  background: #FFFFFF;
+  border: 1px solid rgba(29, 69, 51, 0.12);
   font-size: 12px;
   font-weight: 600;
-  color: #64748b;
+  color: #58585D;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .size-pill:hover {
-  border-color: #09090b;
-  color: #09090b;
+  border-color: #1D4533;
 }
 
 .size-pill.active {
-  background: #09090b;
-  color: #ffffff;
-  border-color: #09090b;
-  font-weight: 700;
-  box-shadow: 0 2px 8px rgba(9, 9, 11, 0.18);
+  background: #1D4533;
+  color: #FFFFFF;
+  border-color: #1D4533;
+  box-shadow: 0 2px 8px rgba(29, 69, 51, 0.2);
 }
 
 .no-scrollbar::-webkit-scrollbar {

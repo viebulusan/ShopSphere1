@@ -1,28 +1,19 @@
 <div class="space-y-5 pb-8 animate-fade-in">
 
-  <div class="flex items-center justify-between">
-    <div class="flex items-center gap-3">
-      <button 
-        (click)="shop.goBack()" 
-        class="w-9 h-9 rounded-full bg-white border border-[#e2e8f0] shadow-xs flex items-center justify-center text-[#09090b] hover:bg-[#f8fafc] active:scale-95 transition-all cursor-pointer" 
-        aria-label="Go Back"
-        title="Go Back">
-        <app-icon name="chevron-left" [size]="18" color="#09090b" [strokeWidth]="2.4"></app-icon>
-      </button>
-      <div>
-        <h1 class="text-2xl sm:text-3xl font-black text-[#09090b] tracking-tight" style="font-family: 'SF Pro Display', sans-serif;">
-          Saved Items
-        </h1>
-        <p class="text-xs sm:text-sm font-medium text-[#64748b] mt-0.5">
-          {{ shop.wishlistCount() }} {{ shop.wishlistCount() === 1 ? 'item' : 'items' }} curated in your collection
-        </p>
-      </div>
+  <div class="flex items-baseline justify-between">
+    <div>
+      <h1 class="text-2xl sm:text-3xl font-black text-[#1D4533] tracking-tight" style="font-family: 'SF Pro Display', sans-serif;">
+        Saved Items
+      </h1>
+      <p class="text-xs sm:text-sm font-medium text-[#5E3122] opacity-80 mt-0.5">
+        {{ shop.wishlistCount() }} {{ shop.wishlistCount() === 1 ? 'item' : 'items' }} curated in your collection
+      </p>
     </div>
 
     @if (shop.wishlist().length > 0) {
       <button 
         (click)="addAllToBag()"
-        class="text-xs font-bold text-[#09090b] hover:text-[#2563eb] transition-colors flex items-center gap-1.5 cursor-pointer">
+        class="text-xs font-bold text-[#1D4533] hover:text-[#5E3122] transition-colors flex items-center gap-1.5">
         <app-icon name="bag" [size]="14" color="currentColor"></app-icon>
         <span class="hidden sm:inline">Move All to Bag</span>
         <span class="sm:hidden">Add All</span>
@@ -40,16 +31,16 @@
   } @else {
     
     <div class="py-20 text-center space-y-4">
-      <div class="w-16 h-16 mx-auto rounded-full bg-white border border-[#e2e8f0] flex items-center justify-center text-[#09090b] shadow-xs">
-        <app-icon name="heart" [size]="28" color="#09090b"></app-icon>
+      <div class="w-16 h-16 mx-auto rounded-full bg-white flex items-center justify-center text-[#5E3122] shadow-sm">
+        <app-icon name="heart" [size]="28" color="#5E3122"></app-icon>
       </div>
       <div>
-        <h3 class="text-base font-bold text-[#09090b]">Your wishlist is empty</h3>
-        <p class="text-xs text-[#64748b] mt-1 max-w-[240px] mx-auto">
+        <h3 class="text-base font-bold text-[#1D4533]">Your wishlist is empty</h3>
+        <p class="text-xs text-[#58585D] mt-1 max-w-[240px] mx-auto">
           Save your favorite minimalist pieces and artisan essentials to revisit anytime.
         </p>
       </div>
-      <button (click)="shop.navigateTo('discover')" class="apple-button-primary text-xs py-3 px-6 shadow-sm">
+      <button (click)="shop.navigateTo('discover')" class="apple-button-primary text-xs py-3 px-6">
         Explore Collection
       </button>
     </div>

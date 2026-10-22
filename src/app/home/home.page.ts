@@ -43,42 +43,42 @@ export class HomePage implements OnInit, OnDestroy {
   readonly heroBanners = [
     {
       id: 'banner-audio',
-      tag: 'Studio Flagship',
-      title: 'Sphera One Spatial Audio',
-      description: 'Lossless dynamic drivers housed in anodized forest green aluminum.',
+      tag: 'New Spatial Audio',
+      title: 'Sphera One in Forest Pine',
+      description: 'Custom acoustic dynamic drivers with personalized spatial tracking.',
       productId: 'sp-1',
-      image: 'assets/images/products/headphones-1.jpg',
-      gradient: '#ffffff',
-      orb1: 'rgba(217, 119, 6, 0.10)',
-      orb2: 'rgba(16, 185, 129, 0.08)',
-      badgeBg: 'rgba(217, 119, 6, 0.12)',
-      badgeColor: '#b45309'
+      image: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80',
+      gradient: 'linear-gradient(135deg, #1D4533 0%, #132E22 100%)',
+      orb1: '#F9D2BA',
+      orb2: '#5E3122',
+      badgeBg: '#F9D2BA',
+      badgeColor: '#5E3122'
     },
     {
       id: 'banner-kettle',
-      tag: 'Precision Craft',
-      title: 'Precision Temperature Kettle',
-      description: 'To-the-degree thermal extraction with balanced counterweight walnut handle.',
+      tag: 'Terracotta Artisan',
+      title: 'Earthenware Pour-Over Kettle',
+      description: 'Precision to-the-degree thermal extraction with solid walnut handle.',
       productId: 'sp-2',
-      image: 'assets/images/products/kettle-1.jpg',
-      gradient: '#ffffff',
-      orb1: 'rgba(16, 185, 129, 0.10)',
-      orb2: 'rgba(217, 119, 6, 0.08)',
-      badgeBg: 'rgba(217, 119, 6, 0.12)',
-      badgeColor: '#b45309'
+      image: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=800&q=80',
+      gradient: 'linear-gradient(135deg, #5E3122 0%, #3B1F16 100%)',
+      orb1: '#F9D2BA',
+      orb2: '#1D4533',
+      badgeBg: '#F9D2BA',
+      badgeColor: '#5E3122'
     },
     {
       id: 'banner-folio',
-      tag: 'Artisan Edition',
-      title: 'MacBook Pro Tech Folio',
-      description: 'Full-grain Tuscan leather sleeve with concealed magnetic MagSafe dock.',
+      tag: 'Handcrafted Heritage',
+      title: 'Tuscan Vegetable Leather Folio',
+      description: 'Designed specifically for MacBook Pro with concealed MagSafe slot.',
       productId: 'sp-3',
-      image: 'assets/images/products/folio-1.jpg',
-      gradient: '#ffffff',
-      orb1: 'rgba(217, 119, 6, 0.09)',
-      orb2: 'rgba(244, 63, 94, 0.07)',
-      badgeBg: 'rgba(217, 119, 6, 0.12)',
-      badgeColor: '#b45309'
+      image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80',
+      gradient: 'linear-gradient(135deg, #2D3E33 0%, #1A2820 100%)',
+      orb1: '#F7EAE0',
+      orb2: '#5E3122',
+      badgeBg: '#F7EAE0',
+      badgeColor: '#1D4533'
     }
   ];
 

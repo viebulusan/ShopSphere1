@@ -44,22 +44,22 @@ export class DiscoverPage {
     {
       name: 'Audio',
       count: '4',
-      image: 'assets/images/categories/cat-audio.jpg'
+      image: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=600&q=80'
     },
     {
       name: 'Home & Living',
       count: '6',
-      image: 'assets/images/categories/cat-living.jpg'
+      image: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=600&q=80'
     },
     {
       name: 'Workspace',
       count: '5',
-      image: 'assets/images/categories/cat-workspace.jpg'
+      image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=600&q=80'
     },
     {
       name: 'Timepieces',
       count: '3',
-      image: 'assets/images/categories/cat-timepieces.jpg'
+      image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80'
     }
   ];
 
