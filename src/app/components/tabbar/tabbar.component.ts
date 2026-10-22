@@ -20,7 +20,7 @@ import { ScreenType } from '../../models/shop.models';
             [class.active]="isActive(['home'])"
             aria-label="Home">
             <div class="icon-wrapper">
-              <app-icon name="home" [size]="20" [color]="isActive(['home']) ? '#ffffff' : '#6b7280'" [strokeWidth]="isActive(['home']) ? 2.4 : 1.8"></app-icon>
+              <app-icon name="home" [size]="20" [color]="isActive(['home']) ? '#111318' : '#6b7280'" [strokeWidth]="isActive(['home']) ? 2.3 : 1.8"></app-icon>
             </div>
             <span class="tab-label">Home</span>
           </button>
@@ -32,7 +32,7 @@ import { ScreenType } from '../../models/shop.models';
             [class.active]="isActive(['discover'])"
             aria-label="Discover">
             <div class="icon-wrapper">
-              <app-icon name="compass" [size]="20" [color]="isActive(['discover']) ? '#ffffff' : '#6b7280'" [strokeWidth]="isActive(['discover']) ? 2.4 : 1.8"></app-icon>
+              <app-icon name="compass" [size]="20" [color]="isActive(['discover']) ? '#111318' : '#6b7280'" [strokeWidth]="isActive(['discover']) ? 2.3 : 1.8"></app-icon>
             </div>
             <span class="tab-label">Discover</span>
           </button>
@@ -44,7 +44,7 @@ import { ScreenType } from '../../models/shop.models';
             [class.active]="isActive(['cart', 'checkout'])"
             aria-label="Bag">
             <div class="icon-wrapper">
-              <app-icon name="bag" [size]="20" [color]="isActive(['cart', 'checkout']) ? '#ffffff' : '#6b7280'" [strokeWidth]="isActive(['cart', 'checkout']) ? 2.4 : 1.8"></app-icon>
+              <app-icon name="bag" [size]="20" [color]="isActive(['cart', 'checkout']) ? '#111318' : '#6b7280'" [strokeWidth]="isActive(['cart', 'checkout']) ? 2.3 : 1.8"></app-icon>
               @if (shop.cartCount() > 0) {
                 <span class="cart-badge">{{ shop.cartCount() }}</span>
               }
@@ -59,7 +59,7 @@ import { ScreenType } from '../../models/shop.models';
             [class.active]="isActive(['orders', 'order-details'])"
             aria-label="Orders">
             <div class="icon-wrapper">
-              <app-icon name="package" [size]="20" [color]="isActive(['orders', 'order-details']) ? '#ffffff' : '#6b7280'" [strokeWidth]="isActive(['orders', 'order-details']) ? 2.4 : 1.8"></app-icon>
+              <app-icon name="package" [size]="20" [color]="isActive(['orders', 'order-details']) ? '#111318' : '#6b7280'" [strokeWidth]="isActive(['orders', 'order-details']) ? 2.3 : 1.8"></app-icon>
             </div>
             <span class="tab-label">Orders</span>
           </button>
@@ -71,7 +71,7 @@ import { ScreenType } from '../../models/shop.models';
             [class.active]="isActive(['profile', 'saved-addresses', 'saved-payments', 'wishlist'])"
             aria-label="Account">
             <div class="icon-wrapper">
-              <app-icon name="user" [size]="20" [color]="isActive(['profile', 'saved-addresses', 'saved-payments', 'wishlist']) ? '#ffffff' : '#6b7280'" [strokeWidth]="isActive(['profile', 'saved-addresses', 'saved-payments', 'wishlist']) ? 2.4 : 1.8"></app-icon>
+              <app-icon name="user" [size]="20" [color]="isActive(['profile', 'saved-addresses', 'saved-payments', 'wishlist']) ? '#111318' : '#6b7280'" [strokeWidth]="isActive(['profile', 'saved-addresses', 'saved-payments', 'wishlist']) ? 2.3 : 1.8"></app-icon>
             </div>
             <span class="tab-label">Account</span>
           </button>
@@ -98,19 +98,18 @@ import { ScreenType } from '../../models/shop.models';
     }
     .normal-bottom-nav {
       position: fixed;
-      bottom: 12px;
-      left: 16px;
-      right: 16px;
-      max-width: 480px;
-      margin: 0 auto;
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      border-radius: 9999px;
-      box-shadow: 0 16px 36px -6px rgba(15, 23, 42, 0.12), 0 1px 3px rgba(15, 23, 42, 0.05);
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid #e5e7eb;
+      box-shadow: 0 -2px 10px rgba(15, 23, 42, 0.04);
       z-index: 9999;
-      padding: 6px 8px;
+      padding-top: 8px;
+      padding-bottom: max(8px, env(safe-area-inset-bottom));
       pointer-events: auto;
     }
     .nav-inner {
@@ -118,8 +117,9 @@ import { ScreenType } from '../../models/shop.models';
       align-items: center;
       justify-content: space-around;
       width: 100%;
+      max-width: 560px;
       margin: 0 auto;
-      padding: 0 4px;
+      padding: 0 8px;
     }
     .tab-button {
       flex: 1;
@@ -127,50 +127,46 @@ import { ScreenType } from '../../models/shop.models';
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 4px 2px 2px;
+      padding: 2px 0;
       border: none;
       background: transparent;
       cursor: pointer;
       position: relative;
-      border-radius: 9999px;
-      transition: all 0.2s ease;
+      transition: all 0.18s ease;
       -webkit-tap-highlight-color: transparent;
-    }
-    .tab-button::before {
-      display: none;
-    }
-    .tab-button:hover {
-      background: rgba(0, 0, 0, 0.04);
     }
     .tab-button:active {
       transform: scale(0.95);
     }
+    .tab-button.active::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      width: 24px;
+      height: 2.5px;
+      background: #d97706;
+      border-radius: 9999px;
+    }
     .icon-wrapper {
-      width: 44px;
-      height: 28px;
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 14px;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
+      width: 32px;
+      height: 24px;
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .tab-button.active .icon-wrapper {
-      background: #111318;
-      border: 1.5px solid #111318;
-      box-shadow: 0 2px 8px rgba(17, 19, 24, 0.25);
+      transform: translateY(-1px);
     }
     .tab-label {
       font-size: 10px;
       font-weight: 500;
       color: #6b7280;
-      margin-top: 2px;
-      transition: all 0.2s ease;
+      margin-top: 3px;
+      transition: color 0.18s ease;
       letter-spacing: -0.15px;
       line-height: 1.1;
-    }
-    .tab-button:hover .tab-label {
-      color: #111318;
     }
     .tab-button.active .tab-label {
       color: #111318;
@@ -178,8 +174,8 @@ import { ScreenType } from '../../models/shop.models';
     }
     .cart-badge {
       position: absolute;
-      top: -3px;
-      right: 2px;
+      top: -4px;
+      right: -6px;
       background: #d97706;
       border: 1.5px solid #ffffff;
       color: #ffffff;
