@@ -22,7 +22,7 @@
           (input)="onSearchChange()"
           (focus)="isSearchFocused.set(true)"
           placeholder="Search headphones, ceramics, leather, tech..."
-          class="w-full pl-10 pr-10 py-3 rounded-full bg-white border border-[#e5e7eb] text-xs sm:text-sm font-semibold text-[#111318] placeholder:text-[#9ca3af] focus:outline-none focus:border-[#d97706] focus:ring-2 focus:ring-[#d97706]/15 shadow-sm transition-all"
+          class="w-full pl-10 pr-10 py-3 rounded-full bg-white border border-[#e5e7eb] text-xs sm:text-sm font-semibold text-[#111318] placeholder:text-[#9ca3af] focus:outline-none focus:border-[#111318] focus:ring-2 focus:ring-[#111318]/10 shadow-sm transition-all"
         />
         @if (searchQuery) {
           <button (click)="clearSearch()" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-[#9ca3af] hover:text-[#111318]">
@@ -37,7 +37,7 @@
         <div class="absolute left-0 right-0 top-full mt-2 z-40 bg-white/98 backdrop-blur-2xl rounded-[22px] shadow-2xl border border-[#e5e7eb] p-3 space-y-2 max-h-80 overflow-y-auto no-scrollbar">
           <div class="flex items-center justify-between text-[11px] font-bold text-[#111318] px-1">
             <span>{{ liveMatchingProducts().length }} matching items</span>
-            <button (click)="shop.navigateTo('discover')" class="text-[#d97706] hover:underline font-semibold">
+            <button (click)="shop.navigateTo('discover')" class="text-[#111318] hover:underline font-bold">
               All in Discover →
             </button>
           </div>
@@ -56,7 +56,7 @@
                       {{ item.title }}
                     </h4>
                     <p class="text-[10px] text-[#6b7280] truncate">{{ item.category }}</p>
-                    <span class="text-xs font-extrabold text-[#d97706]">₱{{ item.price }}</span>
+                    <span class="text-xs font-extrabold text-[#111318]">₱{{ item.price }}</span>
                   </div>
                   <div class="shrink-0 flex items-center gap-0.5 text-[#111318]">
                     <app-icon name="star" [size]="10" color="#f59e0b" [filled]="true"></app-icon>
@@ -115,15 +115,15 @@
           (click)="onHeroClick(hero)">
 
           <!-- Ambient Radial Glowing Orbs -->
-          <div class="absolute -top-12 -right-12 w-64 h-64 rounded-full opacity-60 blur-3xl pointer-events-none"
+          <div class="absolute -top-12 -right-12 w-64 h-64 rounded-full opacity-40 blur-3xl pointer-events-none"
                [style.backgroundColor]="hero.orb1"></div>
-          <div class="absolute -bottom-10 -left-10 w-56 h-56 rounded-full opacity-50 blur-3xl pointer-events-none"
+          <div class="absolute -bottom-10 -left-10 w-56 h-56 rounded-full opacity-30 blur-3xl pointer-events-none"
                [style.backgroundColor]="hero.orb2"></div>
 
           <div class="relative z-10 flex items-center justify-between gap-4">
 
             <div class="space-y-3 flex-1 min-w-0">
-              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase bg-[rgba(217,119,6,0.1)] text-[#b45309] border border-[rgba(217,119,6,0.2)]">
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase bg-[#111318]/6 text-[#111318] border border-[#111318]/12">
                 <span>{{ hero.tag }}</span>
               </div>
 

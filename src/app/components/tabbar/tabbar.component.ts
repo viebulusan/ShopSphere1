@@ -144,7 +144,7 @@ import { ScreenType } from '../../models/shop.models';
       top: -8px;
       width: 24px;
       height: 2.5px;
-      background: #d97706;
+      background: #111318;
       border-radius: 9999px;
     }
     .icon-wrapper {
@@ -176,7 +176,7 @@ import { ScreenType } from '../../models/shop.models';
       position: absolute;
       top: -4px;
       right: -6px;
-      background: #d97706;
+      background: #111318;
       border: 1.5px solid #ffffff;
       color: #ffffff;
       font-size: 9px;

@@ -26,10 +26,10 @@ import { ScreenType, Product } from '../../models/shop.models';
               <div (click)="shop.navigateTo('home')" class="flex items-center gap-2.5 cursor-pointer group">
                 <img src="assets/icon/app-icon.png" 
                      alt="ShopSphere Icon" 
-                     class="w-8 h-8 rounded-[10px] object-cover shadow-2xs border border-[#e5e7eb] group-hover:scale-105 transition-transform" />
+                     class="w-8 h-8 rounded-[10px] object-cover shadow-2xs border border-[#111318]/10 group-hover:scale-105 transition-transform" />
                 <div>
-                  <span class="text-base font-black tracking-tight" style="color: #111318; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;">
-                    Shop<span style="color: #d97706;">Sphere</span>
+                  <span class="text-base font-black tracking-tight text-[#111318]" style="letter-spacing: -0.02em; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;">
+                    ShopSphere
                   </span>
                 </div>
               </div>
@@ -65,7 +65,7 @@ import { ScreenType, Product } from '../../models/shop.models';
                     (blur)="onBlur()"
                     (input)="onNavSearchInput()"
                     placeholder="Search curated pieces..."
-                    class="w-full pl-9 pr-8 py-1.5 text-xs rounded-full bg-white border border-[#e5e7eb] text-[#111318] placeholder:text-[#9ca3af] focus:outline-none focus:border-[#d97706] focus:ring-2 focus:ring-[#d97706]/15 transition-all shadow-xs"
+                    class="w-full pl-9 pr-8 py-1.5 text-xs rounded-full bg-white border border-[#e5e7eb] text-[#111318] placeholder:text-[#9ca3af] focus:outline-none focus:border-[#111318] focus:ring-2 focus:ring-[#111318]/10 transition-all shadow-xs"
                   />
                   @if (navSearchQuery) {
                     <button (click)="clearNavSearch()" class="absolute right-2.5 text-[#9ca3af] hover:text-[#111318] p-0.5">
@@ -76,7 +76,7 @@ import { ScreenType, Product } from '../../models/shop.models';
 
                 @if (isNavSearchFocused() && liveMatchingProducts().length > 0) {
                   <div class="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-xl border border-[#e5e7eb] py-2 z-50 overflow-hidden animate-fade-in max-h-80 overflow-y-auto no-scrollbar">
-                    <div class="px-3 py-1 text-[10px] font-black uppercase tracking-wider text-[#d97706]">
+                    <div class="px-3 py-1 text-[10px] font-black uppercase tracking-wider text-[#111318]">
                       Live Matches ({{ liveMatchingProducts().length }})
                     </div>
                     @for (prod of liveMatchingProducts().slice(0, 5); track prod.id) {
@@ -88,7 +88,7 @@ import { ScreenType, Product } from '../../models/shop.models';
                           <p class="text-xs font-bold text-[#111318] truncate">{{ prod.title }}</p>
                           <p class="text-[10px] text-[#6b7280] truncate">{{ prod.subtitle }}</p>
                         </div>
-                        <span class="text-xs font-extrabold text-[#d97706] shrink-0">₱{{ prod.price }}</span>
+                        <span class="text-xs font-extrabold text-[#111318] shrink-0">₱{{ prod.price }}</span>
                       </div>
                     }
                   </div>
@@ -143,7 +143,7 @@ import { ScreenType, Product } from '../../models/shop.models';
       left: 0;
       right: 0;
       height: 2px;
-      background: #d97706;
+      background: #111318;
       border-radius: 9999px;
     }
     .action-circle-btn {
@@ -174,7 +174,7 @@ import { ScreenType, Product } from '../../models/shop.models';
       right: 6px;
       width: 8px;
       height: 8px;
-      background: #d97706;
+      background: #111318;
       border-radius: 9999px;
       border: 1.5px solid #ffffff;
     }

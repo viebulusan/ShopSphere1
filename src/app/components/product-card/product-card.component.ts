@@ -69,7 +69,7 @@ import { IconComponent } from '../icon/icon.component';
             </div>
           </div>
 
-          <h3 class="text-xs sm:text-sm font-bold text-[#111318] line-clamp-1 leading-snug transition-colors group-hover:text-[#d97706]">
+          <h3 class="text-xs sm:text-sm font-bold text-[#111318] line-clamp-1 leading-snug transition-opacity group-hover:opacity-75">
             {{ product.title }}
           </h3>
 
@@ -166,9 +166,9 @@ import { IconComponent } from '../icon/icon.component';
       box-shadow: 0 2px 8px rgba(17, 19, 24, 0.15);
     }
     .quick-add-btn:hover {
-      background: #d97706;
+      background: #272d3b;
       transform: scale(1.08);
-      box-shadow: 0 2px 10px rgba(217, 119, 6, 0.35);
+      box-shadow: 0 4px 14px rgba(17, 19, 24, 0.28);
     }
     .quick-add-btn:active {
       transform: scale(0.92);
