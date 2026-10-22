@@ -11,13 +11,13 @@ import { IconComponent } from '../icon/icon.component';
   template: `
     <div class="product-card group relative flex flex-col justify-between" (click)="onCardClick()">
 
-      <div class="relative w-full aspect-square rounded-[18px] overflow-hidden bg-[#efe8de] p-2 sm:p-2.5 flex items-center justify-center border border-[rgba(22,100,176,0.12)]">
+      <div class="relative w-full aspect-square rounded-[14px] overflow-hidden bg-[#efe8de] flex items-center justify-center">
 
         <img 
           [src]="product.image" 
           [alt]="product.title"
           loading="lazy"
-          class="w-full h-full object-cover object-center rounded-[14px] transition-transform duration-500 ease-out group-hover:scale-105"
+          class="w-full h-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
         />
 
         <div class="absolute top-2 left-2 flex flex-col gap-1 z-10 pointer-events-none">

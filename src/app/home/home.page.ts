@@ -47,12 +47,7 @@ export class HomePage implements OnInit, OnDestroy {
       title: 'Sphera One in Cobalt Marine',
       description: 'Custom acoustic dynamic drivers with personalized spatial tracking.',
       productId: 'sp-1',
-      image: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80',
-      gradient: 'linear-gradient(135deg, #1664b0 0%, #0d3f72 100%)',
-      orb1: '#d21624',
-      orb2: '#1664b0',
-      badgeBg: '#d21624',
-      badgeColor: '#FFFFFF'
+      image: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80'
     },
     {
       id: 'banner-kettle',
@@ -60,12 +55,7 @@ export class HomePage implements OnInit, OnDestroy {
       title: 'Earthenware Pour-Over Kettle',
       description: 'Precision to-the-degree thermal extraction with solid walnut handle.',
       productId: 'sp-2',
-      image: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=800&q=80',
-      gradient: 'linear-gradient(135deg, #1664b0 0%, #0d3f72 100%)',
-      orb1: '#1664b0',
-      orb2: '#d21624',
-      badgeBg: '#d21624',
-      badgeColor: '#FFFFFF'
+      image: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=800&q=80'
     },
     {
       id: 'banner-folio',
@@ -73,12 +63,7 @@ export class HomePage implements OnInit, OnDestroy {
       title: 'Tuscan Vegetable Leather Folio',
       description: 'Designed specifically for MacBook Pro with concealed MagSafe slot.',
       productId: 'sp-3',
-      image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80',
-      gradient: 'linear-gradient(135deg, #1664b0 0%, #1A1D20 100%)',
-      orb1: '#d21624',
-      orb2: '#1664b0',
-      badgeBg: '#d21624',
-      badgeColor: '#FFFFFF'
+      image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80'
     }
   ];
 

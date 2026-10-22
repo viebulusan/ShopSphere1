@@ -108,15 +108,10 @@
           class="w-full shrink-0 relative p-5 pb-9 sm:p-7 sm:pb-12 text-[#1A1D20] cursor-pointer bg-[#FFFFFF]"
           (click)="onHeroClick(hero)">
 
-          <div class="absolute -top-10 -right-10 w-52 h-52 rounded-full opacity-25 blur-3xl pointer-events-none"
-               [style.backgroundColor]="hero.orb1"></div>
-          <div class="absolute -bottom-8 -left-8 w-44 h-44 rounded-full opacity-25 blur-2xl pointer-events-none"
-               [style.backgroundColor]="hero.orb2"></div>
-
           <div class="relative z-10 flex items-center justify-between gap-4">
 
             <div class="space-y-2.5 flex-1 min-w-0">
-              <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black tracking-wider uppercase shadow-xs bg-[#d21624] text-[#FFFFFF] border border-[#d21624]">
+              <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black tracking-wider uppercase shadow-xs bg-[#d21624] text-[#FFFFFF]">
                 <span>{{ hero.tag }}</span>
               </div>
 
@@ -139,12 +134,12 @@
               </div>
             </div>
 
-            <div class="w-28 h-28 sm:w-40 sm:h-40 rounded-[20px] overflow-hidden bg-[#efe8de] p-1.5 shrink-0 border border-[rgba(22,100,176,0.18)] backdrop-blur-md shadow-sm relative">
+            <div class="w-28 h-28 sm:w-44 sm:h-44 rounded-[18px] overflow-hidden bg-[#efe8de] shrink-0 border border-[rgba(22,100,176,0.18)] shadow-xs relative">
               <img 
                 [src]="hero.image" 
                 [alt]="hero.title" 
                 draggable="false"
-                class="w-full h-full object-cover rounded-[16px] pointer-events-none select-none"
+                class="w-full h-full object-cover pointer-events-none select-none transition-transform duration-500 group-hover:scale-105"
               />
             </div>
 
@@ -175,9 +170,9 @@
           (click)="$event.stopPropagation(); setHeroIndex(idx)" 
           class="flex-1 py-1 -my-1 transition-all group/bar"
           [title]="hero.title">
-          <div class="w-full h-1.5 rounded-full bg-[rgba(22,100,176,0.15)] overflow-hidden">
+          <div class="w-full h-1.5 rounded-full bg-[rgba(22,100,176,0.14)] overflow-hidden">
             <div 
-              class="h-full bg-[#d21624] rounded-full transition-all shadow-[0_0_8px_rgba(210,22,36,0.4)]"
+              class="h-full bg-[#1664b0] rounded-full transition-all"
               [style.width]="activeHeroIndex() === idx ? (progressWidth() + '%') : (activeHeroIndex() > idx ? '100%' : '0%')">
             </div>
           </div>
