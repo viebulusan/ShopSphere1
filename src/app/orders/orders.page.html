@@ -79,9 +79,9 @@
         <h3 class="text-xs font-bold text-[#1A1D20] uppercase tracking-wider">Package Contents</h3>
 
         @for (item of ord.items; track item.cartItemId) {
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-[18px] bg-[#FFFFFF] border border-[rgba(22,100,176,0.16)] shadow-xs">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 p-3.5 sm:p-4 rounded-[18px] bg-[#efe8de]/60 border border-[rgba(22,100,176,0.16)]">
             <div class="flex items-center gap-3 min-w-0 flex-1">
-              <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-[12px] bg-[#efe8de] overflow-hidden shrink-0 border border-[rgba(22,100,176,0.15)]">
+              <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-[12px] bg-[#FFFFFF] overflow-hidden shrink-0 border border-[rgba(22,100,176,0.18)] shadow-2xs">
                 <img [src]="item.product.image" [alt]="item.product.title" class="w-full h-full object-cover" />
               </div>
               <div class="min-w-0 flex-1">
@@ -95,25 +95,18 @@
               </div>
             </div>
 
-            <div class="flex items-center justify-end gap-2 pt-2 sm:pt-0 border-t border-[rgba(22,100,176,0.1)] sm:border-t-0 shrink-0">
+            <div class="flex items-center justify-end gap-2 pt-2.5 sm:pt-0 border-t border-[rgba(22,100,176,0.12)] sm:border-t-0 shrink-0">
               @if (ord.status === 'delivered') {
-                <button 
-                  (click)="openReturnModal(ord, item)"
-                  class="text-xs font-bold text-[#1664b0] hover:bg-[#efe8de] px-2.5 py-1.5 rounded-full border border-[rgba(22,100,176,0.18)] flex items-center gap-1 transition-colors">
-                  <app-icon name="refresh" [size]="11" color="#1664b0"></app-icon>
-                  <span>Return</span>
-                </button>
-
                 @if (shop.isItemReviewed(ord.id, item.product.id)) {
-                  <span class="inline-flex items-center gap-1 text-xs font-bold text-[#1664b0] bg-[#1664b0]/10 px-3 py-1.5 rounded-full border border-[rgba(22,100,176,0.15)]">
-                    <app-icon name="check" [size]="11" color="#1664b0"></app-icon>
+                  <span class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 text-xs font-bold text-[#1664b0] bg-[#FFFFFF] px-3.5 py-2 rounded-full border border-[rgba(22,100,176,0.22)]">
+                    <app-icon name="check" [size]="12" color="#1664b0"></app-icon>
                     <span>Reviewed</span>
                   </span>
                 } @else {
                   <button 
                     (click)="openReviewModal(ord, item)"
-                    class="apple-button-primary text-xs py-1.5 px-3.5 font-bold flex items-center gap-1.5 shadow-xs">
-                    <app-icon name="star" [size]="11" color="#FFFFFF" [filled]="true"></app-icon>
+                    class="flex-1 sm:flex-initial apple-button-primary text-xs py-2 px-4 font-bold">
+                    <app-icon name="star" [size]="12" color="#FFFFFF" [filled]="true"></app-icon>
                     <span>Submit Review</span>
                   </button>
                 }
@@ -121,8 +114,8 @@
 
               <button 
                 (click)="shop.addToCart(item.product, item.selectedColor, item.selectedSize, 1); shop.navigateTo('bag')"
-                class="apple-button-secondary text-xs py-1.5 px-3.5 font-bold flex items-center gap-1.5 shadow-xs">
-                <app-icon name="bag" [size]="11" color="#1664b0"></app-icon>
+                class="flex-1 sm:flex-initial apple-button-secondary text-xs py-2 px-4 font-bold">
+                <app-icon name="bag" [size]="12" color="#1664b0"></app-icon>
                 <span>Buy Again</span>
               </button>
             </div>
@@ -237,9 +230,9 @@
               </span>
             </div>
 
-            <div class="space-y-2.5 py-1">
+            <div class="space-y-3 py-1">
               @for (item of ord.items; track item.cartItemId) {
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 rounded-[16px] bg-[#efe8de]/60 border border-[rgba(22,100,176,0.12)] hover:bg-[#efe8de] transition-colors">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 p-3.5 sm:p-4 rounded-[18px] bg-[#efe8de]/60 border border-[rgba(22,100,176,0.16)] hover:bg-[#efe8de] transition-colors">
                   <div class="flex items-center gap-3 min-w-0 flex-1">
                     <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-[12px] bg-[#FFFFFF] overflow-hidden border border-[rgba(22,100,176,0.18)] shrink-0 shadow-2xs">
                       <img [src]="item.product.image" [alt]="item.product.title" class="w-full h-full object-cover" />
@@ -255,25 +248,25 @@
                     </div>
                   </div>
 
-                  <div class="flex items-center justify-end gap-2 pt-2 sm:pt-0 border-t border-[rgba(22,100,176,0.1)] sm:border-t-0 shrink-0">
-                    @if (ord.status === 'delivered') {
+                  <div class="flex items-center justify-end gap-2 pt-2.5 sm:pt-0 border-t border-[rgba(22,100,176,0.12)] sm:border-t-0 shrink-0">
+                    @if (filterTab() === 'Returns' && ord.status === 'delivered') {
                       <button 
                         (click)="openReturnModal(ord, item); $event.stopPropagation()"
-                        class="text-xs font-bold text-[#1664b0] hover:bg-[#efe8de] px-2.5 py-1.5 rounded-full border border-[rgba(22,100,176,0.18)] flex items-center gap-1 transition-colors">
-                        <app-icon name="refresh" [size]="11" color="#1664b0"></app-icon>
-                        <span>Return</span>
+                        class="flex-1 sm:flex-initial apple-button-secondary text-xs py-2 px-4 font-bold">
+                        <app-icon name="refresh" [size]="12" color="#1664b0"></app-icon>
+                        <span>Return Item</span>
                       </button>
-
+                    } @else if (ord.status === 'delivered') {
                       @if (shop.isItemReviewed(ord.id, item.product.id)) {
-                        <span class="inline-flex items-center gap-1 text-xs font-bold text-[#1664b0] bg-[#1664b0]/10 px-3 py-1.5 rounded-full border border-[rgba(22,100,176,0.15)]">
-                          <app-icon name="check" [size]="11" color="#1664b0"></app-icon>
+                        <span class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 text-xs font-bold text-[#1664b0] bg-[#FFFFFF] px-3.5 py-2 rounded-full border border-[rgba(22,100,176,0.22)]">
+                          <app-icon name="check" [size]="12" color="#1664b0"></app-icon>
                           <span>Reviewed</span>
                         </span>
                       } @else {
                         <button 
                           (click)="openReviewModal(ord, item); $event.stopPropagation()"
-                          class="apple-button-primary text-xs py-1.5 px-3.5 font-bold flex items-center gap-1.5 shadow-xs">
-                          <app-icon name="star" [size]="11" color="#FFFFFF" [filled]="true"></app-icon>
+                          class="flex-1 sm:flex-initial apple-button-primary text-xs py-2 px-4 font-bold">
+                          <app-icon name="star" [size]="12" color="#FFFFFF" [filled]="true"></app-icon>
                           <span>Submit Review</span>
                         </button>
                       }
@@ -281,8 +274,8 @@
 
                     <button 
                       (click)="shop.addToCart(item.product, item.selectedColor, item.selectedSize, 1); shop.navigateTo('bag'); $event.stopPropagation()"
-                      class="apple-button-secondary text-xs py-1.5 px-3.5 font-bold flex items-center gap-1.5 shadow-xs">
-                      <app-icon name="bag" [size]="11" color="#1664b0"></app-icon>
+                      class="flex-1 sm:flex-initial apple-button-secondary text-xs py-2 px-4 font-bold">
+                      <app-icon name="bag" [size]="12" color="#1664b0"></app-icon>
                       <span>Buy Again</span>
                     </button>
                   </div>
@@ -297,25 +290,9 @@
               </div>
 
               <div class="flex items-center gap-2">
-                @if (ord.status === 'delivered') {
-                  @if (getUnreviewedItem(ord); as unreviewed) {
-                    <button 
-                      (click)="openReviewModal(ord, unreviewed); $event.stopPropagation()" 
-                      class="apple-button-primary text-xs py-2 px-3.5 font-bold flex items-center gap-1.5 shadow-sm">
-                      <app-icon name="star" [size]="12" color="#FFFFFF" [filled]="true"></app-icon>
-                      <span>Submit Review</span>
-                    </button>
-                  } @else {
-                    <span class="text-xs font-bold text-[#1664b0] flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#efe8de] border border-[rgba(22,100,176,0.15)]">
-                      <app-icon name="check" [size]="12" color="#1664b0"></app-icon>
-                      <span>All Reviewed</span>
-                    </span>
-                  }
-                }
-
                 <button 
                   (click)="viewOrder(ord)" 
-                  class="apple-button-secondary text-xs py-2 px-4 font-bold flex items-center gap-1.5">
+                  class="apple-button-secondary text-xs py-2 px-4 font-bold">
                   <app-icon name="truck" [size]="14" color="#1664b0"></app-icon>
                   <span>Track Order</span>
                 </button>

@@ -5,6 +5,15 @@ import { CommonModule } from '@angular/common';
   selector: 'app-icon',
   standalone: true,
   imports: [CommonModule],
+  styles: [`
+    :host {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+  `],
   template: `
     <svg 
       [attr.width]="size" 
@@ -16,7 +25,7 @@ import { CommonModule } from '@angular/common';
       [attr.stroke-width]="strokeWidth" 
       stroke-linecap="round" 
       stroke-linejoin="round"
-      class="inline-block transition-transform duration-150"
+      class="block transition-transform duration-150"
       [ngSwitch]="name">
 
       <g *ngSwitchCase="'home'">

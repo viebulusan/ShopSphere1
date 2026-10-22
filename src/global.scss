@@ -144,15 +144,17 @@ body::-webkit-scrollbar {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 6px;
     background-color: #1664b0;
     color: #FFFFFF !important;
     font-weight: 800;
+    line-height: 1.25;
+    white-space: nowrap;
     border-radius: 9999px;
-    padding: 13px 24px;
-    border: none;
+    padding: 12px 22px;
+    border: 1.5px solid #1664b0;
     cursor: pointer;
-    box-shadow: 0 4px 14px rgba(22, 100, 176, 0.28);
+    box-shadow: 0 4px 14px rgba(22, 100, 176, 0.24);
     transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
     text-decoration: none;
     text-align: center;
@@ -160,9 +162,10 @@ body::-webkit-scrollbar {
 
   .apple-button-primary:hover {
     background-color: #0f4880;
+    border-color: #0f4880;
     color: #FFFFFF !important;
     transform: translateY(-1px);
-    box-shadow: 0 6px 18px rgba(15, 72, 128, 0.38);
+    box-shadow: 0 6px 18px rgba(15, 72, 128, 0.34);
   }
 
   .apple-button-primary:active {
@@ -179,12 +182,14 @@ body::-webkit-scrollbar {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 6px;
     background-color: #FFFFFF;
     color: #1664b0 !important;
-    font-weight: 700;
+    font-weight: 800;
+    line-height: 1.25;
+    white-space: nowrap;
     border-radius: 9999px;
-    padding: 12px 20px;
+    padding: 12px 22px;
     border: 1.5px solid rgba(22, 100, 176, 0.28);
     cursor: pointer;
     transition: all 0.22s ease;
