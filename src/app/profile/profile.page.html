@@ -2,10 +2,10 @@
 
   <div class="flex items-center justify-between">
     <div>
-      <h1 class="text-2xl sm:text-3xl font-black text-[#1D4533] tracking-tight" style="font-family: 'SF Pro Display', sans-serif;">
+      <h1 class="text-2xl sm:text-3xl font-black text-[#1A1D20] tracking-tight" style="font-family: 'SF Pro Display', sans-serif;">
         My Account
       </h1>
-      <p class="text-xs text-[#5E3122] opacity-80 mt-0.5">
+      <p class="text-xs text-[#555B62] opacity-80 mt-0.5">
         Personal details, orders, payment methods & concierge
       </p>
     </div>
@@ -20,14 +20,14 @@
     }
   </div>
 
-  <div class="apple-card p-5 relative overflow-hidden bg-gradient-to-br from-white to-[#FAF4EE] border border-[rgba(29,69,51,0.08)]">
+  <div class="apple-card p-5 relative overflow-hidden bg-gradient-to-br from-[#FFFFFF] to-[#efe8de] border border-[rgba(22,100,176,0.16)]">
     
     @if (shop.currentUser(); as user) {
 
       <div class="flex items-center gap-4">
 
         <div class="relative group cursor-pointer shrink-0" (click)="avatarFileInput.click()" title="Click to upload avatar">
-          <div class="w-16 h-16 sm:w-18 sm:h-18 rounded-full overflow-hidden border-2 border-[#1D4533] relative shadow-sm">
+          <div class="w-16 h-16 sm:w-18 sm:h-18 rounded-full overflow-hidden border-2 border-[#1664b0] relative shadow-sm">
             <img 
               [src]="user.avatar || 'assets/images/avatars/user-alex.jpg'" 
               alt="Profile Avatar" 
@@ -40,7 +40,7 @@
           <button 
             type="button" 
             (click)="$event.stopPropagation(); avatarFileInput.click()"
-            class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-[#1D4533] text-white flex items-center justify-center shadow-md border border-white hover:bg-[#143224] transition-colors"
+            class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-[#1664b0] text-white flex items-center justify-center shadow-md border border-white hover:bg-[#143224] transition-colors"
             title="Upload avatar photo">
             <app-icon name="camera" [size]="10" color="#FFFFFF"></app-icon>
           </button>
@@ -49,43 +49,43 @@
 
         <div class="min-w-0 flex-1">
           <div class="flex items-center gap-2">
-            <h2 class="text-base sm:text-lg font-black text-[#1D4533] truncate">
+            <h2 class="text-base sm:text-lg font-black text-[#1A1D20] truncate">
               {{ user.name }}
             </h2>
-            <button (click)="openEditProfileModal()" class="text-[#8E8E93] hover:text-[#1D4533] p-1 transition-colors" title="Edit Name/Email">
+            <button (click)="openEditProfileModal()" class="text-[#8E8E93] hover:text-[#1A1D20] p-1 transition-colors" title="Edit Name/Email">
               <app-icon name="user" [size]="13" color="currentColor"></app-icon>
             </button>
           </div>
 
           <div class="flex flex-wrap items-center gap-2 mt-1">
-            <span class="inline-flex items-center gap-1 text-[10px] font-bold text-[#1D4533] bg-[#F9D2BA] px-2.5 py-0.5 rounded-full border border-[#E8B99B]">
-              <app-icon name="sparkles" [size]="9" color="#1D4533"></app-icon>
+            <span class="inline-flex items-center gap-1 text-[10px] font-bold text-[#1A1D20] bg-[#d21624] text-white px-2.5 py-0.5 rounded-full border border-[#d21624]">
+              <app-icon name="sparkles" [size]="9" color="#1664b0"></app-icon>
               <span>{{ user.tier || 'ShopSphere Member' }}</span>
             </span>
-            <span class="text-xs text-[#5E3122] truncate">{{ user.email }}</span>
+            <span class="text-xs text-[#555B62] truncate">{{ user.email }}</span>
           </div>
         </div>
       </div>
 
-      <div class="grid grid-cols-4 gap-2 pt-4 mt-4 border-t border-[rgba(29,69,51,0.08)] text-center">
+      <div class="grid grid-cols-4 gap-2 pt-4 mt-4 border-t border-[rgba(22,100,176,0.16)] text-center">
         <div (click)="shop.navigateTo('orders')" class="cursor-pointer hover:opacity-75 transition-opacity group">
-          <span class="text-base sm:text-lg font-black text-[#1D4533] block leading-none group-hover:scale-105 transition-transform">{{ shop.orders().length }}</span>
-          <span class="text-[11px] font-bold text-[#5E3122] mt-1 block">Orders</span>
+          <span class="text-base sm:text-lg font-black text-[#1A1D20] block leading-none group-hover:scale-105 transition-transform">{{ shop.orders().length }}</span>
+          <span class="text-[11px] font-bold text-[#555B62] mt-1 block">Orders</span>
         </div>
 
         <div (click)="shop.navigateTo('wishlist')" class="cursor-pointer hover:opacity-75 transition-opacity group">
-          <span class="text-base sm:text-lg font-black text-[#1D4533] block leading-none group-hover:scale-105 transition-transform">{{ shop.wishlistCount() }}</span>
-          <span class="text-[11px] font-bold text-[#5E3122] mt-1 block">Wishlist</span>
+          <span class="text-base sm:text-lg font-black text-[#1A1D20] block leading-none group-hover:scale-105 transition-transform">{{ shop.wishlistCount() }}</span>
+          <span class="text-[11px] font-bold text-[#555B62] mt-1 block">Wishlist</span>
         </div>
 
         <div (click)="openAddressesModal()" class="cursor-pointer hover:opacity-75 transition-opacity group">
-          <span class="text-base sm:text-lg font-black text-[#1D4533] block leading-none group-hover:scale-105 transition-transform">{{ shop.addresses().length }}</span>
-          <span class="text-[11px] font-bold text-[#5E3122] mt-1 block">Addresses</span>
+          <span class="text-base sm:text-lg font-black text-[#1A1D20] block leading-none group-hover:scale-105 transition-transform">{{ shop.addresses().length }}</span>
+          <span class="text-[11px] font-bold text-[#555B62] mt-1 block">Addresses</span>
         </div>
 
         <div (click)="openPaymentsModal()" class="cursor-pointer hover:opacity-75 transition-opacity group">
-          <span class="text-base sm:text-lg font-black text-[#1D4533] block leading-none group-hover:scale-105 transition-transform">{{ shop.paymentMethods().length }}</span>
-          <span class="text-[11px] font-bold text-[#5E3122] mt-1 block">Cards</span>
+          <span class="text-base sm:text-lg font-black text-[#1A1D20] block leading-none group-hover:scale-105 transition-transform">{{ shop.paymentMethods().length }}</span>
+          <span class="text-[11px] font-bold text-[#555B62] mt-1 block">Cards</span>
         </div>
       </div>
 
@@ -93,15 +93,15 @@
 
       <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 py-1 text-center sm:text-left">
         
-        <div class="w-16 h-16 rounded-full bg-[#FAF4EE] flex items-center justify-center text-[#1D4533] border border-[rgba(29,69,51,0.12)] shrink-0 shadow-2xs">
-          <app-icon name="user" [size]="28" color="#1D4533"></app-icon>
+        <div class="w-16 h-16 rounded-full bg-[#efe8de] flex items-center justify-center text-[#1A1D20] border border-[rgba(22,100,176,0.2)] shrink-0 shadow-2xs">
+          <app-icon name="user" [size]="28" color="#1664b0"></app-icon>
         </div>
 
         <div class="flex-1 space-y-1.5">
-          <h2 class="text-base sm:text-lg font-black text-[#1D4533] tracking-tight" style="font-family: 'SF Pro Display', sans-serif;">
+          <h2 class="text-base sm:text-lg font-black text-[#1A1D20] tracking-tight" style="font-family: 'SF Pro Display', sans-serif;">
             Welcome to ShopSphere
           </h2>
-          <p class="text-xs text-[#5E3122] opacity-85 leading-relaxed max-w-sm">
+          <p class="text-xs text-[#555B62] opacity-85 leading-relaxed max-w-sm">
             Sign in or create an account to view your orders, saved pieces, delivery addresses, and payment methods.
           </p>
 
@@ -127,39 +127,39 @@
 
   <div class="apple-card p-4 sm:p-5 space-y-3">
     <div class="flex items-center justify-between">
-      <h3 class="text-sm font-black text-[#1D4533] tracking-tight">My Orders</h3>
+      <h3 class="text-sm font-black text-[#1A1D20] tracking-tight">My Orders</h3>
       <button 
         (click)="shop.navigateTo('orders')"
-        class="text-xs font-bold text-[#5E3122] hover:text-[#1D4533] flex items-center gap-0.5 transition-colors">
+        class="text-xs font-bold text-[#555B62] hover:text-[#1A1D20] flex items-center gap-0.5 transition-colors">
         <span>View All</span>
         <app-icon name="chevron-right" [size]="14" color="currentColor"></app-icon>
       </button>
     </div>
 
     <div class="grid grid-cols-4 gap-2 pt-1 text-center">
-      <div (click)="shop.navigateToOrders('Active')" class="cursor-pointer group flex flex-col items-center gap-1.5 p-2 rounded-xl hover:bg-[#FAF4EE] transition-colors">
-        <div class="w-10 h-10 rounded-full bg-[#FAF4EE] flex items-center justify-center text-[#1D4533] group-hover:scale-110 transition-transform shadow-2xs">
+      <div (click)="shop.navigateToOrders('Active')" class="cursor-pointer group flex flex-col items-center gap-1.5 p-2 rounded-xl hover:bg-[#efe8de] transition-colors">
+        <div class="w-10 h-10 rounded-full bg-[#efe8de] flex items-center justify-center text-[#1A1D20] group-hover:scale-110 transition-transform shadow-2xs">
           <app-icon name="package" [size]="18" color="currentColor"></app-icon>
         </div>
         <span class="text-[11px] font-semibold text-[#1C1C1E]">Processing</span>
       </div>
 
-      <div (click)="shop.navigateToOrders('Active')" class="cursor-pointer group flex flex-col items-center gap-1.5 p-2 rounded-xl hover:bg-[#FAF4EE] transition-colors">
-        <div class="w-10 h-10 rounded-full bg-[#FAF4EE] flex items-center justify-center text-[#1D4533] group-hover:scale-110 transition-transform shadow-2xs">
+      <div (click)="shop.navigateToOrders('Active')" class="cursor-pointer group flex flex-col items-center gap-1.5 p-2 rounded-xl hover:bg-[#efe8de] transition-colors">
+        <div class="w-10 h-10 rounded-full bg-[#efe8de] flex items-center justify-center text-[#1A1D20] group-hover:scale-110 transition-transform shadow-2xs">
           <app-icon name="truck" [size]="18" color="currentColor"></app-icon>
         </div>
         <span class="text-[11px] font-semibold text-[#1C1C1E]">Shipped</span>
       </div>
 
-      <div (click)="shop.navigateToOrders('Delivered')" class="cursor-pointer group flex flex-col items-center gap-1.5 p-2 rounded-xl hover:bg-[#FAF4EE] transition-colors relative">
-        <div class="w-10 h-10 rounded-full bg-[#FAF4EE] flex items-center justify-center text-[#1D4533] group-hover:scale-110 transition-transform shadow-2xs">
+      <div (click)="shop.navigateToOrders('Delivered')" class="cursor-pointer group flex flex-col items-center gap-1.5 p-2 rounded-xl hover:bg-[#efe8de] transition-colors relative">
+        <div class="w-10 h-10 rounded-full bg-[#efe8de] flex items-center justify-center text-[#1A1D20] group-hover:scale-110 transition-transform shadow-2xs">
           <app-icon name="star" [size]="18" color="currentColor"></app-icon>
         </div>
         <span class="text-[11px] font-semibold text-[#1C1C1E]">Review</span>
       </div>
 
-      <div (click)="showSupportModal.set(true)" class="cursor-pointer group flex flex-col items-center gap-1.5 p-2 rounded-xl hover:bg-[#FAF4EE] transition-colors">
-        <div class="w-10 h-10 rounded-full bg-[#FAF4EE] flex items-center justify-center text-[#1D4533] group-hover:scale-110 transition-transform shadow-2xs">
+      <div (click)="showSupportModal.set(true)" class="cursor-pointer group flex flex-col items-center gap-1.5 p-2 rounded-xl hover:bg-[#efe8de] transition-colors">
+        <div class="w-10 h-10 rounded-full bg-[#efe8de] flex items-center justify-center text-[#1A1D20] group-hover:scale-110 transition-transform shadow-2xs">
           <app-icon name="refresh" [size]="18" color="currentColor"></app-icon>
         </div>
         <span class="text-[11px] font-semibold text-[#1C1C1E]">Returns</span>
@@ -168,67 +168,67 @@
   </div>
 
   <div class="apple-card p-4 sm:p-5 space-y-3">
-    <h3 class="text-sm font-black text-[#1D4533] tracking-tight">More Services</h3>
+    <h3 class="text-sm font-black text-[#1A1D20] tracking-tight">More Services</h3>
 
     <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-center">
 
       <div 
         (click)="openAddressesModal()" 
-        class="cursor-pointer group flex flex-col items-center gap-2 p-3.5 rounded-2xl hover:bg-[#FAF4EE] transition-all border border-[rgba(29,69,51,0.06)] hover:border-[rgba(29,69,51,0.15)] bg-white">
-        <div class="w-12 h-12 rounded-2xl bg-[#FAF4EE] flex items-center justify-center text-[#1D4533] group-hover:bg-[#1D4533] group-hover:text-white transition-colors shadow-2xs">
+        class="cursor-pointer group flex flex-col items-center gap-2 p-3.5 rounded-2xl hover:bg-[#efe8de] transition-all border border-[rgba(22,100,176,0.12)] hover:border-[rgba(22,100,176,0.2)] bg-white">
+        <div class="w-12 h-12 rounded-2xl bg-[#efe8de] flex items-center justify-center text-[#1A1D20] group-hover:bg-[#1664b0] group-hover:text-white transition-colors shadow-2xs">
           <app-icon name="map-pin" [size]="20" color="currentColor"></app-icon>
         </div>
         <div>
           <span class="text-xs font-bold text-[#1C1C1E] block">Address Book</span>
-          <span class="text-[10px] text-[#5E3122]">{{ shop.currentUser() ? shop.addresses().length + ' saved' : 'Sign in to view' }}</span>
+          <span class="text-[10px] text-[#555B62]">{{ shop.currentUser() ? shop.addresses().length + ' saved' : 'Sign in to view' }}</span>
         </div>
       </div>
 
       <div 
         (click)="openPaymentsModal()" 
-        class="cursor-pointer group flex flex-col items-center gap-2 p-3.5 rounded-2xl hover:bg-[#FAF4EE] transition-all border border-[rgba(29,69,51,0.06)] hover:border-[rgba(29,69,51,0.15)] bg-white">
-        <div class="w-12 h-12 rounded-2xl bg-[#FAF4EE] flex items-center justify-center text-[#1D4533] group-hover:bg-[#1D4533] group-hover:text-white transition-colors shadow-2xs">
+        class="cursor-pointer group flex flex-col items-center gap-2 p-3.5 rounded-2xl hover:bg-[#efe8de] transition-all border border-[rgba(22,100,176,0.12)] hover:border-[rgba(22,100,176,0.2)] bg-white">
+        <div class="w-12 h-12 rounded-2xl bg-[#efe8de] flex items-center justify-center text-[#1A1D20] group-hover:bg-[#1664b0] group-hover:text-white transition-colors shadow-2xs">
           <app-icon name="card" [size]="20" color="currentColor"></app-icon>
         </div>
         <div>
           <span class="text-xs font-bold text-[#1C1C1E] block">Payment Cards</span>
-          <span class="text-[10px] text-[#5E3122]">{{ shop.currentUser() ? shop.paymentMethods().length + ' cards' : 'Sign in to view' }}</span>
+          <span class="text-[10px] text-[#555B62]">{{ shop.currentUser() ? shop.paymentMethods().length + ' cards' : 'Sign in to view' }}</span>
         </div>
       </div>
 
       <div 
         (click)="showSupportModal.set(true)" 
-        class="cursor-pointer group flex flex-col items-center gap-2 p-3.5 rounded-2xl hover:bg-[#FAF4EE] transition-all border border-[rgba(29,69,51,0.06)] hover:border-[rgba(29,69,51,0.15)] bg-white">
-        <div class="w-12 h-12 rounded-2xl bg-[#FAF4EE] flex items-center justify-center text-[#1D4533] group-hover:bg-[#1D4533] group-hover:text-white transition-colors shadow-2xs">
+        class="cursor-pointer group flex flex-col items-center gap-2 p-3.5 rounded-2xl hover:bg-[#efe8de] transition-all border border-[rgba(22,100,176,0.12)] hover:border-[rgba(22,100,176,0.2)] bg-white">
+        <div class="w-12 h-12 rounded-2xl bg-[#efe8de] flex items-center justify-center text-[#1A1D20] group-hover:bg-[#1664b0] group-hover:text-white transition-colors shadow-2xs">
           <app-icon name="message-square" [size]="20" color="currentColor"></app-icon>
         </div>
         <div>
           <span class="text-xs font-bold text-[#1C1C1E] block">Concierge Help</span>
-          <span class="text-[10px] text-[#5E3122]">Assistance & FAQ</span>
+          <span class="text-[10px] text-[#555B62]">Assistance & FAQ</span>
         </div>
       </div>
 
       <div 
         (click)="showSettingsModal.set(true)" 
-        class="cursor-pointer group flex flex-col items-center gap-2 p-3.5 rounded-2xl hover:bg-[#FAF4EE] transition-all border border-[rgba(29,69,51,0.06)] hover:border-[rgba(29,69,51,0.15)] bg-white">
-        <div class="w-12 h-12 rounded-2xl bg-[#FAF4EE] flex items-center justify-center text-[#1D4533] group-hover:bg-[#1D4533] group-hover:text-white transition-colors shadow-2xs">
+        class="cursor-pointer group flex flex-col items-center gap-2 p-3.5 rounded-2xl hover:bg-[#efe8de] transition-all border border-[rgba(22,100,176,0.12)] hover:border-[rgba(22,100,176,0.2)] bg-white">
+        <div class="w-12 h-12 rounded-2xl bg-[#efe8de] flex items-center justify-center text-[#1A1D20] group-hover:bg-[#1664b0] group-hover:text-white transition-colors shadow-2xs">
           <app-icon name="settings" [size]="20" color="currentColor"></app-icon>
         </div>
         <div>
           <span class="text-xs font-bold text-[#1C1C1E] block">Settings</span>
-          <span class="text-[10px] text-[#5E3122]">Preferences</span>
+          <span class="text-[10px] text-[#555B62]">Preferences</span>
         </div>
       </div>
 
       <div 
         (click)="openEditProfileModal()" 
-        class="cursor-pointer group flex flex-col items-center gap-2 p-3.5 rounded-2xl hover:bg-[#FAF4EE] transition-all border border-[rgba(29,69,51,0.06)] hover:border-[rgba(29,69,51,0.15)] bg-white sm:col-span-2 md:col-span-1">
-        <div class="w-12 h-12 rounded-2xl bg-[#FAF4EE] flex items-center justify-center text-[#1D4533] group-hover:bg-[#1D4533] group-hover:text-white transition-colors shadow-2xs">
+        class="cursor-pointer group flex flex-col items-center gap-2 p-3.5 rounded-2xl hover:bg-[#efe8de] transition-all border border-[rgba(22,100,176,0.12)] hover:border-[rgba(22,100,176,0.2)] bg-white sm:col-span-2 md:col-span-1">
+        <div class="w-12 h-12 rounded-2xl bg-[#efe8de] flex items-center justify-center text-[#1A1D20] group-hover:bg-[#1664b0] group-hover:text-white transition-colors shadow-2xs">
           <app-icon name="user" [size]="20" color="currentColor"></app-icon>
         </div>
         <div>
           <span class="text-xs font-bold text-[#1C1C1E] block">Edit Details</span>
-          <span class="text-[10px] text-[#5E3122]">Name & email</span>
+          <span class="text-[10px] text-[#555B62]">Name & email</span>
         </div>
       </div>
 
@@ -241,13 +241,13 @@
          data-modal-overlay
          (click)="showAddressesModal.set(false)">
       <div 
-        class="relative w-full max-w-lg bg-white rounded-[28px] shadow-2xl border border-[rgba(29,69,51,0.15)] p-5 sm:p-6 pb-8 space-y-4 max-h-[85vh] overflow-y-auto no-scrollbar my-auto"
+        class="relative w-full max-w-lg bg-white rounded-[28px] shadow-2xl border border-[rgba(22,100,176,0.2)] p-5 sm:p-6 pb-8 space-y-4 max-h-[85vh] overflow-y-auto no-scrollbar my-auto"
         (click)="$event.stopPropagation()">
         
-        <div class="flex items-center justify-between border-b border-[rgba(29,69,51,0.08)] pb-3">
+        <div class="flex items-center justify-between border-b border-[rgba(22,100,176,0.16)] pb-3">
           <div class="flex items-center gap-2">
-            <app-icon name="map-pin" [size]="18" color="#1D4533"></app-icon>
-            <h3 class="text-sm font-bold text-[#1D4533]">Shipping Address Book</h3>
+            <app-icon name="map-pin" [size]="18" color="#1664b0"></app-icon>
+            <h3 class="text-sm font-bold text-[#1A1D20]">Shipping Address Book</h3>
           </div>
           <div class="flex items-center gap-2">
             <button 
@@ -256,49 +256,49 @@
               <app-icon [name]="showAddAddressForm() ? 'x' : 'plus'" [size]="12" color="#FFFFFF"></app-icon>
               <span>{{ showAddAddressForm() ? 'Cancel' : 'Add New' }}</span>
             </button>
-            <button (click)="showAddressesModal.set(false)" class="text-[#8E8E93] hover:text-[#1D4533] p-1">
+            <button (click)="showAddressesModal.set(false)" class="text-[#8E8E93] hover:text-[#1A1D20] p-1">
               <app-icon name="x" [size]="18" color="currentColor"></app-icon>
             </button>
           </div>
         </div>
 
         @if (showAddAddressForm()) {
-          <div class="apple-card p-4 space-y-3 bg-[#FAF4EE] border-2 border-[#1D4533]/20">
-            <h4 class="text-xs font-bold text-[#1D4533] uppercase tracking-wider">New Shipping Destination</h4>
+          <div class="apple-card p-4 space-y-3 bg-[#efe8de] border-2 border-[#1664b0]/20">
+            <h4 class="text-xs font-bold text-[#1A1D20] uppercase tracking-wider">New Shipping Destination</h4>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
               <div>
-                <label class="block font-bold text-[#5E3122] mb-1">Address Label</label>
+                <label class="block font-bold text-[#555B62] mb-1">Address Label</label>
                 <input type="text" [(ngModel)]="newAddrTitle" placeholder="e.g. Home, Studio, Beach House" class="apple-input py-2 text-xs" />
               </div>
               <div>
-                <label class="block font-bold text-[#5E3122] mb-1">Recipient Name</label>
+                <label class="block font-bold text-[#555B62] mb-1">Recipient Name</label>
                 <input type="text" [(ngModel)]="newAddrName" placeholder="Full legal name" class="apple-input py-2 text-xs" />
               </div>
               <div class="sm:col-span-2">
-                <label class="block font-bold text-[#5E3122] mb-1">Street Address</label>
+                <label class="block font-bold text-[#555B62] mb-1">Street Address</label>
                 <input type="text" [(ngModel)]="newAddrStreet" placeholder="Street and apartment/unit number" class="apple-input py-2 text-xs" />
               </div>
               <div>
-                <label class="block font-bold text-[#5E3122] mb-1">City</label>
+                <label class="block font-bold text-[#555B62] mb-1">City</label>
                 <input type="text" [(ngModel)]="newAddrCity" placeholder="City" class="apple-input py-2 text-xs" />
               </div>
               <div>
-                <label class="block font-bold text-[#5E3122] mb-1">State / Province</label>
+                <label class="block font-bold text-[#555B62] mb-1">State / Province</label>
                 <input type="text" [(ngModel)]="newAddrState" placeholder="CA" class="apple-input py-2 text-xs" />
               </div>
               <div>
-                <label class="block font-bold text-[#5E3122] mb-1">Postal / ZIP Code</label>
+                <label class="block font-bold text-[#555B62] mb-1">Postal / ZIP Code</label>
                 <input type="text" [(ngModel)]="newAddrZip" placeholder="94107" class="apple-input py-2 text-xs" />
               </div>
               <div>
-                <label class="block font-bold text-[#5E3122] mb-1">Phone Number</label>
+                <label class="block font-bold text-[#555B62] mb-1">Phone Number</label>
                 <input type="text" [(ngModel)]="newAddrPhone" placeholder="+1 (555) 000-0000" class="apple-input py-2 text-xs" />
               </div>
             </div>
 
             <div class="flex items-center gap-2 pt-1">
-              <input type="checkbox" id="setDef" [(ngModel)]="newAddrDefault" class="w-4 h-4 accent-[#1D4533] rounded cursor-pointer" />
+              <input type="checkbox" id="setDef" [(ngModel)]="newAddrDefault" class="w-4 h-4 accent-[#1664b0] rounded cursor-pointer" />
               <label for="setDef" class="text-xs font-semibold text-[#1C1C1E] cursor-pointer">Set as default address</label>
             </div>
 
@@ -311,7 +311,7 @@
 
         <div class="space-y-3">
           @for (addr of shop.addresses(); track addr.id) {
-            <div class="p-4 rounded-2xl bg-white border border-[rgba(29,69,51,0.08)] shadow-2xs space-y-2">
+            <div class="p-4 rounded-2xl bg-white border border-[rgba(22,100,176,0.16)] shadow-2xs space-y-2">
               <div class="flex items-start justify-between gap-2">
                 <div>
                   <div class="flex items-center gap-2">
@@ -321,8 +321,8 @@
                       <span class="badge-tag badge-forest text-[9px]">Default</span>
                     }
                   </div>
-                  <p class="text-xs text-[#5E3122] mt-1">{{ addr.street }}</p>
-                  <p class="text-xs text-[#5E3122]">{{ addr.city }}, {{ addr.state }} {{ addr.zipCode }}, {{ addr.country }}</p>
+                  <p class="text-xs text-[#555B62] mt-1">{{ addr.street }}</p>
+                  <p class="text-xs text-[#555B62]">{{ addr.city }}, {{ addr.state }} {{ addr.zipCode }}, {{ addr.country }}</p>
                   <p class="text-[11px] text-[#8E8E93] mt-0.5">{{ addr.phone }}</p>
                 </div>
 
@@ -330,13 +330,13 @@
                   @if (!addr.isDefault) {
                     <button 
                       (click)="shop.setDefaultAddress(addr.id)" 
-                      class="text-xs font-semibold text-[#1D4533] hover:underline">
+                      class="text-xs font-semibold text-[#1A1D20] hover:underline">
                       Set Default
                     </button>
                   }
                   <button 
                     (click)="shop.deleteAddress(addr.id)"
-                    class="text-[#8E8E93] hover:text-[#1D4533] p-1 transition-colors"
+                    class="text-[#8E8E93] hover:text-[#1A1D20] p-1 transition-colors"
                     title="Delete address">
                     <app-icon name="trash" [size]="14" color="currentColor"></app-icon>
                   </button>
@@ -356,13 +356,13 @@
          data-modal-overlay
          (click)="showPaymentsModal.set(false)">
       <div 
-        class="relative w-full max-w-lg bg-white rounded-[28px] shadow-2xl border border-[rgba(29,69,51,0.15)] p-5 sm:p-6 pb-8 space-y-4 max-h-[85vh] overflow-y-auto no-scrollbar my-auto"
+        class="relative w-full max-w-lg bg-white rounded-[28px] shadow-2xl border border-[rgba(22,100,176,0.2)] p-5 sm:p-6 pb-8 space-y-4 max-h-[85vh] overflow-y-auto no-scrollbar my-auto"
         (click)="$event.stopPropagation()">
         
-        <div class="flex items-center justify-between border-b border-[rgba(29,69,51,0.08)] pb-3">
+        <div class="flex items-center justify-between border-b border-[rgba(22,100,176,0.16)] pb-3">
           <div class="flex items-center gap-2">
-            <app-icon name="card" [size]="18" color="#1D4533"></app-icon>
-            <h3 class="text-sm font-bold text-[#1D4533]">Payment Methods</h3>
+            <app-icon name="card" [size]="18" color="#1664b0"></app-icon>
+            <h3 class="text-sm font-bold text-[#1A1D20]">Payment Methods</h3>
           </div>
           <div class="flex items-center gap-2">
             <button 
@@ -371,31 +371,31 @@
               <app-icon [name]="showAddCardForm() ? 'x' : 'plus'" [size]="12" color="#FFFFFF"></app-icon>
               <span>{{ showAddCardForm() ? 'Cancel' : 'Add Card' }}</span>
             </button>
-            <button (click)="showPaymentsModal.set(false)" class="text-[#8E8E93] hover:text-[#1D4533] p-1">
+            <button (click)="showPaymentsModal.set(false)" class="text-[#8E8E93] hover:text-[#1A1D20] p-1">
               <app-icon name="x" [size]="18" color="currentColor"></app-icon>
             </button>
           </div>
         </div>
 
         @if (showAddCardForm()) {
-          <div class="apple-card p-4 space-y-3 bg-[#FAF4EE] border-2 border-[#1D4533]/20">
-            <h4 class="text-xs font-bold text-[#1D4533] uppercase tracking-wider">Add Credit or Debit Card</h4>
+          <div class="apple-card p-4 space-y-3 bg-[#efe8de] border-2 border-[#1664b0]/20">
+            <h4 class="text-xs font-bold text-[#1A1D20] uppercase tracking-wider">Add Credit or Debit Card</h4>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
               <div class="sm:col-span-2">
-                <label class="block font-bold text-[#5E3122] mb-1">Cardholder Name</label>
+                <label class="block font-bold text-[#555B62] mb-1">Cardholder Name</label>
                 <input type="text" [(ngModel)]="newCardName" placeholder="Name as printed on card" class="apple-input py-2 text-xs" />
               </div>
               <div class="sm:col-span-2">
-                <label class="block font-bold text-[#5E3122] mb-1">Card Number</label>
+                <label class="block font-bold text-[#555B62] mb-1">Card Number</label>
                 <input type="text" [(ngModel)]="newCardNumber" placeholder="4242 •••• •••• ••••" class="apple-input py-2 text-xs font-mono" />
               </div>
               <div>
-                <label class="block font-bold text-[#5E3122] mb-1">Expiration Date</label>
+                <label class="block font-bold text-[#555B62] mb-1">Expiration Date</label>
                 <input type="text" [(ngModel)]="newCardExpiry" placeholder="MM/YY" class="apple-input py-2 text-xs font-mono" />
               </div>
               <div>
-                <label class="block font-bold text-[#5E3122] mb-1">Security Code (CVV)</label>
+                <label class="block font-bold text-[#555B62] mb-1">Security Code (CVV)</label>
                 <input type="password" [(ngModel)]="newCardCvv" placeholder="•••" maxlength="4" class="apple-input py-2 text-xs font-mono" />
               </div>
             </div>
@@ -409,9 +409,9 @@
 
         <div class="space-y-3">
           @for (pm of shop.paymentMethods(); track pm.id) {
-            <div class="p-4 rounded-2xl bg-white border border-[rgba(29,69,51,0.08)] shadow-2xs flex items-center justify-between">
+            <div class="p-4 rounded-2xl bg-white border border-[rgba(22,100,176,0.16)] shadow-2xs flex items-center justify-between">
               <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-[#FAF4EE] flex items-center justify-center text-[#1D4533]">
+                <div class="w-10 h-10 rounded-full bg-[#efe8de] flex items-center justify-center text-[#1A1D20]">
                   <app-icon name="card" [size]="18" color="currentColor"></app-icon>
                 </div>
 
@@ -434,13 +434,13 @@
                 @if (!pm.isDefault) {
                   <button 
                     (click)="shop.setDefaultPayment(pm.id)" 
-                    class="text-xs font-semibold text-[#1D4533] hover:underline">
+                    class="text-xs font-semibold text-[#1A1D20] hover:underline">
                     Set Default
                   </button>
                 }
                 <button 
                   (click)="shop.deletePaymentMethod(pm.id)"
-                  class="text-[#8E8E93] hover:text-[#1D4533] p-1 transition-colors"
+                  class="text-[#8E8E93] hover:text-[#1A1D20] p-1 transition-colors"
                   title="Delete card">
                   <app-icon name="trash" [size]="14" color="currentColor"></app-icon>
                 </button>
@@ -459,74 +459,74 @@
          data-modal-overlay
          (click)="showSettingsModal.set(false)">
       <div 
-        class="relative w-full max-w-lg bg-white rounded-[28px] shadow-2xl border border-[rgba(29,69,51,0.15)] p-5 sm:p-6 pb-8 space-y-4 max-h-[85vh] overflow-y-auto no-scrollbar my-auto"
+        class="relative w-full max-w-lg bg-white rounded-[28px] shadow-2xl border border-[rgba(22,100,176,0.2)] p-5 sm:p-6 pb-8 space-y-4 max-h-[85vh] overflow-y-auto no-scrollbar my-auto"
         (click)="$event.stopPropagation()">
         
-        <div class="flex items-center justify-between border-b border-[rgba(29,69,51,0.08)] pb-3">
+        <div class="flex items-center justify-between border-b border-[rgba(22,100,176,0.16)] pb-3">
           <div class="flex items-center gap-2">
-            <app-icon name="settings" [size]="18" color="#1D4533"></app-icon>
-            <h3 class="text-sm font-bold text-[#1D4533]">Account Settings & Preferences</h3>
+            <app-icon name="settings" [size]="18" color="#1664b0"></app-icon>
+            <h3 class="text-sm font-bold text-[#1A1D20]">Account Settings & Preferences</h3>
           </div>
-          <button (click)="showSettingsModal.set(false)" class="text-[#8E8E93] hover:text-[#1D4533] p-1">
+          <button (click)="showSettingsModal.set(false)" class="text-[#8E8E93] hover:text-[#1A1D20] p-1">
             <app-icon name="x" [size]="18" color="currentColor"></app-icon>
           </button>
         </div>
 
         <div class="space-y-4">
           
-          <div class="apple-card p-4 space-y-3 bg-[#FAF4EE]">
-            <h4 class="text-xs font-bold text-[#1D4533] uppercase tracking-wider">Push & Email Notifications</h4>
+          <div class="apple-card p-4 space-y-3 bg-[#efe8de]">
+            <h4 class="text-xs font-bold text-[#1A1D20] uppercase tracking-wider">Push & Email Notifications</h4>
 
             <div class="space-y-2.5 text-xs">
               <label class="flex items-center justify-between cursor-pointer">
                 <div>
                   <span class="font-bold text-[#1C1C1E] block">Order Tracking Alerts</span>
-                  <span class="text-[10px] text-[#5E3122]">Status updates when your items dispatch and arrive</span>
+                  <span class="text-[10px] text-[#555B62]">Status updates when your items dispatch and arrive</span>
                 </div>
                 <input 
                   type="checkbox" 
                   [ngModel]="shop.userSettings().orderAlerts" 
                   (ngModelChange)="updateSetting('orderAlerts', $event)"
-                  class="w-5 h-5 accent-[#1D4533] rounded cursor-pointer" 
+                  class="w-5 h-5 accent-[#1664b0] rounded cursor-pointer" 
                 />
               </label>
 
               <label class="flex items-center justify-between cursor-pointer">
                 <div>
                   <span class="font-bold text-[#1C1C1E] block">Artisan Drop Notifications</span>
-                  <span class="text-[10px] text-[#5E3122]">Exclusive notices for small-batch releases</span>
+                  <span class="text-[10px] text-[#555B62]">Exclusive notices for small-batch releases</span>
                 </div>
                 <input 
                   type="checkbox" 
                   [ngModel]="shop.userSettings().exclusiveDrops" 
                   (ngModelChange)="updateSetting('exclusiveDrops', $event)"
-                  class="w-5 h-5 accent-[#1D4533] rounded cursor-pointer" 
+                  class="w-5 h-5 accent-[#1664b0] rounded cursor-pointer" 
                 />
               </label>
             </div>
           </div>
 
-          <div class="apple-card p-4 space-y-3 bg-[#FAF4EE]">
-            <h4 class="text-xs font-bold text-[#1D4533] uppercase tracking-wider">Security & Authentication</h4>
+          <div class="apple-card p-4 space-y-3 bg-[#efe8de]">
+            <h4 class="text-xs font-bold text-[#1A1D20] uppercase tracking-wider">Security & Authentication</h4>
 
             <div class="space-y-2.5 text-xs">
               <label class="flex items-center justify-between cursor-pointer">
                 <div>
                   <span class="font-bold text-[#1C1C1E] block">Biometric Sign-In</span>
-                  <span class="text-[10px] text-[#5E3122]">Authenticate purchases using FaceID / TouchID</span>
+                  <span class="text-[10px] text-[#555B62]">Authenticate purchases using FaceID / TouchID</span>
                 </div>
                 <input 
                   type="checkbox" 
                   [ngModel]="shop.userSettings().faceId" 
                   (ngModelChange)="updateSetting('faceId', $event)"
-                  class="w-5 h-5 accent-[#1D4533] rounded cursor-pointer" 
+                  class="w-5 h-5 accent-[#1664b0] rounded cursor-pointer" 
                 />
               </label>
 
-              <div class="pt-2 border-t border-[rgba(29,69,51,0.08)] flex items-center justify-between">
+              <div class="pt-2 border-t border-[rgba(22,100,176,0.16)] flex items-center justify-between">
                 <div>
                   <span class="font-bold text-[#1C1C1E] block">Password Management</span>
-                  <span class="text-[10px] text-[#5E3122]">Last changed 3 months ago</span>
+                  <span class="text-[10px] text-[#555B62]">Last changed 3 months ago</span>
                 </div>
                 <button 
                   (click)="showChangePasswordModal.set(true)"
@@ -537,12 +537,12 @@
             </div>
           </div>
 
-          <div class="apple-card p-4 space-y-3 bg-[#FAF4EE]">
-            <h4 class="text-xs font-bold text-[#1D4533] uppercase tracking-wider">Region & Language</h4>
+          <div class="apple-card p-4 space-y-3 bg-[#efe8de]">
+            <h4 class="text-xs font-bold text-[#1A1D20] uppercase tracking-wider">Region & Language</h4>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
               <div>
-                <label class="font-bold text-[#5E3122] block mb-1">Currency</label>
+                <label class="font-bold text-[#555B62] block mb-1">Currency</label>
                 <select 
                   [ngModel]="shop.userSettings().currency" 
                   (ngModelChange)="updateSetting('currency', $event)"
@@ -555,7 +555,7 @@
               </div>
 
               <div>
-                <label class="font-bold text-[#5E3122] block mb-1">Language</label>
+                <label class="font-bold text-[#555B62] block mb-1">Language</label>
                 <select 
                   [ngModel]="shop.userSettings().language" 
                   (ngModelChange)="updateSetting('language', $event)"
@@ -569,8 +569,8 @@
             </div>
           </div>
 
-          <div class="apple-card p-4 space-y-2.5 bg-[#FAF4EE]">
-            <h4 class="text-xs font-bold text-[#1D4533] uppercase tracking-wider">Data & Cache</h4>
+          <div class="apple-card p-4 space-y-2.5 bg-[#efe8de]">
+            <h4 class="text-xs font-bold text-[#1A1D20] uppercase tracking-wider">Data & Cache</h4>
             <div class="flex flex-wrap gap-2 text-xs">
               <button (click)="clearCache()" class="apple-button-secondary text-xs py-2 px-3.5">
                 Clear Cache
@@ -592,15 +592,15 @@
          data-modal-overlay
          (click)="showSupportModal.set(false)">
       <div 
-        class="relative w-full max-w-lg bg-white rounded-[28px] shadow-2xl border border-[rgba(29,69,51,0.15)] p-5 sm:p-6 pb-8 space-y-4 max-h-[85vh] overflow-y-auto no-scrollbar my-auto"
+        class="relative w-full max-w-lg bg-white rounded-[28px] shadow-2xl border border-[rgba(22,100,176,0.2)] p-5 sm:p-6 pb-8 space-y-4 max-h-[85vh] overflow-y-auto no-scrollbar my-auto"
         (click)="$event.stopPropagation()">
         
-        <div class="flex items-center justify-between border-b border-[rgba(29,69,51,0.08)] pb-3">
+        <div class="flex items-center justify-between border-b border-[rgba(22,100,176,0.16)] pb-3">
           <div class="flex items-center gap-2">
-            <app-icon name="message-square" [size]="18" color="#1D4533"></app-icon>
-            <h3 class="text-sm font-bold text-[#1D4533]">Customer Service & Concierge</h3>
+            <app-icon name="message-square" [size]="18" color="#1664b0"></app-icon>
+            <h3 class="text-sm font-bold text-[#1A1D20]">Customer Service & Concierge</h3>
           </div>
-          <button (click)="showSupportModal.set(false)" class="text-[#8E8E93] hover:text-[#1D4533] p-1">
+          <button (click)="showSupportModal.set(false)" class="text-[#8E8E93] hover:text-[#1A1D20] p-1">
             <app-icon name="x" [size]="18" color="currentColor"></app-icon>
           </button>
         </div>
@@ -609,58 +609,58 @@
           
           <div 
             (click)="onLiveChatClick()"
-            class="p-3.5 rounded-2xl bg-[#FAF4EE] cursor-pointer hover:border-[#1D4533] border border-transparent transition-all group space-y-1.5">
-            <div class="w-9 h-9 mx-auto rounded-full bg-white flex items-center justify-center text-[#5E3122] group-hover:bg-[#1D4533] group-hover:text-white transition-colors shadow-2xs">
+            class="p-3.5 rounded-2xl bg-[#efe8de] cursor-pointer hover:border-[#1664b0] border border-transparent transition-all group space-y-1.5">
+            <div class="w-9 h-9 mx-auto rounded-full bg-white flex items-center justify-center text-[#555B62] group-hover:bg-[#1664b0] group-hover:text-white transition-colors shadow-2xs">
               <app-icon name="message-square" [size]="16" color="currentColor"></app-icon>
             </div>
             <span class="font-bold text-[#1C1C1E] block">Live Chat</span>
-            <span class="text-[10px] text-[#5E3122] font-bold block bg-[#F9D2BA]/60 rounded-full py-0.5 px-1.5 inline-block">Coming Soon</span>
+            <span class="text-[10px] text-[#555B62] font-bold block bg-[#d21624] text-white/60 rounded-full py-0.5 px-1.5 inline-block">Coming Soon</span>
           </div>
 
           <a 
             href="tel:+18008437743"
-            class="p-3.5 rounded-2xl bg-[#FAF4EE] cursor-pointer hover:border-[#1D4533] border border-transparent transition-all group space-y-1.5 block">
-            <div class="w-9 h-9 mx-auto rounded-full bg-white flex items-center justify-center text-[#1D4533] group-hover:bg-[#1D4533] group-hover:text-white transition-colors shadow-2xs">
+            class="p-3.5 rounded-2xl bg-[#efe8de] cursor-pointer hover:border-[#1664b0] border border-transparent transition-all group space-y-1.5 block">
+            <div class="w-9 h-9 mx-auto rounded-full bg-white flex items-center justify-center text-[#1A1D20] group-hover:bg-[#1664b0] group-hover:text-white transition-colors shadow-2xs">
               <app-icon name="phone" [size]="16" color="currentColor"></app-icon>
             </div>
             <span class="font-bold text-[#1C1C1E] block">Call Hotline</span>
-            <span class="text-[10px] text-[#1D4533] font-bold block">Toll-Free</span>
+            <span class="text-[10px] text-[#1A1D20] font-bold block">Toll-Free</span>
           </a>
 
           <div 
             (click)="scrollToContactForm()"
-            class="p-3.5 rounded-2xl bg-[#FAF4EE] cursor-pointer hover:border-[#1D4533] border border-transparent transition-all group space-y-1.5">
-            <div class="w-9 h-9 mx-auto rounded-full bg-white flex items-center justify-center text-[#1D4533] group-hover:bg-[#1D4533] group-hover:text-white transition-colors shadow-2xs">
+            class="p-3.5 rounded-2xl bg-[#efe8de] cursor-pointer hover:border-[#1664b0] border border-transparent transition-all group space-y-1.5">
+            <div class="w-9 h-9 mx-auto rounded-full bg-white flex items-center justify-center text-[#1A1D20] group-hover:bg-[#1664b0] group-hover:text-white transition-colors shadow-2xs">
               <app-icon name="mail" [size]="16" color="currentColor"></app-icon>
             </div>
             <span class="font-bold text-[#1C1C1E] block">Email Form</span>
-            <span class="text-[10px] text-[#5E3122] block">&lt; 4 hr reply</span>
+            <span class="text-[10px] text-[#555B62] block">&lt; 4 hr reply</span>
           </div>
         </div>
 
         @if (liveChatNotice()) {
-          <div class="p-3.5 rounded-2xl bg-[#FAF4EE] border border-[#1D4533]/20 flex items-start gap-2.5 animate-fade-in text-xs text-[#1D4533]">
-            <app-icon name="info" [size]="16" color="#1D4533" class="shrink-0 mt-0.5"></app-icon>
+          <div class="p-3.5 rounded-2xl bg-[#efe8de] border border-[#1664b0]/20 flex items-start gap-2.5 animate-fade-in text-xs text-[#1A1D20]">
+            <app-icon name="info" [size]="16" color="#1664b0" class="shrink-0 mt-0.5"></app-icon>
             <p class="leading-relaxed font-medium">{{ liveChatNotice() }}</p>
           </div>
         }
 
-        <div id="contactFormBox" class="p-4 rounded-2xl bg-[#FAF4EE] border border-[rgba(29,69,51,0.08)] space-y-3">
-          <h4 class="text-xs font-bold text-[#1D4533]">Send Direct Message</h4>
+        <div id="contactFormBox" class="p-4 rounded-2xl bg-[#efe8de] border border-[rgba(22,100,176,0.16)] space-y-3">
+          <h4 class="text-xs font-bold text-[#1A1D20]">Send Direct Message</h4>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
             <div>
-              <label class="block font-bold text-[#5E3122] mb-1">Your Name</label>
+              <label class="block font-bold text-[#555B62] mb-1">Your Name</label>
               <input type="text" [(ngModel)]="contactName" placeholder="Full name" class="apple-input py-1.5 text-xs" />
             </div>
 
             <div>
-              <label class="block font-bold text-[#5E3122] mb-1">Email</label>
+              <label class="block font-bold text-[#555B62] mb-1">Email</label>
               <input type="email" [(ngModel)]="contactEmail" placeholder="your.email@domain.com" class="apple-input py-1.5 text-xs" />
             </div>
 
             <div class="sm:col-span-2">
-              <label class="block font-bold text-[#5E3122] mb-1">Topic</label>
+              <label class="block font-bold text-[#555B62] mb-1">Topic</label>
               <select [(ngModel)]="contactTopic" class="apple-input py-1.5 text-xs w-full">
                 <option value="Order Tracking & Delivery">Order Tracking & Delivery</option>
                 <option value="Product Sizing & Materials Advice">Product Sizing & Materials Advice</option>
@@ -670,7 +670,7 @@
             </div>
 
             <div class="sm:col-span-2">
-              <label class="block font-bold text-[#5E3122] mb-1">Message</label>
+              <label class="block font-bold text-[#555B62] mb-1">Message</label>
               <textarea 
                 [(ngModel)]="contactMessage" 
                 rows="3" 
@@ -681,7 +681,7 @@
 
           <div class="flex items-center justify-between pt-1">
             @if (contactStatus()) {
-              <span class="text-xs font-bold text-[#1D4533]">{{ contactStatus() }}</span>
+              <span class="text-xs font-bold text-[#1A1D20]">{{ contactStatus() }}</span>
             } @else {
               <span></span>
             }
@@ -695,24 +695,24 @@
         </div>
 
         <div class="space-y-2 text-xs">
-          <h4 class="text-xs font-bold text-[#1D4533] uppercase tracking-wider mb-1">Quick Answers</h4>
+          <h4 class="text-xs font-bold text-[#1A1D20] uppercase tracking-wider mb-1">Quick Answers</h4>
 
-          <details class="p-3 rounded-[14px] bg-[#FAF4EE] cursor-pointer group">
+          <details class="p-3 rounded-[14px] bg-[#efe8de] cursor-pointer group">
             <summary class="font-bold text-[#1C1C1E] list-none flex items-center justify-between">
               <span>What is the 30-Day Return Guarantee?</span>
               <app-icon name="chevron-down" [size]="14" color="#8E8E93" class="group-open:rotate-180 transition-transform"></app-icon>
             </summary>
-            <p class="text-[#5E3122] mt-2 leading-relaxed text-[11px]">
+            <p class="text-[#555B62] mt-2 leading-relaxed text-[11px]">
               Every ShopSphere item comes with 30-day risk-free returns. Simply request a return shipping label from your Orders dashboard.
             </p>
           </details>
 
-          <details class="p-3 rounded-[14px] bg-[#FAF4EE] cursor-pointer group">
+          <details class="p-3 rounded-[14px] bg-[#efe8de] cursor-pointer group">
             <summary class="font-bold text-[#1C1C1E] list-none flex items-center justify-between">
               <span>How fast is shipping?</span>
               <app-icon name="chevron-down" [size]="14" color="#8E8E93" class="group-open:rotate-180 transition-transform"></app-icon>
             </summary>
-            <p class="text-[#5E3122] mt-2 leading-relaxed text-[11px]">
+            <p class="text-[#555B62] mt-2 leading-relaxed text-[11px]">
               Standard dispatch is fulfilled within 24 business hours. Typical delivery takes 2-4 business days.
             </p>
           </details>
@@ -728,27 +728,27 @@
          data-modal-overlay
          (click)="showEditProfileModal.set(false)">
       <div 
-        class="relative w-full max-w-sm bg-white rounded-[28px] shadow-2xl border border-[rgba(29,69,51,0.15)] p-6 pb-8 space-y-4 max-h-[85vh] overflow-y-auto no-scrollbar my-auto"
+        class="relative w-full max-w-sm bg-white rounded-[28px] shadow-2xl border border-[rgba(22,100,176,0.2)] p-6 pb-8 space-y-4 max-h-[85vh] overflow-y-auto no-scrollbar my-auto"
         (click)="$event.stopPropagation()">
         
-        <div class="flex items-center justify-between border-b border-[rgba(29,69,51,0.08)] pb-3">
-          <h3 class="text-sm font-bold text-[#1D4533]">Edit Account Details</h3>
-          <button (click)="showEditProfileModal.set(false)" class="text-[#8E8E93] hover:text-[#1D4533]">
+        <div class="flex items-center justify-between border-b border-[rgba(22,100,176,0.16)] pb-3">
+          <h3 class="text-sm font-bold text-[#1A1D20]">Edit Account Details</h3>
+          <button (click)="showEditProfileModal.set(false)" class="text-[#8E8E93] hover:text-[#1A1D20]">
             <app-icon name="x" [size]="16" color="currentColor"></app-icon>
           </button>
         </div>
 
         <div class="space-y-3 text-xs">
           <div>
-            <label class="block font-bold text-[#5E3122] mb-1">Full Name</label>
+            <label class="block font-bold text-[#555B62] mb-1">Full Name</label>
             <input type="text" [(ngModel)]="editName" class="apple-input py-2 text-xs w-full" />
           </div>
           <div>
-            <label class="block font-bold text-[#5E3122] mb-1">Email</label>
+            <label class="block font-bold text-[#555B62] mb-1">Email</label>
             <input type="email" [(ngModel)]="editEmail" class="apple-input py-2 text-xs w-full" />
           </div>
           <div>
-            <label class="block font-bold text-[#5E3122] mb-1">Phone Number</label>
+            <label class="block font-bold text-[#555B62] mb-1">Phone Number</label>
             <input type="tel" [(ngModel)]="editPhone" class="apple-input py-2 text-xs w-full" />
           </div>
         </div>
@@ -767,27 +767,27 @@
          data-modal-overlay
          (click)="showChangePasswordModal.set(false)">
       <div 
-        class="relative w-full max-w-sm bg-white rounded-[28px] shadow-2xl border border-[rgba(29,69,51,0.15)] p-6 pb-8 space-y-4 max-h-[85vh] overflow-y-auto no-scrollbar my-auto"
+        class="relative w-full max-w-sm bg-white rounded-[28px] shadow-2xl border border-[rgba(22,100,176,0.2)] p-6 pb-8 space-y-4 max-h-[85vh] overflow-y-auto no-scrollbar my-auto"
         (click)="$event.stopPropagation()">
         
-        <div class="flex items-center justify-between border-b border-[rgba(29,69,51,0.08)] pb-3">
-          <h3 class="text-sm font-bold text-[#1D4533]">Update Password</h3>
-          <button (click)="showChangePasswordModal.set(false)" class="text-[#8E8E93] hover:text-[#1D4533]">
+        <div class="flex items-center justify-between border-b border-[rgba(22,100,176,0.16)] pb-3">
+          <h3 class="text-sm font-bold text-[#1A1D20]">Update Password</h3>
+          <button (click)="showChangePasswordModal.set(false)" class="text-[#8E8E93] hover:text-[#1A1D20]">
             <app-icon name="x" [size]="16" color="currentColor"></app-icon>
           </button>
         </div>
 
         <div class="space-y-3 text-xs">
           <div>
-            <label class="block font-bold text-[#5E3122] mb-1">Current Password</label>
+            <label class="block font-bold text-[#555B62] mb-1">Current Password</label>
             <input type="password" [(ngModel)]="oldPassword" class="apple-input py-2 text-xs w-full" />
           </div>
           <div>
-            <label class="block font-bold text-[#5E3122] mb-1">New Password</label>
+            <label class="block font-bold text-[#555B62] mb-1">New Password</label>
             <input type="password" [(ngModel)]="newPassword" class="apple-input py-2 text-xs w-full" />
           </div>
           <div>
-            <label class="block font-bold text-[#5E3122] mb-1">Confirm New Password</label>
+            <label class="block font-bold text-[#555B62] mb-1">Confirm New Password</label>
             <input type="password" [(ngModel)]="confirmPassword" class="apple-input py-2 text-xs w-full" />
           </div>
         </div>

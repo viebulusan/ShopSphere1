@@ -3,30 +3,31 @@
   padding: 0 16px;
   border-radius: 9999px;
   background: #FFFFFF;
-  border: 1px solid rgba(29, 69, 51, 0.1);
+  border: 1.5px solid rgba(22, 100, 176, 0.22);
   font-size: 12px;
   font-weight: 700;
-  color: #58585D;
+  color: #555B62;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   white-space: nowrap;
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 1px 4px rgba(29, 69, 51, 0.04);
+  box-shadow: 0 2px 6px rgba(22, 100, 176, 0.05);
 }
 
 .category-pill:hover {
-  background: #F9D2BA;
-  color: #5E3122;
-  border-color: #F9D2BA;
+  background: #efe8de;
+  color: #1664b0;
+  border-color: #1664b0;
 }
 
 .category-pill.active {
-  background: #1D4533;
-  color: #FFFFFF;
-  border-color: #1D4533;
-  box-shadow: 0 4px 12px rgba(29, 69, 51, 0.25);
+  background: #1664b0;
+  color: #FFFFFF !important;
+  border-color: #1664b0;
+  font-weight: 800;
+  box-shadow: 0 4px 14px rgba(22, 100, 176, 0.28);
 }
 
 .hero-carousel-container {
@@ -34,10 +35,11 @@
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
-  transition: box-shadow 0.25s ease;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+  border: 1px solid rgba(22, 100, 176, 0.18);
 }
 
 .hero-carousel-container:hover {
-  box-shadow: 0 14px 30px -4px rgba(29, 69, 51, 0.18);
+  box-shadow: 0 12px 32px -4px rgba(22, 100, 176, 0.14);
+  border-color: rgba(22, 100, 176, 0.35);
 }
-

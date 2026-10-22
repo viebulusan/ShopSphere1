@@ -15,7 +15,8 @@ html {
   width: 100%;
   margin: 0;
   padding: 0;
-  background-color: #F7EAE0 !important;
+  background-color: #efe8de !important;
+  color: #1A1D20;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   overflow-x: hidden;
@@ -27,8 +28,8 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-  background-color: #F7EAE0 !important;
-  color: #1C1C1E;
+  background-color: #efe8de !important;
+  color: #1A1D20;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Plus Jakarta Sans", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -120,13 +121,15 @@ body::-webkit-scrollbar {
 .apple-card {
   background: #FFFFFF;
   border-radius: 24px;
-  border: 1px solid rgba(29, 69, 51, 0.08);
-  box-shadow: 0 4px 18px -2px rgba(29, 69, 51, 0.06);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(22, 100, 176, 0.16);
+  box-shadow: 0 4px 18px -2px rgba(22, 100, 176, 0.08);
+  color: #1A1D20;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
 }
 
 .apple-card:hover {
-  box-shadow: 0 10px 26px -4px rgba(29, 69, 51, 0.11);
+  box-shadow: 0 8px 24px -4px rgba(22, 100, 176, 0.16);
+  border-color: rgba(22, 100, 176, 0.35);
 }
 
 .apple-button-primary {
@@ -134,23 +137,24 @@ body::-webkit-scrollbar {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background-color: #1D4533;
+  background-color: #1664b0;
   color: #FFFFFF !important;
-  font-weight: 700;
+  font-weight: 800;
   border-radius: 9999px;
   padding: 13px 24px;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(29, 69, 51, 0.25);
+  box-shadow: 0 4px 14px rgba(22, 100, 176, 0.28);
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
   text-align: center;
 }
 
 .apple-button-primary:hover {
-  background-color: #143224;
+  background-color: #0f4880;
+  color: #FFFFFF !important;
   transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(20, 50, 36, 0.32);
+  box-shadow: 0 6px 18px rgba(15, 72, 128, 0.38);
 }
 
 .apple-button-primary:active {
@@ -158,7 +162,7 @@ body::-webkit-scrollbar {
 }
 
 .apple-button-primary:disabled {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: not-allowed;
   transform: none;
 }
@@ -168,22 +172,23 @@ body::-webkit-scrollbar {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background-color: #F7EAE0;
-  color: #1D4533 !important;
+  background-color: #FFFFFF;
+  color: #1664b0 !important;
   font-weight: 700;
   border-radius: 9999px;
   padding: 12px 20px;
-  border: 1px solid rgba(29, 69, 51, 0.15);
+  border: 1.5px solid rgba(22, 100, 176, 0.28);
   cursor: pointer;
   transition: all 0.22s ease;
   text-decoration: none;
   text-align: center;
+  box-shadow: 0 2px 6px rgba(22, 100, 176, 0.06);
 }
 
 .apple-button-secondary:hover {
-  background-color: #F9D2BA;
-  border-color: #F9D2BA;
-  color: #5E3122 !important;
+  background-color: #efe8de;
+  border-color: #1664b0;
+  color: #1664b0 !important;
 }
 
 .apple-button-secondary:active {
@@ -194,22 +199,22 @@ body::-webkit-scrollbar {
   width: 100%;
   padding: 12px 18px;
   background: #FFFFFF;
-  border: 1px solid rgba(29, 69, 51, 0.16);
+  border: 1.5px solid rgba(22, 100, 176, 0.25);
   border-radius: 16px;
   font-family: inherit;
   font-size: 14px;
-  color: #1C1C1E;
+  color: #1A1D20;
   outline: none;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .apple-input:focus {
-  border-color: #1D4533;
-  box-shadow: 0 0 0 3px rgba(29, 69, 51, 0.12);
+  border-color: #1664b0;
+  box-shadow: 0 0 0 3px rgba(22, 100, 176, 0.15);
 }
 
 .apple-input::placeholder {
-  color: #8E8E93;
+  color: rgba(26, 29, 32, 0.5);
 }
 
 .badge-tag {
@@ -226,63 +231,57 @@ body::-webkit-scrollbar {
 }
 
 .badge-primary,
-.badge-forest {
-  background: #1D4533;
-  color: #FFFFFF;
-}
-
+.badge-forest,
 .badge-peach,
-.badge-secondary {
-  background: #F9D2BA;
-  color: #5E3122;
-}
-
+.badge-secondary,
 .badge-terracotta {
-  background: #5E3122;
-  color: #FFFFFF;
+  background: #d21624 !important;
+  color: #FFFFFF !important;
+  font-weight: 800;
+  border: 1px solid rgba(210, 22, 36, 0.3);
 }
 
 .badge-linen {
-  background: #F7EAE0;
-  color: #1D4533;
-  border: 1px solid rgba(29, 69, 51, 0.15);
+  background: #FFFFFF;
+  color: #1664b0;
+  border: 1px solid rgba(22, 100, 176, 0.25);
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* Palette utility mapping for light luxury consistency */
+.bg-white {
+  background-color: #FFFFFF !important;
 }
 
-@keyframes scaleUp {
-  from { opacity: 0; transform: scale(0.96); }
-  to { opacity: 1; transform: scale(1); }
+.bg-canvas {
+  background-color: #efe8de !important;
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.bg-surface {
+  background-color: #FFFFFF !important;
 }
 
-.animate-scale-up {
-  animation: scaleUp 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.bg-brand {
+  background-color: #1664b0 !important;
+  color: #FFFFFF !important;
 }
 
-.modal-overlay,
-[data-modal-overlay] {
-  z-index: 100000 !important;
-  overscroll-behavior: contain;
+.bg-accent {
+  background-color: #d21624 !important;
+  color: #FFFFFF !important;
 }
 
-body:has(.modal-overlay) app-tabbar,
-body:has([data-modal-overlay]) app-tabbar,
-body:has(div[class*="fixed inset-0"][class*="bg-black"]) app-tabbar {
-  opacity: 0 !important;
-  pointer-events: none !important;
-  visibility: hidden !important;
+.text-ink {
+  color: #1A1D20 !important;
 }
 
-body:has(.modal-overlay) .product-bottom-buy-bar,
-body:has([data-modal-overlay]) .product-bottom-buy-bar {
-  opacity: 0 !important;
-  pointer-events: none !important;
-  visibility: hidden !important;
+.text-brand {
+  color: #1664b0 !important;
+}
+
+.text-accent {
+  color: #d21624 !important;
+}
+
+.text-muted {
+  color: #555B62 !important;
 }

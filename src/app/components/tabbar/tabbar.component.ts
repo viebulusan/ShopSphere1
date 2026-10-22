@@ -20,7 +20,7 @@ import { ScreenType } from '../../models/shop.models';
             [class.active]="isActive(['home'])"
             aria-label="Home">
             <div class="icon-wrapper">
-              <app-icon name="home" [size]="20" [color]="isActive(['home']) ? '#1D4533' : '#58585D'" [strokeWidth]="isActive(['home']) ? 2.3 : 1.8"></app-icon>
+              <app-icon name="home" [size]="20" [color]="isActive(['home']) ? '#1664b0' : '#555B62'" [strokeWidth]="isActive(['home']) ? 2.3 : 1.8"></app-icon>
             </div>
             <span class="tab-label">Home</span>
           </button>
@@ -32,7 +32,7 @@ import { ScreenType } from '../../models/shop.models';
             [class.active]="isActive(['discover'])"
             aria-label="Discover">
             <div class="icon-wrapper">
-              <app-icon name="compass" [size]="20" [color]="isActive(['discover']) ? '#1D4533' : '#58585D'" [strokeWidth]="isActive(['discover']) ? 2.3 : 1.8"></app-icon>
+              <app-icon name="compass" [size]="20" [color]="isActive(['discover']) ? '#1664b0' : '#555B62'" [strokeWidth]="isActive(['discover']) ? 2.3 : 1.8"></app-icon>
             </div>
             <span class="tab-label">Discover</span>
           </button>
@@ -44,7 +44,7 @@ import { ScreenType } from '../../models/shop.models';
             [class.active]="isActive(['cart', 'checkout'])"
             aria-label="Bag">
             <div class="icon-wrapper">
-              <app-icon name="bag" [size]="20" [color]="isActive(['cart', 'checkout']) ? '#1D4533' : '#58585D'" [strokeWidth]="isActive(['cart', 'checkout']) ? 2.3 : 1.8"></app-icon>
+              <app-icon name="bag" [size]="20" [color]="isActive(['cart', 'checkout']) ? '#1664b0' : '#555B62'" [strokeWidth]="isActive(['cart', 'checkout']) ? 2.3 : 1.8"></app-icon>
               @if (shop.cartCount() > 0) {
                 <span class="cart-badge">{{ shop.cartCount() }}</span>
               }
@@ -59,7 +59,7 @@ import { ScreenType } from '../../models/shop.models';
             [class.active]="isActive(['orders', 'order-details'])"
             aria-label="Orders">
             <div class="icon-wrapper">
-              <app-icon name="package" [size]="20" [color]="isActive(['orders', 'order-details']) ? '#1D4533' : '#58585D'" [strokeWidth]="isActive(['orders', 'order-details']) ? 2.3 : 1.8"></app-icon>
+              <app-icon name="package" [size]="20" [color]="isActive(['orders', 'order-details']) ? '#1664b0' : '#555B62'" [strokeWidth]="isActive(['orders', 'order-details']) ? 2.3 : 1.8"></app-icon>
             </div>
             <span class="tab-label">Orders</span>
           </button>
@@ -71,7 +71,7 @@ import { ScreenType } from '../../models/shop.models';
             [class.active]="isActive(['profile', 'saved-addresses', 'saved-payments', 'wishlist'])"
             aria-label="Account">
             <div class="icon-wrapper">
-              <app-icon name="user" [size]="20" [color]="isActive(['profile', 'saved-addresses', 'saved-payments', 'wishlist']) ? '#1D4533' : '#58585D'" [strokeWidth]="isActive(['profile']) ? 2.3 : 1.8"></app-icon>
+              <app-icon name="user" [size]="20" [color]="isActive(['profile', 'saved-addresses', 'saved-payments', 'wishlist']) ? '#1664b0' : '#555B62'" [strokeWidth]="isActive(['profile']) ? 2.3 : 1.8"></app-icon>
             </div>
             <span class="tab-label">Account</span>
           </button>
@@ -102,11 +102,11 @@ import { ScreenType } from '../../models/shop.models';
       left: 0;
       right: 0;
       width: 100%;
-      background: rgba(247, 234, 224, 0.96);
+      background: rgba(255, 255, 255, 0.96);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border-top: 1px solid rgba(29, 69, 51, 0.12);
-      box-shadow: 0 -2px 12px rgba(29, 69, 51, 0.06);
+      border-top: 1px solid rgba(22, 100, 176, 0.16);
+      box-shadow: 0 -2px 10px rgba(22, 100, 176, 0.05);
       z-index: 9999;
       padding-top: 8px;
       padding-bottom: max(8px, env(safe-area-inset-bottom));
@@ -144,8 +144,9 @@ import { ScreenType } from '../../models/shop.models';
       top: -8px;
       width: 24px;
       height: 2.5px;
-      background: #1D4533;
+      background: #1664b0;
       border-radius: 9999px;
+      box-shadow: 0 0 8px rgba(22, 100, 176, 0.4);
     }
     .icon-wrapper {
       position: relative;
@@ -162,22 +163,22 @@ import { ScreenType } from '../../models/shop.models';
     .tab-label {
       font-size: 10px;
       font-weight: 500;
-      color: #58585D;
+      color: #555B62;
       margin-top: 3px;
       transition: color 0.18s ease;
       letter-spacing: -0.15px;
       line-height: 1.1;
     }
     .tab-button.active .tab-label {
-      color: #1D4533;
+      color: #1664b0;
       font-weight: 700;
     }
     .cart-badge {
       position: absolute;
       top: -4px;
       right: -6px;
-      background: #5E3122;
-      border: 1.5px solid #F7EAE0;
+      background: #d21624;
+      border: 1.5px solid #FFFFFF;
       color: #ffffff;
       font-size: 9px;
       font-weight: 900;

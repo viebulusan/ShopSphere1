@@ -36,7 +36,7 @@ export class ProductDetailPage implements OnInit, OnDestroy {
     return p.gallery[this.activeImageIndex()] || p.image;
   });
 
-  selectedColor = signal<ProductColor>(this.product()?.colors[0] || { name: 'Deep Forest', hex: '#1D4533' });
+  selectedColor = signal<ProductColor>(this.product()?.colors[0] || { name: 'Royal Cobalt', hex: '#1664b0' });
   selectedSize = signal<string>(this.product()?.sizes[0] || 'Standard');
   quantity = signal<number>(1);
   Math = Math;

@@ -115,9 +115,9 @@ export class ShopService {
         'assets/images/products/headphones-3.jpg'
       ],
       colors: [
-        { name: 'Forest Green', hex: '#1D4533' },
-        { name: 'Warm Cream', hex: '#F7EAE0' },
-        { name: 'Deep Terracotta', hex: '#5E3122' }
+        { name: 'Royal Cobalt', hex: '#1664b0' },
+        { name: 'Ivory Linen', hex: '#efe8de' },
+        { name: 'Heritage Crimson', hex: '#d21624' }
       ],
       sizes: ['Standard', 'Studio Fit'],
       description: 'Engineered with custom neodymium dynamic drivers and adaptive transparency. Precision milled aluminum ear cups paired with breathable woven mesh for all-day comfort.',
@@ -173,9 +173,9 @@ export class ShopService {
         'assets/images/products/kettle-2.jpg'
       ],
       colors: [
-        { name: 'Terracotta Red', hex: '#5E3122' },
-        { name: 'Warm Cream', hex: '#F7EAE0' },
-        { name: 'Forest Shadow', hex: '#1D4533' }
+        { name: 'Heritage Crimson', hex: '#d21624' },
+        { name: 'Ivory Linen', hex: '#efe8de' },
+        { name: 'Royal Cobalt', hex: '#1664b0' }
       ],
       sizes: ['0.9 Liters', '1.2 Liters'],
       description: 'Counterbalanced handle paired with an elongated fluted spout yields the ultimate control for specialized coffee and tea extractions.',
@@ -217,9 +217,9 @@ export class ShopService {
         'assets/images/products/folio-2.jpg'
       ],
       colors: [
-        { name: 'Forest Green', hex: '#1D4533' },
-        { name: 'Warm Cream', hex: '#F7EAE0' },
-        { name: 'Soft Peach', hex: '#F9D2BA' }
+        { name: 'Royal Cobalt', hex: '#1664b0' },
+        { name: 'Ivory Linen', hex: '#efe8de' },
+        { name: 'Deep Noir', hex: '#1A1D20' }
       ],
       sizes: ['14-inch Laptop', '16-inch Laptop'],
       description: 'Crafted from certified Tuscan vegetable-tanned leather that develops a rich, personal patina over time. Includes microfibre lining and MagSafe pen slot.',
@@ -261,9 +261,9 @@ export class ShopService {
         'assets/images/products/lamp-2.jpg'
       ],
       colors: [
-        { name: 'Warm Cream', hex: '#F7EAE0' },
-        { name: 'Soft Peach', hex: '#F9D2BA' },
-        { name: 'Deep Terracotta', hex: '#5E3122' }
+        { name: 'Ivory Linen', hex: '#efe8de' },
+        { name: 'Deep Noir', hex: '#1A1D20' },
+        { name: 'Heritage Crimson', hex: '#d21624' }
       ],
       sizes: ['Compact 25cm', 'Standard 38cm'],
       description: 'Hand-thrown stoneware lamp base paired with a spun aluminum shade. Emits warm indirect light engineered to protect circadian rhythms.',
@@ -290,9 +290,9 @@ export class ShopService {
         'assets/images/products/watch-2.jpg'
       ],
       colors: [
-        { name: 'Forest Anodized', hex: '#1D4533' },
-        { name: 'Warm Cream', hex: '#F7EAE0' },
-        { name: 'Terracotta Red', hex: '#5E3122' }
+        { name: 'Cobalt Anodized', hex: '#1664b0' },
+        { name: 'Ivory Linen', hex: '#efe8de' },
+        { name: 'Heritage Crimson', hex: '#d21624' }
       ],
       sizes: ['38mm Case', '42mm Case'],
       description: 'Ultra-lightweight titanium timepiece with anti-reflective sapphire crystal and exhibition caseback revealing the 28,800 bph self-winding movement.',
@@ -319,9 +319,9 @@ export class ShopService {
         'assets/images/products/crew-2.jpg'
       ],
       colors: [
-        { name: 'Warm Cream', hex: '#F7EAE0' },
-        { name: 'Forest Knit', hex: '#1D4533' },
-        { name: 'Terracotta', hex: '#5E3122' }
+        { name: 'Ivory Linen', hex: '#efe8de' },
+        { name: 'Cobalt Knit', hex: '#1664b0' },
+        { name: 'Heritage Crimson', hex: '#d21624' }
       ],
       sizes: ['S', 'M', 'L', 'XL'],
       description: 'Seamless whole-garment 3D knitting technology creates zero textile waste while offering a custom-tailored drape that resists pilling.',
@@ -348,9 +348,9 @@ export class ShopService {
         'assets/images/products/keyboard-1.jpg'
       ],
       colors: [
-        { name: 'Forest Anodized', hex: '#1D4533' },
-        { name: 'Warm Cream', hex: '#F7EAE0' },
-        { name: 'Soft Peach', hex: '#F9D2BA' }
+        { name: 'Cobalt Anodized', hex: '#1664b0' },
+        { name: 'Ivory Linen', hex: '#efe8de' },
+        { name: 'Deep Noir', hex: '#1A1D20' }
       ],
       sizes: ['Tactile Browns', 'Smooth Linears'],
       description: 'Solid CNC milled aluminum unibody with sound-dampening silicone gasket mount. Bluetooth 5.2 + 2.4GHz + Type-C tri-mode connectivity.',
@@ -376,9 +376,9 @@ export class ShopService {
         'assets/images/products/tasting-1.jpg'
       ],
       colors: [
-        { name: 'Terracotta Clay', hex: '#5E3122' },
-        { name: 'Forest Glaze', hex: '#1D4533' },
-        { name: 'Warm Cream', hex: '#F7EAE0' }
+        { name: 'Crimson Clay', hex: '#d21624' },
+        { name: 'Cobalt Glaze', hex: '#1664b0' },
+        { name: 'Ivory Linen', hex: '#efe8de' }
       ],
       sizes: ['Set of 4 (180ml each)'],
       description: 'Double-walled earthenware insulates hot espresso or cold brew while staying comfortable to hold without a handle.',

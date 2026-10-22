@@ -6,20 +6,20 @@
   align-items: center;
   justify-content: center;
   background: #FFFFFF;
-  border: 1px solid rgba(29, 69, 51, 0.1);
+  border: 1px solid rgba(22, 100, 176, 0.2);
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .icon-round-btn:hover {
-  background: #F9D2BA;
+  background: #efe8de;
   transform: scale(1.05);
 }
 
 .icon-round-btn.active {
-  background: #F9D2BA;
-  border-color: #5E3122;
+  background: #efe8de;
+  border-color: #1664b0;
 }
 
 .color-chip {
@@ -36,7 +36,7 @@
 }
 
 .color-chip.active {
-  box-shadow: 0 0 0 2.5px #1D4533;
+  box-shadow: 0 0 0 2.5px #1664b0;
   transform: scale(1.1);
 }
 
@@ -44,23 +44,23 @@
   padding: 6px 14px;
   border-radius: 9999px;
   background: #FFFFFF;
-  border: 1px solid rgba(29, 69, 51, 0.12);
+  border: 1px solid rgba(22, 100, 176, 0.2);
   font-size: 12px;
   font-weight: 600;
-  color: #58585D;
+  color: #555B62;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .size-pill:hover {
-  border-color: #1D4533;
+  border-color: #1664b0;
 }
 
 .size-pill.active {
-  background: #1D4533;
+  background: #1664b0;
   color: #FFFFFF;
-  border-color: #1D4533;
-  box-shadow: 0 2px 8px rgba(29, 69, 51, 0.2);
+  border-color: #1664b0;
+  box-shadow: 0 2px 8px rgba(22, 100, 176, 0.25);
 }
 
 .no-scrollbar::-webkit-scrollbar {
